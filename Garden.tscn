@@ -1,3 +1,46 @@
-[gd_scene format=3 uid="uid://bqto2ddsofr8v"]
+[gd_scene load_steps=5 format=3 uid="uid://bqto2ddsofr8v"]
+
+[ext_resource type="MeshLibrary" uid="uid://hn85x5ihpbi6" path="res://meshes.tres" id="1_mkjkf"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6oosc"]
+
+[sub_resource type="Sky" id="Sky_jy4lx"]
+sky_material = SubResource("ProceduralSkyMaterial_6oosc")
+
+[sub_resource type="Environment" id="Environment_1jlru"]
+background_mode = 2
+sky = SubResource("Sky_jy4lx")
+ssr_enabled = true
+sdfgi_enabled = true
 
 [node name="Garden" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.353553, 0.612373, 0, 0.866026, 0.5, -0.707107, -0.353553, 0.612373, 8, 6.65236, 8)
+projection = 1
+size = 5.20775
+far = 24.84
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1jlru")
+
+[node name="Ground" type="GridMap" parent="."]
+mesh_library = ExtResource("1_mkjkf")
+cell_size = Vector3(1, 1, 1)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(0, 65535, 2, 0, 65534, 2, 1, 65535, 2, 1, 0, 2, 65535, 0, 2, 65534, 0, 2, 65533, 0, 2, 65534, 65535, 2, 65534, 65534, 2, 65535, 65534, 2, 65535, 65535, 2, 65533, 65534, 2, 65533, 65535, 2, 65533, 65533, 2, 65534, 65533, 2, 65535, 65533, 2, 0, 65533, 2, 1, 65534, 2, 1, 65533, 2, 65533, 1, 2, 65534, 1, 2, 65535, 1, 2, 0, 1, 2, 2, 1, 2, 2, 0, 2, 2, 65535, 2, 2, 65534, 2, 2, 65533, 2, 65533, 2, 2, 65534, 2, 2, 65535, 2, 2, 0, 2, 2, 1, 2, 2, 2, 2, 2, 1, 1, 2, 0, 0, 2)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.99692, -0.0608764, 0.0494412, -1.98899e-08, 0.630432, 0.776245, -0.0784242, -0.773854, 0.62849, 0, 4.67871, 0)
+shadow_enabled = true
+
+[node name="Plants" type="GridMap" parent="."]
+mesh_library = ExtResource("1_mkjkf")
+cell_size = Vector3(1, 1, 1)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(0, 65535, 1, 65534, 1, 1, 65534, 65534, 1)
+}
