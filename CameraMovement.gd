@@ -20,7 +20,7 @@ func _process(delta):
 	realDirection = realDirection.move_toward(inputDirection, ACCELERATION * delta)
 	
 	var velocity = transform.basis.x * realDirection.x
-	velocity += project_vector_onto_plane(transform.basis.z, Vector3(0,1,0)) * realDirection.y
+	velocity += project_vector_onto_plane(transform.basis.z, Vector3(0,1,0)).normalized() * realDirection.y
 	parent.translate(velocity * SPEED * delta)
 	
 	parent.rotation.y += Input.get_axis("Rotate_Clockwise", "Rotate_CounterClockwise") * ROTATESPEED * delta
