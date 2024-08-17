@@ -1,13 +1,11 @@
 extends Control
 
-var SettingsScene : PackedScene = preload("res://Menu/settings.tscn")
-
 func _on_play_button_pressed():
 	get_tree().change_scene_to_file("res://Levels/Garden.tscn")
 
 
 func _on_settings_button_pressed():
-	var instance = SettingsScene.instantiate()
+	var instance = Global.SettingsScene.instantiate()
 	add_child(instance)
 
 

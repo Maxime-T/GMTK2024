@@ -83,6 +83,12 @@ text = "Plein écran"
 layout_mode = 2
 size_flags_horizontal = 4
 
+[node name="GoToMenu" type="Button" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Go to main menu"
+
 [node name="Leave" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -97,4 +103,5 @@ text = "X"
 [connection signal="item_selected" from="MarginContainer/VBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/Mute" to="." method="_on_mute_toggled"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/Fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="pressed" from="MarginContainer/GoToMenu" to="." method="_on_go_to_menu_pressed"]
 [connection signal="pressed" from="Leave" to="." method="_on_leave_pressed"]
