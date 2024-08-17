@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dh5lhont4m6sa"]
+
+[ext_resource type="FontVariation" uid="uid://de7jp8p1536yx" path="res://Themes & fonts/TheNightWatchBOLD.tres" id="1_ckqsj"]
+
+[resource]
+font = ExtResource("1_ckqsj")
+font_size = 22
