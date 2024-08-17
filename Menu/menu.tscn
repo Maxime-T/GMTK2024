@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=3 uid="uid://diwitowvw2ng0"]
+
+[ext_resource type="Texture2D" uid="uid://brpgoi7ltwck0" path="res://Menu/map.png" id="1_d14ns"]
+[ext_resource type="Script" path="res://Menu/menu.gd" id="1_jlnt2"]
+[ext_resource type="Texture2D" uid="uid://dg7dp08h517ae" path="res://Menu/Titre.png" id="2_5ajna"]
+[ext_resource type="Theme" uid="uid://erwh3ku3ow4c" path="res://Menu/Theme Boutons.tres" id="3_s3myj"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jlnt2")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_d14ns")
+
+[node name="Title" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -864.0
+offset_right = 864.0
+offset_bottom = 396.0
+grow_horizontal = 2
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_5ajna")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.3
+anchor_right = 0.8
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme = ExtResource("3_s3myj")
+text = "Play"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme = ExtResource("3_s3myj")
+text = "Settings
+"
+
+[node name="CreditButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme = ExtResource("3_s3myj")
+text = "Credits"
+
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme = ExtResource("3_s3myj")
+text = "Exit"
+
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditButton" to="." method="_on_credit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
