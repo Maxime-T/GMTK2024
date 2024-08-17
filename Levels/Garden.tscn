@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqto2ddsofr8v"]
+
+[ext_resource type="Script" path="res://CameraMovement.gd" id="1_uow6t"]
+[ext_resource type="MeshLibrary" uid="uid://bpjfjrpjcc7d2" path="res://Plants/meshes.tres" id="2_ho3is"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lkoac"]
+
+[sub_resource type="Sky" id="Sky_c7rc3"]
+sky_material = SubResource("ProceduralSkyMaterial_lkoac")
+process_mode = 1
+
+[sub_resource type="Environment" id="Environment_f47ku"]
+background_mode = 2
+sky = SubResource("Sky_c7rc3")
+tonemap_mode = 3
+tonemap_white = 0.9
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+sdfgi_bounce_feedback = 0.9
+sdfgi_cascades = 8
+sdfgi_min_cell_size = 5.0
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
+
+[node name="Garden" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_f47ku")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.99692, -0.0608764, 0.0494412, -1.98899e-08, 0.630432, 0.776245, -0.0784242, -0.773854, 0.62849, 0, 4.67871, 0)
+shadow_enabled = true
+shadow_bias = 0.025
+directional_shadow_pancake_size = 1.5
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Plants" type="GridMap" parent="Node3D"]
+mesh_library = ExtResource("2_ho3is")
+cell_size = Vector3(1, 1, 1)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(65533, 65533, 13, 65533, 2, 13, 2, 2, 13, 2, 65533, 13, 65534, 65534, 3, 65535, 65534, 4)
+}
+
+[node name="Ground" type="GridMap" parent="Node3D"]
+mesh_library = ExtResource("2_ho3is")
+cell_size = Vector3(1, 1, 1)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(0, 65535, 2, 0, 65534, 2, 1, 65535, 2, 1, 0, 2, 65535, 0, 2, 65534, 0, 2, 65533, 0, 2, 65534, 65535, 2, 65534, 65534, 2, 65535, 65534, 2, 65535, 65535, 2, 65533, 65534, 2, 65533, 65535, 2, 65533, 65533, 2, 65534, 65533, 2, 65535, 65533, 2, 0, 65533, 2, 1, 65534, 2, 1, 65533, 2, 65533, 1, 2, 65534, 1, 2, 65535, 1, 2, 0, 1, 2, 2, 1, 2, 2, 0, 2, 2, 65535, 2, 2, 65534, 2, 2, 65533, 2, 65533, 2, 2, 65534, 2, 2, 65535, 2, 2, 0, 2, 2, 1, 2, 2, 2, 2, 2, 1, 1, 2, 0, 0, 2)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Camera" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Camera" node_paths=PackedStringArray("parent")]
+transform = Transform3D(0.707107, -0.40558, 0.579228, 0, 0.819152, 0.573576, -0.707107, -0.40558, 0.579228, 8, 8, 8)
+projection = 1
+current = true
+fov = 2.0
+size = 5.20775
+far = 20.9
+script = ExtResource("1_uow6t")
+parent = NodePath("..")
