@@ -35,7 +35,12 @@ version_control/autoload_on_startup=true
 [file_customization]
 
 folder_colors={
-"res://Plants/": "green"
+"res://Cards/": "yellow",
+"res://HUD items/": "blue",
+"res://Levels/": "red",
+"res://Menu/": "orange",
+"res://Plants/": "green",
+"res://Themes & fonts/": "purple"
 }
 
 [input]
