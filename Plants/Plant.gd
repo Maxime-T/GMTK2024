@@ -1,6 +1,12 @@
 extends Node3D
 class_name Plant
 
+@export_category("Setup")
+@export var meshInstance : MeshInstance3D
+@export var growManager : GrowManager
+
+@export_category("Plant Info")
+@export_group("General")
 @export var plantName : String
 
 @export_group("Costs")
@@ -17,32 +23,52 @@ class_name Plant
 @export var timeToGrow : float = 60 #en seconde
 @export var growRate : float = 1
 
-var GrowTimer: Timer
+var pos : Vector2
+
+var stage : GrowStage
+var stages : Array[GrowStage]
+var stageIndex : int = 0
+var growTimer : Timer
 var scaleFactor : float = 1:
 	set(val):
 		scale = Vector3(val, val, val)
 		scaleFactor = val
-	
-var pos : Vector2
 
+var lifetime : float
 
 func _ready():
-	GrowTimer = Timer.new()
-	add_child(GrowTimer)
-	GrowTimer.one_shot = true
-	GrowTimer.timeout.connect(_on_growtimer_timeout)
+	stages = growManager.growStages
+	stage = stages[stageIndex]
 	
-	start_to_grow()
-
-
-func _process(delta):
-	pass
-
-
-func start_to_grow():
-	GrowTimer.wait_time = timeToGrow / growRate
-	GrowTimer.start()
+	growTimer = Timer.new()
+	growTimer.one_shot = true
+	growTimer.connect("timeout", next_stage)
+	add_child(growTimer)
 	
-func _on_growtimer_timeout():
-	Global.gold += goldValue * scaleFactor
-	start_to_grow()
+	next_stage()
+
+func next_stage():
+	if (stageIndex < stages.size()):
+		stage = stages[stageIndex]
+		meshInstance.mesh = stage.mesh
+		
+		growTimer.start(stage.time)
+		
+		stageIndex += 1
+
+func _physics_process(delta):
+	lifetime += delta
+	var timeRatio = clamp( lifetime / growManager.totalGrowTime + 0.2, 0., 1.)
+	scale = Vector3(timeRatio, timeRatio, timeRatio)
+
+
+
+
+
+
+
+
+
+
+
+
