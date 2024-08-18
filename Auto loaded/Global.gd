@@ -6,6 +6,23 @@ var slider_value = 10
 var muted : bool = false
 var music_selected = 0
 
+signal G_S_P_changed
+
+var gold : float = 0:
+	set(val):
+		gold = snapped(val, 0.01)
+		emit_signal("G_S_P_changed")
+
+var sun : float = 0:
+	set(val):
+		sun = snapped(val, 0.1)
+		emit_signal("G_S_P_changed")
+
+var pollution : float = 0:
+	set(val):
+		pollution = snapped(val, 0.1)
+		emit_signal("G_S_P_changed")
+
 func _input(event):
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_ESCAPE:

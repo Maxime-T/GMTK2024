@@ -45,6 +45,9 @@ shadow_mesh = SubResource("ArrayMesh_e2632")
 [node name="Tomato" type="Node3D"]
 script = ExtResource("1_p12s3")
 plantName = "Tomato"
+sunCost = 4
+goldValue = 1.0
+timeToGrow = 10.0
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)

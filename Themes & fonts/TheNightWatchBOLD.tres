@@ -5,4 +5,3 @@
 [resource]
 base_font = ExtResource("1_1w12u")
 variation_embolden = 0.7
-spacing_top = 22
