@@ -26,6 +26,15 @@ func _process(delta):
 	parent.rotation.y += Input.get_axis("Rotate_Clockwise", "Rotate_CounterClockwise") * ROTATESPEED * delta
 
 
+func _input(event):
+	if event.is_action_pressed("ZoomIn"):
+		size -= 0.5
+		size = clamp(size, 2, 10)
+	
+	if event.is_action_pressed("ZoomOut"):
+		size += 0.5
+		size = clamp(size, 2, 10)
+
 func project_vector_onto_plane(vector: Vector3, plane_normal: Vector3) -> Vector3:
 	# Normalize the plane normal to ensure it has a length of 1
 	plane_normal = plane_normal.normalized()

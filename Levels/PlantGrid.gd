@@ -2,6 +2,8 @@ extends Node3D
 
 class_name PlantGrid
 
+@export var highlight : MeshInstance3D
+
 @export var size : int = 16
 @export var tileSize : float = 0.8
 
@@ -11,8 +13,19 @@ var tomato : PackedScene = preload("res://Plants/tomato.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	highlight.mesh.size = Vector2(tileSize,tileSize)
 	init_data()
 	create_plant(0, 0, tomato)
+
+func _physics_process(delta):
+	var mouseTile = get_mouse_tile_position()
+	mouseTile = Vector3(floor(mouseTile.x), 0.001, floor(mouseTile.z))
+	highlight.position = mouseTile * tileSize + Vector3(tileSize/2, 0, tileSize/2)
+	if is_tile_free(mouseTile.x, mouseTile.z):
+		highlight.material_override.albedo_color = Color(0.8,0.8,0.8,0.5)
+	else:
+		highlight.material_override.albedo_color = Color(1,0,0,0.5)
+
 
 func _input(event):
 	if event.is_action_pressed("click"):
@@ -21,8 +34,7 @@ func _input(event):
 
 
 func create_plant(x:int, y:int, plantScene:PackedScene):
-	
-	if (!data[x][y] is Plant):
+	if (is_tile_free(x, y)):
 		if (x >= 0 && x < size && y >= 0 && y < size):
 			var plant : Plant = plantScene.instantiate()
 			plant.pos = Vector2(x*tileSize, y*tileSize)
@@ -48,3 +60,13 @@ func get_mouse_tile_position():
 	var t = -ray_origin.y / ray_direction.y
 	var intersection_point = ray_origin + t * ray_direction
 	return intersection_point / tileSize
+
+func is_tile_free(x,y) -> bool:
+	if (x >= 0 && x < size && y >= 0 && y < size):
+		return !data[x][y] is Plant
+	else: return false
+
+
+
+
+
