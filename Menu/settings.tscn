@@ -4,7 +4,9 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_rntgd"]
 
-[node name="Settings" type="Control"]
+[node name="SettingsLayer" type="CanvasLayer"]
+
+[node name="Settings" type="Control" parent="."]
 custom_minimum_size = Vector2(504, 486)
 layout_mode = 3
 anchor_left = 0.325
@@ -15,7 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cks2g")
 
-[node name="TextureRect" type="ColorRect" parent="."]
+[node name="TextureRect" type="ColorRect" parent="Settings"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,7 +26,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.165656, 0.165656, 0.165656, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="Settings"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,17 +38,17 @@ theme_override_constants/margin_top = 60
 theme_override_constants/margin_right = 60
 theme_override_constants/margin_bottom = 60
 
-[node name="VBoxContainer" type="GridContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="GridContainer" parent="Settings/MarginContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 40
 theme_override_constants/v_separation = 30
 columns = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Settings/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Volume"
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer"]
+[node name="HSlider" type="HSlider" parent="Settings/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -54,12 +56,12 @@ max_value = 20.0
 value = 10.0
 tick_count = 20
 
-[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Label4" type="Label" parent="Settings/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Musique"
 label_settings = SubResource("LabelSettings_rntgd")
 
-[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer"]
+[node name="OptionButton" type="OptionButton" parent="Settings/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 item_count = 1
@@ -67,29 +69,29 @@ selected = 0
 popup/item_0/text = "Main theme"
 popup/item_0/id = 0
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="Settings/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Mute"
 
-[node name="Mute" type="CheckBox" parent="MarginContainer/VBoxContainer"]
+[node name="Mute" type="CheckBox" parent="Settings/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Label3" type="Label" parent="Settings/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Plein écran"
 
-[node name="Fullscreen" type="CheckBox" parent="MarginContainer/VBoxContainer"]
+[node name="Fullscreen" type="CheckBox" parent="Settings/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="GoToMenu" type="Button" parent="MarginContainer"]
+[node name="GoToMenu" type="Button" parent="Settings/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 text = "Go to main menu"
 
-[node name="Leave" type="Button" parent="."]
+[node name="Leave" type="Button" parent="Settings"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -99,9 +101,9 @@ offset_right = -10.0
 grow_horizontal = 0
 text = "X"
 
-[connection signal="value_changed" from="MarginContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
-[connection signal="item_selected" from="MarginContainer/VBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
-[connection signal="toggled" from="MarginContainer/VBoxContainer/Mute" to="." method="_on_mute_toggled"]
-[connection signal="toggled" from="MarginContainer/VBoxContainer/Fullscreen" to="." method="_on_fullscreen_toggled"]
-[connection signal="pressed" from="MarginContainer/GoToMenu" to="." method="_on_go_to_menu_pressed"]
-[connection signal="pressed" from="Leave" to="." method="_on_leave_pressed"]
+[connection signal="value_changed" from="Settings/MarginContainer/VBoxContainer/HSlider" to="Settings" method="_on_h_slider_value_changed"]
+[connection signal="item_selected" from="Settings/MarginContainer/VBoxContainer/OptionButton" to="Settings" method="_on_option_button_item_selected"]
+[connection signal="toggled" from="Settings/MarginContainer/VBoxContainer/Mute" to="Settings" method="_on_mute_toggled"]
+[connection signal="toggled" from="Settings/MarginContainer/VBoxContainer/Fullscreen" to="Settings" method="_on_fullscreen_toggled"]
+[connection signal="pressed" from="Settings/MarginContainer/GoToMenu" to="Settings" method="_on_go_to_menu_pressed"]
+[connection signal="pressed" from="Settings/Leave" to="Settings" method="_on_leave_pressed"]

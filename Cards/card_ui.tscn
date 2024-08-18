@@ -1,19 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5t5ibvxcoaaw"]
+[gd_scene load_steps=3 format=3 uid="uid://c5t5ibvxcoaaw"]
 
 [ext_resource type="Script" path="res://Cards/card_ui.gd" id="1_g1nst"]
+[ext_resource type="LabelSettings" uid="uid://drxvryb2vhcpj" path="res://Themes & fonts/Label_card_ui.tres" id="2_gjth8"]
 
 [node name="CardUI" type="Control"]
-custom_minimum_size = Vector2(150, 200)
+custom_minimum_size = Vector2(200, 175)
 layout_mode = 3
-anchors_preset = 0
-offset_right = 100.0
-offset_bottom = 150.0
+offset_right = 200.0
+offset_bottom = 175.0
+pivot_offset = Vector2(100, 88)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 focus_mode = 1
 script = ExtResource("1_g1nst")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(200, 175)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,6 +23,108 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.72
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SunCostLab" type="Label" parent="Control2/VBoxContainer/HBoxContainer2"]
+texture_filter = 1
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+text = "fjj"
+label_settings = ExtResource("2_gjth8")
+
+[node name="TextureRect2" type="ColorRect" parent="Control2/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.996078, 0.972549, 0, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control2/VBoxContainer"]
+layout_mode = 2
+
+[node name="WaterCostLab" type="Label" parent="Control2/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+text = "fgf"
+label_settings = ExtResource("2_gjth8")
+
+[node name="TextureRect" type="ColorRect" parent="Control2/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.275647, 0.844642, 1, 1)
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TimeLab" type="Label" parent="Control2/VBoxContainer/HBoxContainer3"]
+texture_filter = 1
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+text = "fgf"
+label_settings = ExtResource("2_gjth8")
+
+[node name="TextureRect3" type="ColorRect" parent="Control2/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.609141, 0.639848, 0.65596, 1)
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Control2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TimeLab2" type="Label" parent="Control2/VBoxContainer/HBoxContainer4"]
+texture_filter = 1
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+text = "fuu"
+label_settings = ExtResource("2_gjth8")
+
+[node name="TextureRect4" type="ColorRect" parent="Control2/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.925333, 0.591214, 7.70092e-07, 1)
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Control2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PollutionLab" type="Label" parent="Control2/VBoxContainer/HBoxContainer5"]
+texture_filter = 1
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+text = "fgf"
+label_settings = ExtResource("2_gjth8")
+
+[node name="TextureRect2" type="ColorRect" parent="Control2/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.618196, 0.843223, 0.52592, 1)
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_focus_exited"]

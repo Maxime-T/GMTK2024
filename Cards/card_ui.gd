@@ -1,18 +1,13 @@
 extends Control
 class_name Card
 
+var scale_size = 1.3
 
 var confirmed : bool:
 	set(val):
 		if not val:
-			custom_minimum_size = base_size
+			scale = Vector2(1,1)
 		confirmed = val
-var base_size : Vector2
-
-
-func _ready():
-	base_size = custom_minimum_size
-
 		
 func _input(event):
 	if event.is_action_pressed("right click"):
@@ -25,13 +20,13 @@ func _input(event):
 func _on_mouse_entered():
 	if confirmed:
 		return
-	custom_minimum_size = base_size * 1.5
+	scale = Vector2(scale_size,scale_size)
 
 
 func _on_mouse_exited():
 	if confirmed:
 		return
-	custom_minimum_size = base_size
+	scale = Vector2(1,1)
 
 
 func _on_focus_entered():
