@@ -5,12 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://by1qsb4aiexvw" path="res://Plants/Scene/tomato.tscn" id="2_qponp"]
 
 [node name="CardTomate" instance=ExtResource("1_prmji")]
-CardName = "Tomato"
 PlantScene = ExtResource("2_qponp")
-GoldCost = 20.0
-SunProd = 2.0
-GrowTime = 60.0
-Income = 5.0
 
 [node name="Background" parent="." index="1"]
 texture = ExtResource("2_00nju")

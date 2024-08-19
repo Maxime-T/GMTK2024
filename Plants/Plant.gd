@@ -71,6 +71,11 @@ func next_stage():
 		
 		stageIndex += 1
 
+func reset_growth():
+	stageIndex = 0
+	lifetime = 0
+	next_stage()
+
 func timer_end():
 	if (stageIndex < stages.size()):
 		anim.play("endStage")
@@ -83,6 +88,7 @@ func animation_finished(animation : StringName):
 
 var lifetime : float
 @export var animationScale : float = 0.
+
 func _physics_process(delta):
 	lifetime += delta
 	var timeRatio = clamp( lifetime / growManager.totalGrowTime + 0.2, 0., 1.)

@@ -3,17 +3,16 @@ class_name Card
 
 var PlantGridNode : PlantGrid
 
-@export var CardName : String = ""
+var CardName : String
 @export var PlantScene : PackedScene
 
-@export_category("Card stats")
-# -1 pour enlever
-@export var GoldCost : float
-@export var waterNeeded : float
-@export var PollutionProd : float
-@export var SunProd : float
-@export var GrowTime : float
-@export var Income : float
+
+var GoldCost : float
+var waterNeeded : float
+var PollutionProd : float
+var SunProd : float
+var GrowTime : float
+var Income : float
 
 @export_group("Labels")
 @export var GoldCostLabel : Label

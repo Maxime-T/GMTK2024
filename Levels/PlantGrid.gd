@@ -32,11 +32,18 @@ func _physics_process(delta):
 		highlight.material_override.albedo_color = Color(1,0,0,0.5)
 
 
-#func _input(event):
-	#if event.is_action_pressed("click"):
-		#var intersection_point = get_mouse_tile_position()
-		#create_plant(intersection_point.x, intersection_point.z, tomato)
+func _unhandled_input(event):
+	if event.is_action_pressed("click"):
+		var intersection_point = get_mouse_tile_position()
+		var plant : Plant = get_tile_plant(intersection_point.x, intersection_point.z)
+		
+		if plant != null and plant.stage == plant.stages[-1]:
+			harvest_plant(plant)
 
+func harvest_plant(plant : Plant):
+	Global.sun += plant.sunProd
+	Global.gold += plant.income
+	plant.reset_growth()
 
 func create_plant(x:int, y:int, plantScene:PackedScene):
 	if (is_tile_free(x, y)):
@@ -46,7 +53,6 @@ func create_plant(x:int, y:int, plantScene:PackedScene):
 			plant.position = Vector3(plant.pos.x + tileSize/2, 0, plant.pos.y + tileSize/2)
 			data[x][y] = plant
 			groundData[x][y].plant = plant
-			plant.grid = self
 			add_child(plant)
 		else:
 			push_warning("tried to add plant outside of grid")
@@ -74,6 +80,12 @@ func is_tile_free(x,y) -> bool:
 	if (x >= 0 && x < size && y >= 0 && y < size):
 		return !data[x][y] is Plant
 	else: return false
+
+func get_tile_plant(x,y) -> Plant:
+	if (x >= 0 && x < size && y >= 0 && y < size):
+		return data[x][y]
+	else:
+		return null
 
 func create_ground():
 	var groundScene : PackedScene = load("res://Plants/Grounds/ground_tile.tscn")

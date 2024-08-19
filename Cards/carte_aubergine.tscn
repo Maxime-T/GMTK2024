@@ -4,6 +4,5 @@
 [ext_resource type="PackedScene" uid="uid://c53cm4bxbisju" path="res://Plants/Scene/aubergine.tscn" id="2_o0hej"]
 
 [node name="CarteAubergine" instance=ExtResource("1_xujyj")]
-CardName = "Aubergine"
 PlantScene = ExtResource("2_o0hej")
-SunProd = 12.0
+

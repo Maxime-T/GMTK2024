@@ -10,7 +10,9 @@ var rare_prob : float = 0.25
 var epic_prob : float = 0.05
 var legendary_prob : float = 0.01
 
-var common_cards : Array[PackedScene] = [preload("res://Cards/carte_aubergine.tscn"), preload("res://Cards/CarteTomate.tscn"), preload("res://Cards/carte_cucumber.tscn")]
+var common_cards : Array[PackedScene] = [preload("res://Cards/carte_aubergine.tscn"),preload("res://Cards/CarteTomate.tscn"),preload("res://Cards/carte_cucumber.tscn"),
+preload("res://Cards/carte_corn.tscn")]
+
 var rare_cards : Array[PackedScene] = [preload("res://Cards/carte_aubergine.tscn")]
 var epics_cards : Array[PackedScene] = [preload("res://Cards/carte_aubergine.tscn")]
 var lengendary_cards : Array[PackedScene] = [preload("res://Cards/carte_aubergine.tscn")]
