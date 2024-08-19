@@ -342,157 +342,310 @@ layout_mode = 2
 
 [node name="Background" type="Node3D" parent="."]
 
-[node name="FakeGround3" type="MeshInstance3D" parent="Background"]
+[node name="part1" type="Node3D" parent="Background"]
+
+[node name="FakeGround3" type="MeshInstance3D" parent="Background/part1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.001, -8)
 mesh = SubResource("PlaneMesh_whfts")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="FakeGround2" type="MeshInstance3D" parent="Background"]
+[node name="FakeGround2" type="MeshInstance3D" parent="Background/part1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.001, 8)
 mesh = SubResource("PlaneMesh_whfts")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="FakeGround1" type="MeshInstance3D" parent="Background"]
+[node name="FakeGround1" type="MeshInstance3D" parent="Background/part1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.001, -8)
 mesh = SubResource("PlaneMesh_whfts")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="Trees1" type="MultiMeshInstance3D" parent="Background"]
+[node name="Trees1" type="MultiMeshInstance3D" parent="Background/part1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.04035, -0.136331, -1.4959)
 multimesh = SubResource("MultiMesh_ippxv")
 
-[node name="Trees2" type="MultiMeshInstance3D" parent="Background"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7255, -9.53674e-07, -1.99262)
+[node name="Trees2" type="MultiMeshInstance3D" parent="Background/part1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7255, -9.53674e-07, -1.80426)
 multimesh = SubResource("MultiMesh_ippxv")
 
-[node name="Trees3" type="MultiMeshInstance3D" parent="Background"]
+[node name="Trees3" type="MultiMeshInstance3D" parent="Background/part1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55583, 0, 14.34)
 multimesh = SubResource("MultiMesh_ippxv")
 
-[node name="Haricot" parent="Background" instance=ExtResource("11_2gf6d")]
+[node name="Haricot" parent="Background/part1" instance=ExtResource("11_2gf6d")]
 transform = Transform3D(-12.2977, 0, 21.7662, 0, 25, 0, -21.7662, 0, -12.2977, -1.14804, -0.391233, -1.61642)
 
-[node name="tree_thin" type="MeshInstance3D" parent="Background"]
+[node name="tree_thin" type="MeshInstance3D" parent="Background/part1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.87237, -0.05, -9.79754)
 mesh = SubResource("ArrayMesh_ce2bd")
 skeleton = NodePath("")
 
-[node name="fence" type="Node3D" parent="Background"]
+[node name="fence" type="Node3D" parent="Background/part1"]
 
-[node name="fence_simpleCenter" type="MeshInstance3D" parent="Background/fence"]
+[node name="fence_simpleCenter" type="MeshInstance3D" parent="Background/part1/fence"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 1.25135, -0.0500002, -1.02841)
 mesh = SubResource("ArrayMesh_s8pob")
 skeleton = NodePath("")
 
-[node name="fence_simpleCenter2" type="MeshInstance3D" parent="Background/fence"]
+[node name="fence_simpleCenter2" type="MeshInstance3D" parent="Background/part1/fence"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 2.65395, -0.0500002, -1.02841)
 mesh = SubResource("ArrayMesh_s8pob")
 skeleton = NodePath("")
 
-[node name="fence_simpleCenter3" type="MeshInstance3D" parent="Background/fence"]
+[node name="fence_simpleCenter3" type="MeshInstance3D" parent="Background/part1/fence"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 4.04855, -0.0500002, -1.02841)
 mesh = SubResource("ArrayMesh_s8pob")
 skeleton = NodePath("")
 
-[node name="fence_simpleCenter4" type="MeshInstance3D" parent="Background/fence"]
+[node name="fence_simpleCenter4" type="MeshInstance3D" parent="Background/part1/fence"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 5.44197, -0.0500002, -1.02841)
 mesh = SubResource("ArrayMesh_s8pob")
 skeleton = NodePath("")
 
-[node name="fence_simpleCenter5" type="MeshInstance3D" parent="Background/fence"]
+[node name="fence_simpleCenter5" type="MeshInstance3D" parent="Background/part1/fence"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 6.83019, -0.0500002, -1.02841)
 mesh = SubResource("ArrayMesh_s8pob")
 skeleton = NodePath("")
 
-[node name="fence_simpleCenter6" type="MeshInstance3D" parent="Background/fence"]
+[node name="fence_simpleCenter6" type="MeshInstance3D" parent="Background/part1/fence"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 8.22672, -0.0500002, -1.02841)
 mesh = SubResource("ArrayMesh_s8pob")
 skeleton = NodePath("")
 
-[node name="fence_simpleCenter7" type="MeshInstance3D" parent="Background/fence"]
+[node name="fence_simpleCenter7" type="MeshInstance3D" parent="Background/part1/fence"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 9.61951, -0.0500002, -1.02841)
 mesh = SubResource("ArrayMesh_s8pob")
 skeleton = NodePath("")
 
-[node name="fence_simpleCenter8" type="MeshInstance3D" parent="Background/fence"]
+[node name="fence_simpleCenter8" type="MeshInstance3D" parent="Background/part1/fence"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 11.0098, -0.0500002, -1.02841)
 mesh = SubResource("ArrayMesh_s8pob")
 skeleton = NodePath("")
 
-[node name="fence_simpleCenter9" type="MeshInstance3D" parent="Background/fence"]
+[node name="fence_simpleCenter9" type="MeshInstance3D" parent="Background/part1/fence"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 12.4041, -0.0500002, -1.02841)
 mesh = SubResource("ArrayMesh_s8pob")
 skeleton = NodePath("")
 
-[node name="fence_simpleCenter10" type="MeshInstance3D" parent="Background/fence"]
+[node name="fence_simpleCenter10" type="MeshInstance3D" parent="Background/part1/fence"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 13.7988, -0.0500002, -1.02841)
 mesh = SubResource("ArrayMesh_s8pob")
 skeleton = NodePath("")
 
-[node name="fence_simpleCenter11" type="MeshInstance3D" parent="Background/fence"]
+[node name="fence_simpleCenter11" type="MeshInstance3D" parent="Background/part1/fence"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 15.1942, -0.0500002, -1.02841)
 mesh = SubResource("ArrayMesh_s8pob")
 skeleton = NodePath("")
 
-[node name="fence2" type="Node3D" parent="Background"]
+[node name="fence2" type="Node3D" parent="Background/part1"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 16.45)
 
-[node name="fence_simpleCenter" type="MeshInstance3D" parent="Background/fence2"]
+[node name="fence_simpleCenter" type="MeshInstance3D" parent="Background/part1/fence2"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 1.25135, -0.0500002, -1.02841)
 mesh = SubResource("ArrayMesh_s8pob")
 skeleton = NodePath("")
 
-[node name="fence_simpleCenter2" type="MeshInstance3D" parent="Background/fence2"]
+[node name="fence_simpleCenter2" type="MeshInstance3D" parent="Background/part1/fence2"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 2.65395, -0.0500002, -1.02841)
 mesh = SubResource("ArrayMesh_s8pob")
 skeleton = NodePath("")
 
-[node name="fence_simpleCenter3" type="MeshInstance3D" parent="Background/fence2"]
+[node name="fence_simpleCenter3" type="MeshInstance3D" parent="Background/part1/fence2"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 4.04855, -0.0500002, -1.02841)
 mesh = SubResource("ArrayMesh_s8pob")
 skeleton = NodePath("")
 
-[node name="fence_simpleCenter4" type="MeshInstance3D" parent="Background/fence2"]
+[node name="fence_simpleCenter4" type="MeshInstance3D" parent="Background/part1/fence2"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 5.44197, -0.0500002, -1.02841)
 mesh = SubResource("ArrayMesh_s8pob")
 skeleton = NodePath("")
 
-[node name="fence_simpleCenter5" type="MeshInstance3D" parent="Background/fence2"]
+[node name="fence_simpleCenter5" type="MeshInstance3D" parent="Background/part1/fence2"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 6.83019, -0.0500002, -1.02841)
 mesh = SubResource("ArrayMesh_s8pob")
 skeleton = NodePath("")
 
-[node name="fence_simpleCenter6" type="MeshInstance3D" parent="Background/fence2"]
+[node name="fence_simpleCenter6" type="MeshInstance3D" parent="Background/part1/fence2"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 8.22672, -0.0500002, -1.02841)
 mesh = SubResource("ArrayMesh_s8pob")
 skeleton = NodePath("")
 
-[node name="fence_simpleCenter7" type="MeshInstance3D" parent="Background/fence2"]
+[node name="fence_simpleCenter7" type="MeshInstance3D" parent="Background/part1/fence2"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 9.61951, -0.0500002, -1.02841)
 mesh = SubResource("ArrayMesh_s8pob")
 skeleton = NodePath("")
 
-[node name="fence_simpleCenter8" type="MeshInstance3D" parent="Background/fence2"]
+[node name="fence_simpleCenter8" type="MeshInstance3D" parent="Background/part1/fence2"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 11.0098, -0.0500002, -1.02841)
 mesh = SubResource("ArrayMesh_s8pob")
 skeleton = NodePath("")
 
-[node name="fence_simpleCenter9" type="MeshInstance3D" parent="Background/fence2"]
+[node name="fence_simpleCenter9" type="MeshInstance3D" parent="Background/part1/fence2"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 12.4041, -0.0500002, -1.02841)
 mesh = SubResource("ArrayMesh_s8pob")
 skeleton = NodePath("")
 
-[node name="fence_simpleCenter10" type="MeshInstance3D" parent="Background/fence2"]
+[node name="fence_simpleCenter10" type="MeshInstance3D" parent="Background/part1/fence2"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 13.7988, -0.0500002, -1.02841)
 mesh = SubResource("ArrayMesh_s8pob")
 skeleton = NodePath("")
 
-[node name="fence_simpleCenter11" type="MeshInstance3D" parent="Background/fence2"]
+[node name="fence_simpleCenter11" type="MeshInstance3D" parent="Background/part1/fence2"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 15.1942, -0.0500002, -1.02841)
 mesh = SubResource("ArrayMesh_s8pob")
 skeleton = NodePath("")
 
-[node name="Root Scene" parent="." instance=ExtResource("11_2gf6d")]
-transform = Transform3D(-24.5954, 0, 43.5324, 0, 50, 0, -43.5324, 0, -24.5954, -1.49978, 0, -2.05566)
+[node name="part2" type="Node3D" parent="Background"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16, 0, 16)
+
+[node name="FakeGround3" type="MeshInstance3D" parent="Background/part2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.001, -8)
+mesh = SubResource("PlaneMesh_whfts")
+skeleton = NodePath("../../..")
+
+[node name="FakeGround2" type="MeshInstance3D" parent="Background/part2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.001, 8)
+mesh = SubResource("PlaneMesh_whfts")
+skeleton = NodePath("../../..")
+
+[node name="FakeGround1" type="MeshInstance3D" parent="Background/part2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.001, -8)
+mesh = SubResource("PlaneMesh_whfts")
+skeleton = NodePath("../../..")
+
+[node name="Trees1" type="MultiMeshInstance3D" parent="Background/part2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.04035, -0.136331, -1.4959)
+multimesh = SubResource("MultiMesh_ippxv")
+
+[node name="Trees2" type="MultiMeshInstance3D" parent="Background/part2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7255, -9.53674e-07, -1.80426)
+multimesh = SubResource("MultiMesh_ippxv")
+
+[node name="Trees3" type="MultiMeshInstance3D" parent="Background/part2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55583, 0, 14.34)
+multimesh = SubResource("MultiMesh_ippxv")
+
+[node name="Haricot" parent="Background/part2" instance=ExtResource("11_2gf6d")]
+transform = Transform3D(-12.2977, 0, 21.7662, 0, 25, 0, -21.7662, 0, -12.2977, -1.14804, -0.391233, -1.61642)
+visible = false
+
+[node name="tree_thin" type="MeshInstance3D" parent="Background/part2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.87237, -0.05, -9.79754)
+mesh = SubResource("ArrayMesh_ce2bd")
+skeleton = NodePath("")
+
+[node name="fence" type="Node3D" parent="Background/part2"]
+
+[node name="fence_simpleCenter" type="MeshInstance3D" parent="Background/part2/fence"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 1.25135, -0.0500002, -1.02841)
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence_simpleCenter2" type="MeshInstance3D" parent="Background/part2/fence"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 2.65395, -0.0500002, -1.02841)
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence_simpleCenter3" type="MeshInstance3D" parent="Background/part2/fence"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 4.04855, -0.0500002, -1.02841)
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence_simpleCenter4" type="MeshInstance3D" parent="Background/part2/fence"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 5.44197, -0.0500002, -1.02841)
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence_simpleCenter5" type="MeshInstance3D" parent="Background/part2/fence"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 6.83019, -0.0500002, -1.02841)
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence_simpleCenter6" type="MeshInstance3D" parent="Background/part2/fence"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 8.22672, -0.0500002, -1.02841)
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence_simpleCenter7" type="MeshInstance3D" parent="Background/part2/fence"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 9.61951, -0.0500002, -1.02841)
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence_simpleCenter8" type="MeshInstance3D" parent="Background/part2/fence"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 11.0098, -0.0500002, -1.02841)
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence_simpleCenter9" type="MeshInstance3D" parent="Background/part2/fence"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 12.4041, -0.0500002, -1.02841)
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence_simpleCenter10" type="MeshInstance3D" parent="Background/part2/fence"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 13.7988, -0.0500002, -1.02841)
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence_simpleCenter11" type="MeshInstance3D" parent="Background/part2/fence"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 15.1942, -0.0500002, -1.02841)
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence2" type="Node3D" parent="Background/part2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 16.45)
+
+[node name="fence_simpleCenter" type="MeshInstance3D" parent="Background/part2/fence2"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 1.25135, -0.0500002, -1.02841)
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence_simpleCenter2" type="MeshInstance3D" parent="Background/part2/fence2"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 2.65395, -0.0500002, -1.02841)
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence_simpleCenter3" type="MeshInstance3D" parent="Background/part2/fence2"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 4.04855, -0.0500002, -1.02841)
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence_simpleCenter4" type="MeshInstance3D" parent="Background/part2/fence2"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 5.44197, -0.0500002, -1.02841)
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence_simpleCenter5" type="MeshInstance3D" parent="Background/part2/fence2"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 6.83019, -0.0500002, -1.02841)
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence_simpleCenter6" type="MeshInstance3D" parent="Background/part2/fence2"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 8.22672, -0.0500002, -1.02841)
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence_simpleCenter7" type="MeshInstance3D" parent="Background/part2/fence2"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 9.61951, -0.0500002, -1.02841)
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence_simpleCenter8" type="MeshInstance3D" parent="Background/part2/fence2"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 11.0098, -0.0500002, -1.02841)
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence_simpleCenter9" type="MeshInstance3D" parent="Background/part2/fence2"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 12.4041, -0.0500002, -1.02841)
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence_simpleCenter10" type="MeshInstance3D" parent="Background/part2/fence2"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 13.7988, -0.0500002, -1.02841)
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence_simpleCenter11" type="MeshInstance3D" parent="Background/part2/fence2"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 15.1942, -0.0500002, -1.02841)
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
 
 [connection signal="child_exiting_tree" from="CardsLayer/Control/CardsContainer" to="CardsLayer" method="_on_cards_container_child_exiting_tree"]

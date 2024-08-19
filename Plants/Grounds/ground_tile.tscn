@@ -1,13 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://dx3jbhf5iam6a"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ugog"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vhjix"]
+resource_local_to_scene = true
 resource_name = "grass"
 albedo_color = Color(0.45234, 0.929502, 0.865877, 1)
 metallic = 1.0
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_33a76"]
-material = SubResource("StandardMaterial3D_1ugog")
+[sub_resource type="PlaneMesh" id="PlaneMesh_ji5n8"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_vhjix")
 size = Vector2(0.8, 0.8)
 
 [node name="GroundTile" type="MeshInstance3D"]
-mesh = SubResource("PlaneMesh_33a76")
+mesh = SubResource("PlaneMesh_ji5n8")

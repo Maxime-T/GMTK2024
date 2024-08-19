@@ -4,7 +4,7 @@ class_name PlantGrid
 
 @export var highlight : MeshInstance3D
 
-@export var size : int = 16
+@export var size : int = 20
 @export var tileSize : float = 0.8
 
 var data : Array = []
@@ -76,6 +76,11 @@ func create_ground():
 		for y in range(size):
 			var g : MeshInstance3D = groundScene.instantiate()
 			g.position = Vector3(x*tileSize + tileSize/2, 0, y*tileSize + tileSize/2)
+			
+			if ( (x+y) % 2 == 0 ):
+				g.mesh.material.albedo_color -= Color(.025,.025,.025, 0)
+				print(g.mesh.material.albedo_color)
+			
 			add_child(g)
 
 
