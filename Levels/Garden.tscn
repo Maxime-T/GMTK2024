@@ -337,9 +337,11 @@ far = 30.0
 script = ExtResource("1_uow6t")
 parent = NodePath("..")
 
-[node name="PlantGrid" type="Node3D" parent="." node_paths=PackedStringArray("highlight")]
+[node name="PlantGrid" type="Node3D" parent="." node_paths=PackedStringArray("highlight", "X_fences", "Z_fences")]
 script = ExtResource("3_ls3q7")
 highlight = NodePath("MeshInstance3D")
+X_fences = NodePath("../Background/InnerFences/FencesP1")
+Z_fences = NodePath("../Background/InnerFences/FencesP2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PlantGrid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00471532, 0)
@@ -418,12 +420,13 @@ layout_mode = 2
 text = "0"
 label_settings = ExtResource("5_bhnvt")
 
-[node name="CardsLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("CardsContainer", "PlantGridNode", "PlantDescriptionLabel", "RerollButton")]
+[node name="CardsLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("CardsContainer", "PlantGridNode", "PlantDescriptionLabel", "RerollButton", "ExpandButton")]
 script = ExtResource("9_mnsiy")
 CardsContainer = NodePath("Control/CardsContainer")
 PlantGridNode = NodePath("../PlantGrid")
 PlantDescriptionLabel = NodePath("Control3/MarginContainer/PlantDescription")
 RerollButton = NodePath("Control2/MarginContainer/Reroll")
+ExpandButton = NodePath("Control2/MarginContainer2/Expand")
 
 [node name="Control" type="Control" parent="CardsLayer"]
 layout_mode = 3
@@ -452,6 +455,7 @@ anchor_top = 0.8
 anchor_right = 0.2
 anchor_bottom = 1.0
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="CardsLayer/Control2"]
 layout_mode = 1
@@ -460,6 +464,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_top = 0
 
 [node name="Reroll" type="Button" parent="CardsLayer/Control2/MarginContainer"]
@@ -476,6 +481,22 @@ offset_right = 384.0
 offset_bottom = 160.0
 text = "Use 4 cards to auto-reroll"
 horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="CardsLayer/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Expand" type="Button" parent="CardsLayer/Control2/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 26
+text = "Expand : 666 g"
 
 [node name="Control3" type="Control" parent="CardsLayer"]
 layout_mode = 3
@@ -702,6 +723,11 @@ transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 1.25135, -0.0500002, -1.02
 mesh = SubResource("ArrayMesh_s8pob")
 skeleton = NodePath("")
 
+[node name="fence_simpleCenter12" type="MeshInstance3D" parent="Background/part2/fence"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0.551354, -0.0500002, -1.02841)
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
 [node name="fence_simpleCenter2" type="MeshInstance3D" parent="Background/part2/fence"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 2.65395, -0.0500002, -1.02841)
 mesh = SubResource("ArrayMesh_s8pob")
@@ -752,11 +778,21 @@ transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 15.1942, -0.0500002, -1.02
 mesh = SubResource("ArrayMesh_s8pob")
 skeleton = NodePath("")
 
+[node name="fence_simpleCenter13" type="MeshInstance3D" parent="Background/part2/fence"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 15.8942, -0.0500002, -1.02841)
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
 [node name="fence2" type="Node3D" parent="Background/part2"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 16.45)
 
 [node name="fence_simpleCenter" type="MeshInstance3D" parent="Background/part2/fence2"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 1.25135, -0.0500002, -1.02841)
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence_simpleCenter12" type="MeshInstance3D" parent="Background/part2/fence2"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0.55135, -0.0500002, -1.02841)
 mesh = SubResource("ArrayMesh_s8pob")
 skeleton = NodePath("")
 
@@ -810,6 +846,11 @@ transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 15.1942, -0.0500002, -1.02
 mesh = SubResource("ArrayMesh_s8pob")
 skeleton = NodePath("")
 
+[node name="fence_simpleCenter13" type="MeshInstance3D" parent="Background/part2/fence2"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 15.8942, -0.0500002, -1.02841)
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
 [node name="Corner1" type="Node3D" parent="Background"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 24)
 
@@ -844,5 +885,152 @@ multimesh = SubResource("MultiMesh_ippxv")
 [node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="Background/Corner3"]
 multimesh = SubResource("MultiMesh_odqvu")
 
+[node name="InnerFences" type="Node3D" parent="Background"]
+
+[node name="FencesP1" type="Node3D" parent="Background/InnerFences"]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 3.94084)
+
+[node name="fence1" type="MeshInstance3D" parent="Background/InnerFences/FencesP1"]
+transform = Transform3D(-15, 0, -1.31134e-06, 0, 15, 0, 1.31134e-06, 0, -15, 0.367298, -0.0500002, 0.361126)
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence2" type="MeshInstance3D" parent="Background/InnerFences/FencesP1"]
+transform = Transform3D(-15, 0, -1.31134e-06, 0, 15, 0, 1.31134e-06, 0, -15, 1.7673, -0.0500002, 0.361126)
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence3" type="MeshInstance3D" parent="Background/InnerFences/FencesP1"]
+transform = Transform3D(-15, 0, -1.31134e-06, 0, 15, 0, 1.31134e-06, 0, -15, 3.1673, -0.0500002, 0.361126)
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence4" type="MeshInstance3D" parent="Background/InnerFences/FencesP1"]
+transform = Transform3D(-15, 0, -1.31134e-06, 0, 15, 0, 1.31134e-06, 0, -15, 4.5673, -0.0500002, 0.361126)
+visible = false
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence5" type="MeshInstance3D" parent="Background/InnerFences/FencesP1"]
+transform = Transform3D(-15, 0, -1.31134e-06, 0, 15, 0, 1.31134e-06, 0, -15, 5.9673, -0.0500002, 0.361126)
+visible = false
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence6" type="MeshInstance3D" parent="Background/InnerFences/FencesP1"]
+transform = Transform3D(-15, 0, -1.31134e-06, 0, 15, 0, 1.31134e-06, 0, -15, 7.3673, -0.0500002, 0.361126)
+visible = false
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence7" type="MeshInstance3D" parent="Background/InnerFences/FencesP1"]
+transform = Transform3D(-15, 0, -1.31134e-06, 0, 15, 0, 1.31134e-06, 0, -15, 8.7673, -0.0500002, 0.361126)
+visible = false
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence8" type="MeshInstance3D" parent="Background/InnerFences/FencesP1"]
+transform = Transform3D(-15, 0, -1.31134e-06, 0, 15, 0, 1.31134e-06, 0, -15, 10.1673, -0.0500002, 0.361126)
+visible = false
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence9" type="MeshInstance3D" parent="Background/InnerFences/FencesP1"]
+transform = Transform3D(-15, 0, -1.31134e-06, 0, 15, 0, 1.31134e-06, 0, -15, 11.5673, -0.0500002, 0.361126)
+visible = false
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence10" type="MeshInstance3D" parent="Background/InnerFences/FencesP1"]
+transform = Transform3D(-15, 0, -1.31134e-06, 0, 15, 0, 1.31134e-06, 0, -15, 12.9673, -0.0500002, 0.361126)
+visible = false
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence11" type="MeshInstance3D" parent="Background/InnerFences/FencesP1"]
+transform = Transform3D(-15, 0, -1.31134e-06, 0, 15, 0, 1.31134e-06, 0, -15, 14.3673, -0.0500002, 0.361126)
+visible = false
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence12" type="MeshInstance3D" parent="Background/InnerFences/FencesP1"]
+transform = Transform3D(-15, 0, -1.31134e-06, 0, 15, 0, 1.31134e-06, 0, -15, 15.7673, -0.0500002, 0.361126)
+visible = false
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="FencesP2" type="Node3D" parent="Background/InnerFences"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.94721, 0, 16.1)
+
+[node name="fence12" type="MeshInstance3D" parent="Background/InnerFences/FencesP2"]
+transform = Transform3D(-15, 0, -1.31134e-06, 0, 15, 0, 1.31134e-06, 0, -15, 0.367298, -0.0500002, 0.361125)
+visible = false
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence11" type="MeshInstance3D" parent="Background/InnerFences/FencesP2"]
+transform = Transform3D(-15, 0, -1.31134e-06, 0, 15, 0, 1.31134e-06, 0, -15, 1.7673, -0.0500002, 0.361126)
+visible = false
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence10" type="MeshInstance3D" parent="Background/InnerFences/FencesP2"]
+transform = Transform3D(-15, 0, -1.31134e-06, 0, 15, 0, 1.31134e-06, 0, -15, 3.1673, -0.0500002, 0.361126)
+visible = false
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence9" type="MeshInstance3D" parent="Background/InnerFences/FencesP2"]
+transform = Transform3D(-15, 0, -1.31134e-06, 0, 15, 0, 1.31134e-06, 0, -15, 4.5673, -0.0500002, 0.361126)
+visible = false
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence8" type="MeshInstance3D" parent="Background/InnerFences/FencesP2"]
+transform = Transform3D(-15, 0, -1.31134e-06, 0, 15, 0, 1.31134e-06, 0, -15, 5.9673, -0.0500002, 0.361126)
+visible = false
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence7" type="MeshInstance3D" parent="Background/InnerFences/FencesP2"]
+transform = Transform3D(-15, 0, -1.31134e-06, 0, 15, 0, 1.31134e-06, 0, -15, 7.3673, -0.0500002, 0.361126)
+visible = false
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence6" type="MeshInstance3D" parent="Background/InnerFences/FencesP2"]
+transform = Transform3D(-15, 0, -1.31134e-06, 0, 15, 0, 1.31134e-06, 0, -15, 8.7673, -0.0500002, 0.361126)
+visible = false
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence5" type="MeshInstance3D" parent="Background/InnerFences/FencesP2"]
+transform = Transform3D(-15, 0, -1.31134e-06, 0, 15, 0, 1.31134e-06, 0, -15, 10.1673, -0.0500002, 0.361126)
+visible = false
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence4" type="MeshInstance3D" parent="Background/InnerFences/FencesP2"]
+transform = Transform3D(-15, 0, -1.31134e-06, 0, 15, 0, 1.31134e-06, 0, -15, 11.5673, -0.0500002, 0.361126)
+visible = false
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence3" type="MeshInstance3D" parent="Background/InnerFences/FencesP2"]
+transform = Transform3D(-15, 0, -1.31134e-06, 0, 15, 0, 1.31134e-06, 0, -15, 12.9673, -0.0500002, 0.361126)
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence2" type="MeshInstance3D" parent="Background/InnerFences/FencesP2"]
+transform = Transform3D(-15, 0, -1.31134e-06, 0, 15, 0, 1.31134e-06, 0, -15, 14.3673, -0.0500002, 0.361126)
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
+[node name="fence1" type="MeshInstance3D" parent="Background/InnerFences/FencesP2"]
+transform = Transform3D(-15, 0, -1.31134e-06, 0, 15, 0, 1.31134e-06, 0, -15, 15.7673, -0.0500002, 0.361125)
+mesh = SubResource("ArrayMesh_s8pob")
+skeleton = NodePath("")
+
 [connection signal="child_exiting_tree" from="CardsLayer/Control/CardsContainer" to="CardsLayer" method="_on_cards_container_child_exiting_tree"]
 [connection signal="pressed" from="CardsLayer/Control2/MarginContainer/Reroll" to="CardsLayer" method="_on_reroll_pressed"]
+[connection signal="pressed" from="CardsLayer/Control2/MarginContainer2/Expand" to="CardsLayer" method="_on_expand_pressed"]
