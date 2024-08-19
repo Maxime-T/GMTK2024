@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bc0ecge0pqnya" path="res://HUD items/Soleil.png" id="7_hmw8w"]
 [ext_resource type="Texture2D" uid="uid://cwij1jew0k2bk" path="res://HUD items/Argent+.png" id="8_wlunw"]
 
-[node name="CardUI" type="Control" node_paths=PackedStringArray("GoldCostLabel", "WaterCostLabel", "PollutionLabel", "TimeLabel", "SunProdLabel", "IncomeLabel", "CardNameLabel", "GoldCostBox", "WaterCostBox", "PollutionBox", "TimeBox", "SunProdBox", "IncomeBox")]
+[node name="CardUI" type="Control" node_paths=PackedStringArray("GoldCostLabel", "WaterNeededLabel", "PollutionLabel", "TimeLabel", "SunProdLabel", "IncomeLabel", "CardNameLabel", "GoldCostBox", "WaterCostBox", "PollutionBox", "TimeBox", "SunProdBox", "IncomeBox")]
 custom_minimum_size = Vector2(200, 175)
 layout_mode = 3
 anchors_preset = 0
@@ -23,7 +23,7 @@ focus_mode = 1
 script = ExtResource("1_g1nst")
 CardName = "UI"
 GoldCostLabel = NodePath("MarginContainer2/HBoxGold/GoldCostLab")
-WaterCostLabel = NodePath("Control2/VBoxContainer/HBoxWater/WaterCostLab")
+WaterNeededLabel = NodePath("Control2/VBoxContainer/HBoxWater/WaterCostLab")
 PollutionLabel = NodePath("Control2/VBoxContainer/HBoxPollution/PollutionLab")
 TimeLabel = NodePath("Control2/VBoxContainer/HBoxTime/TimeLab")
 SunProdLabel = NodePath("Control2/VBoxContainer/HBoxSun/SunLab")
@@ -110,22 +110,6 @@ position = Vector2(40, 9)
 scale = Vector2(0.11, 0.11)
 texture = ExtResource("5_0hfgj")
 
-[node name="HBoxSun" type="HBoxContainer" parent="Control2/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="SunLab" type="Label" parent="Control2/VBoxContainer/HBoxSun"]
-texture_filter = 1
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-text = "fgf"
-label_settings = ExtResource("2_gjth8")
-
-[node name="TextureSun" type="Sprite2D" parent="Control2/VBoxContainer/HBoxSun"]
-position = Vector2(40, 10)
-scale = Vector2(0.11, 0.11)
-texture = ExtResource("7_hmw8w")
-
 [node name="HBoxTime" type="HBoxContainer" parent="Control2/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -141,6 +125,22 @@ label_settings = ExtResource("2_gjth8")
 position = Vector2(41, 8)
 scale = Vector2(0.11, 0.11)
 texture = ExtResource("6_d3rp4")
+
+[node name="HBoxSun" type="HBoxContainer" parent="Control2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SunLab" type="Label" parent="Control2/VBoxContainer/HBoxSun"]
+texture_filter = 1
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+text = "fgf"
+label_settings = ExtResource("2_gjth8")
+
+[node name="TextureSun" type="Sprite2D" parent="Control2/VBoxContainer/HBoxSun"]
+position = Vector2(40, 10)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("7_hmw8w")
 
 [node name="VBoxIncome" type="HBoxContainer" parent="Control2/VBoxContainer"]
 layout_mode = 2

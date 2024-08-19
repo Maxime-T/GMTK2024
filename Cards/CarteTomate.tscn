@@ -8,7 +8,6 @@
 CardName = "Tomato"
 PlantScene = ExtResource("2_qponp")
 GoldCost = 20.0
-WaterCost = 2.0
 SunProd = 2.0
 GrowTime = 60.0
 Income = 5.0

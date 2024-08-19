@@ -6,5 +6,4 @@
 [node name="CarteAubergine" instance=ExtResource("1_xujyj")]
 CardName = "Aubergine"
 PlantScene = ExtResource("2_o0hej")
-WaterCost = 4.0
 SunProd = 12.0

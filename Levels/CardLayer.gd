@@ -10,18 +10,22 @@ var rare_prob : float = 0.25
 var epic_prob : float = 0.05
 var legendary_prob : float = 0.01
 
-var common_cards : Array[PackedScene] = [preload("res://Cards/carte_aubergine.tscn"), preload("res://Cards/CarteTomate.tscn")]
-var rare_cards : Array[PackedScene] = [preload("res://Cards/card_ui.tscn")]
-var epics_cards : Array[PackedScene] = [preload("res://Cards/card_ui.tscn")]
-var lengendary_cards : Array[PackedScene] = [preload("res://Cards/card_ui.tscn")]
+var common_cards : Array[PackedScene] = [preload("res://Cards/carte_aubergine.tscn"), preload("res://Cards/CarteTomate.tscn"), preload("res://Cards/carte_cucumber.tscn")]
+var rare_cards : Array[PackedScene] = [preload("res://Cards/carte_aubergine.tscn")]
+var epics_cards : Array[PackedScene] = [preload("res://Cards/carte_aubergine.tscn")]
+var lengendary_cards : Array[PackedScene] = [preload("res://Cards/carte_aubergine.tscn")]
 
 func _ready():
-	for i in range(4):
+	for i in range(5):
 		generate_cards()
 
 func _on_cards_container_child_exiting_tree(node):
 	if CardsContainer.get_child_count()-1 <= 1:
-		for i in range(4):
+		for child in CardsContainer.get_children():
+			child.queue_free()
+	
+	if CardsContainer.get_child_count()-1 == 0:
+		for i in range(5):
 			generate_cards()
 
 

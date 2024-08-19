@@ -46,6 +46,7 @@ func create_plant(x:int, y:int, plantScene:PackedScene):
 			plant.position = Vector3(plant.pos.x + tileSize/2, 0, plant.pos.y + tileSize/2)
 			data[x][y] = plant
 			groundData[x][y].plant = plant
+			plant.grid = self
 			add_child(plant)
 		else:
 			push_warning("tried to add plant outside of grid")

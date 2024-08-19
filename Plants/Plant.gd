@@ -5,6 +5,7 @@ class_name Plant
 @export var meshInstance : MeshInstance3D
 @export var growManager : GrowManager
 @export var anim : AnimationPlayer
+var grid : PlantGrid
 
 @export_category("Plant Info")
 @export_group("General")
@@ -21,6 +22,7 @@ class_name Plant
 
 @export_group("Production")
 @export var income : float = 0
+@export var sunProd : float = 0
 
 var growRate : float = 1 :
 	set(value):
@@ -32,7 +34,6 @@ var growRate : float = 1 :
 
 var incomeRate : float = 1
 var scoreRate : float = 1
-
 
 var pos : Vector2
 
@@ -46,7 +47,8 @@ var scaleFactor : float = 1:
 		scaleFactor = val
 
 func _ready():
-	print("ui")
+	create_modifier_zones()
+	
 	rotation.y = randf_range(0, 2*PI)
 	
 	stages = growManager.growStages
@@ -65,7 +67,6 @@ func next_stage():
 		stage = stages[stageIndex]
 		meshInstance.mesh = stage.mesh
 		
-		print(growRate)
 		growTimer.start(stage.time / growRate)
 		
 		stageIndex += 1
@@ -88,9 +89,14 @@ func _physics_process(delta):
 	
 	scale = (Vector3(timeRatio, timeRatio, timeRatio) * animationScale * incomeRate * scoreRate).clamp(Vector3(0,0,0), Vector3(4,4,4))
 
+func _exit_tree():
+	delete_modifier_zones()
 
+func create_modifier_zones():
+	push_warning("tried to call default function")
 
-
+func delete_modifier_zones():
+	push_warning("tried to call default function")
 
 
 
