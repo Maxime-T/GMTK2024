@@ -3,18 +3,24 @@ extends Node3D
 class_name PlantGrid
 
 @export var highlight : MeshInstance3D
-
 @export var size : int = 20
 @export var tileSize : float = 0.8
 
 var data : Array = []
 var groundData : Array = []
+var selectedPlant : Plant:
+	set(value):
+		if value != null:
+			update_zone_indicator(value.get_highlight_zones())
+		else:
+			update_zone_indicator([])
+		selectedPlant = value
 
 var tomato : PackedScene = preload("res://Plants/Scene/tomato.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	highlight.mesh.size = Vector2(tileSize,tileSize)
+	highlight.mesh.size = Vector2(tileSize, tileSize)
 	init_data()
 	create_ground()
 	create_plant(0, 0, tomato)
@@ -25,9 +31,13 @@ func _physics_process(delta):
 	mouseTile = Vector3(floor(mouseTile.x), 0.001, floor(mouseTile.z))
 	highlight.position = mouseTile * tileSize + Vector3(tileSize/2, 0, tileSize/2)
 	if is_tile_free(mouseTile.x, mouseTile.z):
-		highlight.material_override.albedo_color = Color(0.8,0.8,0.8,0.5)
+		highlight.material_override.albedo_color = Color(0.8,0.8,0.8,0.4)
+		for h in highlightArray:
+			h.mesh.material.albedo_color = Color(0.082, 0.957, 0.282, 0.4)
 	else:
-		highlight.material_override.albedo_color = Color(1,0,0,0.5)
+		highlight.material_override.albedo_color = Color(1,0,0,0.4)
+		for h in highlightArray:
+			h.mesh.material.albedo_color = Color(0.2, 0.2, 0.2, 0.4)
 
 
 func _unhandled_input(event):
@@ -104,6 +114,19 @@ func create_ground():
 			
 			add_child(g)
 			groundData[x][y] = g
+
+@onready var yellowHighlightScene = preload("res://Plants/Grounds/yellow_highlight.tscn")
+var highlightArray : Array[MeshInstance3D]
+func update_zone_indicator(array: Array[Vector2]):
+	highlightArray.clear()
+	for child in highlight.get_children():
+		child.queue_free()
+	
+	for v in array:
+		var h : MeshInstance3D = yellowHighlightScene.instantiate()
+		h.position = Vector3(tileSize*v.x, 0, tileSize*v.y)
+		highlightArray.append(h)
+		highlight.add_child(h)
 
 func is_inside(x,y):
 	return (x >= 0 && x < size && y >= 0 && y < size)

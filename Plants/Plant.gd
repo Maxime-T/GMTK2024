@@ -101,7 +101,9 @@ func create_modifier_zones():
 func delete_modifier_zones():
 	push_warning("tried to call default function")
 
-
+func get_highlight_zones() -> Array[Vector2]:
+	push_warning("tried to call default function")
+	return []
 
 
 
