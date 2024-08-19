@@ -18,6 +18,9 @@ func _ready():
 	init_data()
 	create_ground()
 	create_plant(0, 0, tomato)
+	groundData[0][0].growRate = 10.
+	groundData[1][0].growRate = 10.
+	create_plant(1, 0, tomato)
 
 func _physics_process(delta):
 	var mouseTile = get_mouse_tile_position()
@@ -42,6 +45,7 @@ func create_plant(x:int, y:int, plantScene:PackedScene):
 			plant.pos = Vector2(x*tileSize, y*tileSize)
 			plant.position = Vector3(plant.pos.x + tileSize/2, 0, plant.pos.y + tileSize/2)
 			data[x][y] = plant
+			groundData[x][y].plant = plant
 			add_child(plant)
 		else:
 			push_warning("tried to add plant outside of grid")
@@ -82,6 +86,7 @@ func create_ground():
 				print(g.mesh.material.albedo_color)
 			
 			add_child(g)
+			groundData[x][y] = g
 
 
 

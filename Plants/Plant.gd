@@ -21,8 +21,18 @@ class_name Plant
 
 @export_group("Production")
 @export var income : float = 0
-@export var timeToGrow : float = 60 #en seconde
-@export var growRate : float = 1
+
+var growRate : float = 1 :
+	set(value):
+		growManager.totalGrowTime /= value
+		if value > growRate:
+			growTimer.start(growTimer.wait_time / value)
+		
+		growRate = value
+
+var incomeRate : float = 1
+var scoreRate : float = 1
+
 
 var pos : Vector2
 
@@ -36,7 +46,8 @@ var scaleFactor : float = 1:
 		scaleFactor = val
 
 func _ready():
-	rotation.y = randf_range(0,2*PI)
+	print("ui")
+	rotation.y = randf_range(0, 2*PI)
 	
 	stages = growManager.growStages
 	stage = stages[stageIndex]
@@ -54,7 +65,8 @@ func next_stage():
 		stage = stages[stageIndex]
 		meshInstance.mesh = stage.mesh
 		
-		growTimer.start(stage.time)
+		print(growRate)
+		growTimer.start(stage.time / growRate)
 		
 		stageIndex += 1
 
@@ -74,7 +86,7 @@ func _physics_process(delta):
 	lifetime += delta
 	var timeRatio = clamp( lifetime / growManager.totalGrowTime + 0.2, 0., 1.)
 	
-	scale = Vector3(timeRatio, timeRatio, timeRatio) * animationScale
+	scale = (Vector3(timeRatio, timeRatio, timeRatio) * animationScale * incomeRate * scoreRate).clamp(Vector3(0,0,0), Vector3(4,4,4))
 
 
 
