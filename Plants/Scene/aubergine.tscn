@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://c53cm4bxbisju"]
+[gd_scene load_steps=7 format=3 uid="uid://c53cm4bxbisju"]
 
 [ext_resource type="PackedScene" uid="uid://by1qsb4aiexvw" path="res://Plants/Scene/tomato.tscn" id="1_jw5jb"]
+[ext_resource type="Script" path="res://Plants/Scripts/aubergine.gd" id="2_3hkd1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_004pq"]
 resource_name = "lambert3"
@@ -73,7 +74,13 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_2psd8")
 
 [node name="Aubergine" instance=ExtResource("1_jw5jb")]
+script = ExtResource("2_3hkd1")
 plantName = "Aubergine"
+GoldCost = 0
+waterNeeded = 0
+income = 0.0
+sunProd = 0.0
+animationScale = 0.0
 
 [node name="GrowStage4" parent="GrowManager" index="3"]
 mesh = SubResource("ArrayMesh_2p81h")

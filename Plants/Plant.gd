@@ -88,9 +88,9 @@ var lifetime : float
 
 func _physics_process(delta):
 	lifetime += delta
-	var timeRatio = clamp( lifetime / growManager.totalGrowTime + 0.2, 0., 1.)
+	var timeRatio = clamp( lifetime / growManager.totalGrowTime+0.2, 0., 1.)
 	
-	scale = (Vector3(timeRatio, timeRatio, timeRatio) * animationScale * incomeRate * scoreRate).clamp(Vector3(0,0,0), Vector3(4,4,4))
+	scale = (Vector3(1, 1, 1) * timeRatio * animationScale * clamp(incomeRate,0,2) * clamp(scoreRate,0,2) ).clamp(Vector3(0,0,0), Vector3(3,3,3))
 
 func _exit_tree():
 	delete_modifier_zones()

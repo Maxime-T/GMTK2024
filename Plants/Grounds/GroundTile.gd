@@ -8,7 +8,6 @@ var plant : Plant = null:
 			plant.connect("ready", updatePlantModifiers)
 
 func updatePlantModifiers():
-	print("pizza ", growRate)
 	plant.growRate = growRate
 	plant.incomeRate = incomeRate
 	plant.scoreRate = scoreRate

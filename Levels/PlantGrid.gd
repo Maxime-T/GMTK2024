@@ -18,8 +18,6 @@ func _ready():
 	init_data()
 	create_ground()
 	create_plant(0, 0, tomato)
-	groundData[0][0].growRate = 10.
-	groundData[1][0].growRate = 10.
 	create_plant(1, 0, tomato)
 
 func _physics_process(delta):
@@ -49,8 +47,9 @@ func create_plant(x:int, y:int, plantScene:PackedScene):
 	if (is_tile_free(x, y)):
 		if (x >= 0 && x < size && y >= 0 && y < size):
 			var plant : Plant = plantScene.instantiate()
-			plant.pos = Vector2(x*tileSize, y*tileSize)
-			plant.position = Vector3(plant.pos.x + tileSize/2, 0, plant.pos.y + tileSize/2)
+			plant.pos = Vector2(x, y)
+			plant.position = Vector3(plant.pos.x*tileSize + tileSize/2, 0, plant.pos.y*tileSize + tileSize/2)
+			plant.grid = self
 			data[x][y] = plant
 			groundData[x][y].plant = plant
 			add_child(plant)
@@ -96,10 +95,11 @@ func create_ground():
 			
 			if ( (x+y) % 2 == 0 ):
 				g.mesh.material.albedo_color -= Color(.025,.025,.025, 0)
-				print(g.mesh.material.albedo_color)
 			
 			add_child(g)
 			groundData[x][y] = g
 
+func is_inside(x,y):
+	return (x >= 0 && x < size && y >= 0 && y < size)
 
 
