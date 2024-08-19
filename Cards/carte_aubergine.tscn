@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://noessnhnkndw"]
+
+[ext_resource type="PackedScene" uid="uid://c5t5ibvxcoaaw" path="res://Cards/card_ui.tscn" id="1_xujyj"]
+[ext_resource type="PackedScene" uid="uid://c53cm4bxbisju" path="res://Plants/Scene/aubergine.tscn" id="2_o0hej"]
+
+[node name="CarteAubergine" instance=ExtResource("1_xujyj")]
+CardName = "Aubergine"
+PlantScene = ExtResource("2_o0hej")
+WaterCost = 4.0
+SunProd = 12.0

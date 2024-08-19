@@ -21,6 +21,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 focus_mode = 1
 script = ExtResource("1_g1nst")
+CardName = "UI"
 GoldCostLabel = NodePath("MarginContainer2/HBoxGold/GoldCostLab")
 WaterCostLabel = NodePath("Control2/VBoxContainer/HBoxWater/WaterCostLab")
 PollutionLabel = NodePath("Control2/VBoxContainer/HBoxPollution/PollutionLab")

@@ -11,16 +11,16 @@ class_name Plant
 @export var plantName : String
 
 @export_group("Costs")
-@export var sunCost : int = 0:
+@export var GoldCost : int = 0:
 	set(val):
-		Global.sun += sunCost - val
-		sunCost = val
+		Global.gold += GoldCost - val
+		GoldCost = val
 
-@export var waterCost : int = 0
+@export var waterNeeded : int = 0
 @export var pollutionGeneration : float = 0
 
 @export_group("Production")
-@export var goldValue : float = 0
+@export var income : float = 0
 @export var timeToGrow : float = 60 #en seconde
 @export var growRate : float = 1
 

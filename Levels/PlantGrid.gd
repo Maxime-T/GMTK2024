@@ -29,10 +29,10 @@ func _physics_process(delta):
 		highlight.material_override.albedo_color = Color(1,0,0,0.5)
 
 
-func _input(event):
-	if event.is_action_pressed("click"):
-		var intersection_point = get_mouse_tile_position()
-		create_plant(intersection_point.x, intersection_point.z, tomato)
+#func _input(event):
+	#if event.is_action_pressed("click"):
+		#var intersection_point = get_mouse_tile_position()
+		#create_plant(intersection_point.x, intersection_point.z, tomato)
 
 
 func create_plant(x:int, y:int, plantScene:PackedScene):
