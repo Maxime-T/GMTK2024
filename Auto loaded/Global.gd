@@ -8,8 +8,9 @@ var fullscreen : bool = false
 var music_selected = 0
 
 signal G_S_P_changed
+signal CardPlayed
 
-var gold : float = 0:
+var gold : float = 100000:
 	set(val):
 		gold = snapped(val, 0.01)
 		emit_signal("G_S_P_changed")

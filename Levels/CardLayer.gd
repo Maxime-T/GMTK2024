@@ -17,21 +17,27 @@ var rare_cards : Array[PackedScene] = [preload("res://Cards/carte_aubergine.tscn
 var epics_cards : Array[PackedScene] = [preload("res://Cards/carte_aubergine.tscn")]
 var lengendary_cards : Array[PackedScene] = [preload("res://Cards/carte_aubergine.tscn")]
 
+@export var RerollButton : Button
+@export var baseRerollCost : float = 100
+var currentRerollCost : float = baseRerollCost
+
 func _ready():
+	Global.CardPlayed.connect(carte_played)
+	RerollButton.text = "Reroll : " + str(currentRerollCost) + " g"
 	for i in range(5):
 		generate_cards()
 
-func _on_cards_container_child_exiting_tree(node):
+func carte_played():
 	if CardsContainer.get_child_count()-1 <= 1:
-		for child in CardsContainer.get_children():
-			child.queue_free()
-	
-	if CardsContainer.get_child_count()-1 == 0:
+		clear_cards()
 		for i in range(5):
-			generate_cards()
-
+				generate_cards()
+		if currentRerollCost > baseRerollCost:
+			currentRerollCost /= 2
+			RerollButton.text = "Reroll : " + str(currentRerollCost) + " g"
 
 func generate_cards():
+	
 	var gen = randf()
 	
 	if gen <= legendary_prob:
@@ -60,4 +66,17 @@ func create_cards(RARITY):
 	instance.PlantGridNode = PlantGridNode
 	CardsContainer.add_child.call_deferred(instance)
 
+func clear_cards():
+	for child in CardsContainer.get_children():
+			child.queue_free()
 
+
+func _on_reroll_pressed():
+	if Global.gold >= currentRerollCost:
+		Global.gold -= currentRerollCost
+		clear_cards()
+		currentRerollCost *= 2
+		RerollButton.text = "Reroll : " + str(currentRerollCost) + " g"
+	
+		for i in range(5):
+			generate_cards()

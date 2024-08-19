@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bqto2ddsofr8v"]
+[gd_scene load_steps=33 format=3 uid="uid://bqto2ddsofr8v"]
 
 [ext_resource type="Script" path="res://Levels/Garden.gd" id="1_ua47f"]
 [ext_resource type="Script" path="res://CameraMovement.gd" id="1_uow6t"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bc0ecge0pqnya" path="res://HUD items/Soleil.png" id="7_hmvc6"]
 [ext_resource type="Texture2D" uid="uid://okjkkv0mqnd" path="res://HUD items/Masque_A_Gaz.png" id="8_6pitr"]
 [ext_resource type="Script" path="res://Levels/CardLayer.gd" id="9_mnsiy"]
+[ext_resource type="PackedScene" uid="uid://noessnhnkndw" path="res://Cards/carte_aubergine.tscn" id="10_2tdtj"]
 [ext_resource type="PackedScene" uid="uid://dulssejxb50rk" path="res://Plants/Meshes/haricot.fbx" id="11_2gf6d"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lkoac"]
@@ -398,10 +399,11 @@ layout_mode = 2
 text = "0"
 label_settings = ExtResource("5_bhnvt")
 
-[node name="CardsLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("CardsContainer", "PlantGridNode")]
+[node name="CardsLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("CardsContainer", "PlantGridNode", "RerollButton")]
 script = ExtResource("9_mnsiy")
 CardsContainer = NodePath("Control/CardsContainer")
 PlantGridNode = NodePath("../PlantGrid")
+RerollButton = NodePath("Control2/MarginContainer/Reroll")
 
 [node name="Control" type="Control" parent="CardsLayer"]
 layout_mode = 3
@@ -421,8 +423,120 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 35
+theme_override_constants/separation = 40
 alignment = 1
+
+[node name="CarteAubergine" parent="CardsLayer/Control/CardsContainer" instance=ExtResource("10_2tdtj")]
+layout_mode = 2
+
+[node name="CarteAubergine2" parent="CardsLayer/Control/CardsContainer" node_paths=PackedStringArray("GoldCostLabel", "WaterNeededLabel", "PollutionLabel", "TimeLabel", "SunProdLabel", "IncomeLabel", "CardNameLabel", "GoldCostBox", "WaterCostBox", "PollutionBox", "TimeBox", "SunProdBox", "IncomeBox") instance=ExtResource("10_2tdtj")]
+layout_mode = 2
+GoldCostLabel = NodePath("../CarteAubergine/MarginContainer2/HBoxGold/GoldCostLab")
+WaterNeededLabel = NodePath("../CarteAubergine/Control2/VBoxContainer/HBoxWater/WaterCostLab")
+PollutionLabel = NodePath("../CarteAubergine/Control2/VBoxContainer/HBoxPollution/PollutionLab")
+TimeLabel = NodePath("../CarteAubergine/Control2/VBoxContainer/HBoxTime/TimeLab")
+SunProdLabel = NodePath("../CarteAubergine/Control2/VBoxContainer/HBoxSun/SunLab")
+IncomeLabel = NodePath("../CarteAubergine/Control2/VBoxContainer/VBoxIncome/IncomeLab")
+CardNameLabel = NodePath("../CarteAubergine/MarginContainer/NameLabel")
+GoldCostBox = NodePath("../CarteAubergine/MarginContainer2/HBoxGold")
+WaterCostBox = NodePath("../CarteAubergine/Control2/VBoxContainer/HBoxWater")
+PollutionBox = NodePath("../CarteAubergine/Control2/VBoxContainer/HBoxPollution")
+TimeBox = NodePath("../CarteAubergine/Control2/VBoxContainer/HBoxTime")
+SunProdBox = NodePath("../CarteAubergine/Control2/VBoxContainer/HBoxSun")
+IncomeBox = NodePath("../CarteAubergine/Control2/VBoxContainer/VBoxIncome")
+
+[node name="CarteAubergine3" parent="CardsLayer/Control/CardsContainer" node_paths=PackedStringArray("GoldCostLabel", "WaterNeededLabel", "PollutionLabel", "TimeLabel", "SunProdLabel", "IncomeLabel", "CardNameLabel", "GoldCostBox", "WaterCostBox", "PollutionBox", "TimeBox", "SunProdBox", "IncomeBox") instance=ExtResource("10_2tdtj")]
+layout_mode = 2
+GoldCostLabel = NodePath("../CarteAubergine/MarginContainer2/HBoxGold/GoldCostLab")
+WaterNeededLabel = NodePath("../CarteAubergine/Control2/VBoxContainer/HBoxWater/WaterCostLab")
+PollutionLabel = NodePath("../CarteAubergine/Control2/VBoxContainer/HBoxPollution/PollutionLab")
+TimeLabel = NodePath("../CarteAubergine/Control2/VBoxContainer/HBoxTime/TimeLab")
+SunProdLabel = NodePath("../CarteAubergine/Control2/VBoxContainer/HBoxSun/SunLab")
+IncomeLabel = NodePath("../CarteAubergine/Control2/VBoxContainer/VBoxIncome/IncomeLab")
+CardNameLabel = NodePath("../CarteAubergine/MarginContainer/NameLabel")
+GoldCostBox = NodePath("../CarteAubergine/MarginContainer2/HBoxGold")
+WaterCostBox = NodePath("../CarteAubergine/Control2/VBoxContainer/HBoxWater")
+PollutionBox = NodePath("../CarteAubergine/Control2/VBoxContainer/HBoxPollution")
+TimeBox = NodePath("../CarteAubergine/Control2/VBoxContainer/HBoxTime")
+SunProdBox = NodePath("../CarteAubergine/Control2/VBoxContainer/HBoxSun")
+IncomeBox = NodePath("../CarteAubergine/Control2/VBoxContainer/VBoxIncome")
+
+[node name="CarteAubergine4" parent="CardsLayer/Control/CardsContainer" node_paths=PackedStringArray("GoldCostLabel", "WaterNeededLabel", "PollutionLabel", "TimeLabel", "SunProdLabel", "IncomeLabel", "CardNameLabel", "GoldCostBox", "WaterCostBox", "PollutionBox", "TimeBox", "SunProdBox", "IncomeBox") instance=ExtResource("10_2tdtj")]
+layout_mode = 2
+GoldCostLabel = NodePath("../CarteAubergine/MarginContainer2/HBoxGold/GoldCostLab")
+WaterNeededLabel = NodePath("../CarteAubergine/Control2/VBoxContainer/HBoxWater/WaterCostLab")
+PollutionLabel = NodePath("../CarteAubergine/Control2/VBoxContainer/HBoxPollution/PollutionLab")
+TimeLabel = NodePath("../CarteAubergine/Control2/VBoxContainer/HBoxTime/TimeLab")
+SunProdLabel = NodePath("../CarteAubergine/Control2/VBoxContainer/HBoxSun/SunLab")
+IncomeLabel = NodePath("../CarteAubergine/Control2/VBoxContainer/VBoxIncome/IncomeLab")
+CardNameLabel = NodePath("../CarteAubergine/MarginContainer/NameLabel")
+GoldCostBox = NodePath("../CarteAubergine/MarginContainer2/HBoxGold")
+WaterCostBox = NodePath("../CarteAubergine/Control2/VBoxContainer/HBoxWater")
+PollutionBox = NodePath("../CarteAubergine/Control2/VBoxContainer/HBoxPollution")
+TimeBox = NodePath("../CarteAubergine/Control2/VBoxContainer/HBoxTime")
+SunProdBox = NodePath("../CarteAubergine/Control2/VBoxContainer/HBoxSun")
+IncomeBox = NodePath("../CarteAubergine/Control2/VBoxContainer/VBoxIncome")
+
+[node name="CarteAubergine5" parent="CardsLayer/Control/CardsContainer" node_paths=PackedStringArray("GoldCostLabel", "WaterNeededLabel", "PollutionLabel", "TimeLabel", "SunProdLabel", "IncomeLabel", "CardNameLabel", "GoldCostBox", "WaterCostBox", "PollutionBox", "TimeBox", "SunProdBox", "IncomeBox") instance=ExtResource("10_2tdtj")]
+layout_mode = 2
+GoldCostLabel = NodePath("../CarteAubergine/MarginContainer2/HBoxGold/GoldCostLab")
+WaterNeededLabel = NodePath("../CarteAubergine/Control2/VBoxContainer/HBoxWater/WaterCostLab")
+PollutionLabel = NodePath("../CarteAubergine/Control2/VBoxContainer/HBoxPollution/PollutionLab")
+TimeLabel = NodePath("../CarteAubergine/Control2/VBoxContainer/HBoxTime/TimeLab")
+SunProdLabel = NodePath("../CarteAubergine/Control2/VBoxContainer/HBoxSun/SunLab")
+IncomeLabel = NodePath("../CarteAubergine/Control2/VBoxContainer/VBoxIncome/IncomeLab")
+CardNameLabel = NodePath("../CarteAubergine/MarginContainer/NameLabel")
+GoldCostBox = NodePath("../CarteAubergine/MarginContainer2/HBoxGold")
+WaterCostBox = NodePath("../CarteAubergine/Control2/VBoxContainer/HBoxWater")
+PollutionBox = NodePath("../CarteAubergine/Control2/VBoxContainer/HBoxPollution")
+TimeBox = NodePath("../CarteAubergine/Control2/VBoxContainer/HBoxTime")
+SunProdBox = NodePath("../CarteAubergine/Control2/VBoxContainer/HBoxSun")
+IncomeBox = NodePath("../CarteAubergine/Control2/VBoxContainer/VBoxIncome")
+
+[node name="Control2" type="Control" parent="CardsLayer"]
+layout_mode = 3
+anchor_top = 0.8
+anchor_right = 0.2
+anchor_bottom = 1.0
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="CardsLayer/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 0
+
+[node name="Reroll" type="Button" parent="CardsLayer/Control2/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 26
+text = "Reroll : 666 g"
+
+[node name="Control3" type="Control" parent="CardsLayer"]
+layout_mode = 3
+anchor_left = 0.82
+anchor_top = 0.6
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CardsLayer/Control3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CardsLayer/Control3/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
 
 [node name="Background" type="Node3D" parent="."]
 
@@ -734,4 +848,4 @@ transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 15.1942, -0.0500002, -1.02
 mesh = SubResource("ArrayMesh_s8pob")
 skeleton = NodePath("")
 
-[connection signal="child_exiting_tree" from="CardsLayer/Control/CardsContainer" to="CardsLayer" method="_on_cards_container_child_exiting_tree"]
+[connection signal="pressed" from="CardsLayer/Control2/MarginContainer/Reroll" to="CardsLayer" method="_on_reroll_pressed"]

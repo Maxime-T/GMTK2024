@@ -12,10 +12,7 @@ var grid : PlantGrid
 @export var plantName : String
 
 @export_group("Costs")
-@export var GoldCost : int = 0:
-	set(val):
-		Global.gold += GoldCost - val
-		GoldCost = val
+@export var GoldCost : int = 0
 
 @export var waterNeeded : int = 0
 @export var pollutionGeneration : float = 0
