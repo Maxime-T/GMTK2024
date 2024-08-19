@@ -2,8 +2,10 @@ extends Control
 class_name Card
 
 var PlantGridNode : PlantGrid
+var PlantDescriptionLabel : RichTextLabel
 
 var CardName : String
+var CardDescription : String
 @export var PlantScene : PackedScene
 
 
@@ -47,6 +49,9 @@ func _ready():
 		return
 	
 	var PlantNode : Plant = PlantScene.instantiate()
+	
+	if PlantNode.has_method("get_description"):
+		CardDescription = PlantNode.get_description()
 	
 	CardName = PlantNode.plantName
 	CardNameLabel.text = CardName
@@ -111,7 +116,9 @@ func _on_mouse_exited():
 
 func _on_focus_entered():
 	confirmed = true
+	PlantDescriptionLabel.text = CardDescription
 
 
 func _on_focus_exited():
 	confirmed = false
+	PlantDescriptionLabel.text = ""

@@ -4,6 +4,7 @@ enum {COMMON, RARE, EPIC, LENGENDARY}
 
 @export var CardsContainer : HBoxContainer
 @export var PlantGridNode : PlantGrid
+@export var PlantDescriptionLabel : RichTextLabel
 
 var common_prob : float = 0.69
 var rare_prob : float = 0.25
@@ -64,6 +65,7 @@ func create_cards(RARITY):
 			instance = lengendary_cards[randi_range(0, lengendary_cards.size())-1].instantiate()
 	
 	instance.PlantGridNode = PlantGridNode
+	instance.PlantDescriptionLabel = PlantDescriptionLabel
 	CardsContainer.add_child.call_deferred(instance)
 
 func clear_cards():

@@ -31,12 +31,18 @@ func _physics_process(delta):
 
 
 func _unhandled_input(event):
+	if event is InputEventMouseMotion:
+		if event.pressure == 1:
+			before_harvest()
 	if event.is_action_pressed("click"):
-		var intersection_point = get_mouse_tile_position()
-		var plant : Plant = get_tile_plant(intersection_point.x, intersection_point.z)
+		before_harvest()
 		
-		if plant != null and plant.stage == plant.stages[-1]:
-			harvest_plant(plant)
+func before_harvest():
+	var intersection_point = get_mouse_tile_position()
+	var plant : Plant = get_tile_plant(intersection_point.x, intersection_point.z)
+		
+	if plant != null and plant.stage == plant.stages[-1]:
+		harvest_plant(plant)
 
 func harvest_plant(plant : Plant):
 	Global.sun += plant.sunProd
