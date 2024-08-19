@@ -8,13 +8,15 @@ class_name PlantGrid
 @export var tileSize : float = 0.8
 
 var data : Array = []
+var groundData : Array = []
 
-var tomato : PackedScene = preload("res://Plants/tomato.tscn")
+var tomato : PackedScene = preload("res://Plants/Scene/tomato.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	highlight.mesh.size = Vector2(tileSize,tileSize)
 	init_data()
+	create_ground()
 	create_plant(0, 0, tomato)
 
 func _physics_process(delta):
@@ -49,8 +51,10 @@ func create_plant(x:int, y:int, plantScene:PackedScene):
 func init_data():
 	for i in range(size):
 		data.append([])
+		groundData.append([])
 		for j in range(size):
-			data[i].append([])
+			data[i].append(null)
+			groundData[i].append(null)
 
 func get_mouse_tile_position():
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -66,7 +70,13 @@ func is_tile_free(x,y) -> bool:
 		return !data[x][y] is Plant
 	else: return false
 
-
+func create_ground():
+	var groundScene : PackedScene = load("res://Plants/Grounds/ground_tile.tscn")
+	for x in range(size):
+		for y in range(size):
+			var g : MeshInstance3D = groundScene.instantiate()
+			g.position = Vector3(x*tileSize + tileSize/2, 0, y*tileSize + tileSize/2)
+			add_child(g)
 
 
 

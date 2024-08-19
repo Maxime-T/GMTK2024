@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://doowffhxo30t1"
-path="res://.godot/imported/pousse_tomate_lavraie.fbx-8b923432fef88bbfd84220ac316046b5.scn"
+uid="uid://n33j65ihdwl7"
+path="res://.godot/imported/moyen.fbx-82f5aa7306d9032a61622a9316f67705.scn"
 
 [deps]
 
-source_file="res://Plants/Meshes/tomate/pousse_tomate_lavraie.fbx"
-dest_files=["res://.godot/imported/pousse_tomate_lavraie.fbx-8b923432fef88bbfd84220ac316046b5.scn"]
+source_file="res://Plants/Meshes/Pousse/moyen.fbx"
+dest_files=["res://.godot/imported/moyen.fbx-82f5aa7306d9032a61622a9316f67705.scn"]
 
 [params]
 

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://n33j65ihdwl7"
-path="res://.godot/imported/moyen_tomate_la_vraie.fbx-91a2428a559365a0fca0572c47c95163.scn"
+uid="uid://bwh4ymbyrrlkv"
+path="res://.godot/imported/grande.fbx-230593b4f549e007e8af3a2c5065dafd.scn"
 
 [deps]
 
-source_file="res://Plants/Meshes/tomate/moyen_tomate_la_vraie.fbx"
-dest_files=["res://.godot/imported/moyen_tomate_la_vraie.fbx-91a2428a559365a0fca0572c47c95163.scn"]
+source_file="res://Plants/Meshes/Pousse/grande.fbx"
+dest_files=["res://.godot/imported/grande.fbx-230593b4f549e007e8af3a2c5065dafd.scn"]
 
 [params]
 

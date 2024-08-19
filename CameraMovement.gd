@@ -1,9 +1,9 @@
 extends Camera3D
 
-@export var SPEED : float = 5.
+@export var SPEED : float = 8.
 @export var ACCELERATION : float = 10.
 
-@export var ROTATESPEED : float = 1
+@export var ROTATESPEED : float = 2
 
 @export var parent : Node3D
 
@@ -21,9 +21,11 @@ func _process(delta):
 	
 	var velocity = transform.basis.x * realDirection.x
 	velocity += project_vector_onto_plane(transform.basis.z, Vector3(0,1,0)).normalized() * realDirection.y
-	parent.translate(velocity * SPEED * delta)
+	parent.translate(velocity * SPEED * (clamp(size/5.,0.8,2.)) * delta)
+	parent.position = parent.position.clamp(Vector3(-1,-1,-1), Vector3(16,16,16))
 	
 	parent.rotation.y += Input.get_axis("Rotate_Clockwise", "Rotate_CounterClockwise") * ROTATESPEED * delta
+	#parent.rotation.y = move_toward(parent.rotation.y, 0, delta)
 
 
 func _input(event):

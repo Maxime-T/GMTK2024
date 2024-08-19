@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bwh4ymbyrrlkv"
-path="res://.godot/imported/grande_tomate.fbx-d8c66d6105cb022690380b47961a337f.scn"
+uid="uid://nsgpnnk3sckp"
+path="res://.godot/imported/soupe_aux_carottes.fbx-aa911d0b33495034270a5619ccb8d423.scn"
 
 [deps]
 
-source_file="res://Plants/Meshes/tomate/grande_tomate.fbx"
-dest_files=["res://.godot/imported/grande_tomate.fbx-d8c66d6105cb022690380b47961a337f.scn"]
+source_file="res://Plants/Meshes/soupe_aux_carottes.fbx"
+dest_files=["res://.godot/imported/soupe_aux_carottes.fbx-aa911d0b33495034270a5619ccb8d423.scn"]
 
 [params]
 

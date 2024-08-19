@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://clkjcytiel7r0"
-path="res://.godot/imported/tomates.fbx-5309e354af60c844caeb1d0a405404ea.scn"
+uid="uid://dykn1ai7pbpi8"
+path="res://.godot/imported/pizza_4fromages.fbx-fff7ac3ae23a9edfca084d39d91777ef.scn"
 
 [deps]
 
-source_file="res://Plants/Meshes/tomate/tomates.fbx"
-dest_files=["res://.godot/imported/tomates.fbx-5309e354af60c844caeb1d0a405404ea.scn"]
+source_file="res://Plants/Meshes/pizza_4fromages.fbx"
+dest_files=["res://.godot/imported/pizza_4fromages.fbx-fff7ac3ae23a9edfca084d39d91777ef.scn"]
 
 [params]
 

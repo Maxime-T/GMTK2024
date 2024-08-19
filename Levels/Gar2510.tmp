@@ -1,0 +1,207 @@
+[gd_scene load_steps=18 format=3 uid="uid://bqto2ddsofr8v"]
+
+[ext_resource type="Script" path="res://Levels/Garden.gd" id="1_ua47f"]
+[ext_resource type="Script" path="res://CameraMovement.gd" id="1_uow6t"]
+[ext_resource type="Script" path="res://Levels/PlantGrid.gd" id="3_ls3q7"]
+[ext_resource type="Script" path="res://HUD items/HUD.gd" id="4_5ayop"]
+[ext_resource type="Texture2D" uid="uid://c4droap4a4pk" path="res://HUD items/6c6678c2f657e3bd2f87eba5a03636e4.jpg" id="4_fy4d8"]
+[ext_resource type="LabelSettings" uid="uid://g3qcsd0b230q" path="res://Themes & fonts/HUD_top_labels.tres" id="5_bhnvt"]
+[ext_resource type="Texture2D" uid="uid://cds7iw2jnw8cr" path="res://HUD items/6639546.png" id="6_wxyij"]
+[ext_resource type="Texture2D" uid="uid://bgvka5ljnxt43" path="res://HUD items/1394472.png" id="8_lbd1b"]
+[ext_resource type="PackedScene" uid="uid://c5t5ibvxcoaaw" path="res://Cards/card_ui.tscn" id="9_chiuk"]
+[ext_resource type="Script" path="res://Levels/CardLayer.gd" id="9_mnsiy"]
+[ext_resource type="PackedScene" uid="uid://dulssejxb50rk" path="res://Plants/Meshes/haricot.fbx" id="11_2gf6d"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lkoac"]
+
+[sub_resource type="Sky" id="Sky_c7rc3"]
+sky_material = SubResource("ProceduralSkyMaterial_lkoac")
+process_mode = 1
+
+[sub_resource type="Environment" id="Environment_f47ku"]
+background_mode = 2
+sky = SubResource("Sky_c7rc3")
+tonemap_mode = 3
+tonemap_white = 0.9
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+sdfgi_bounce_feedback = 0.9
+sdfgi_cascades = 8
+sdfgi_min_cell_size = 5.0
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vf72q"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mw4o1"]
+size = Vector2(0.8, 0.8)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_33a76"]
+size = Vector2(0.8, 0.8)
+
+[node name="Garden" type="Node3D"]
+script = ExtResource("1_ua47f")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_f47ku")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.94137, 0.261885, -0.212692, -2.26431e-08, 0.630432, 0.776245, 0.337375, -0.730734, 0.59347, 0, 4.67871, 0)
+shadow_enabled = true
+shadow_bias = 0.025
+directional_shadow_mode = 0
+directional_shadow_pancake_size = 1.5
+
+[node name="Camera" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Camera" node_paths=PackedStringArray("parent")]
+transform = Transform3D(0.707107, -0.541675, 0.45452, 0, 0.642788, 0.766045, -0.707107, -0.541675, 0.45452, 10, 16, 10)
+projection = 1
+current = true
+fov = 30.0
+size = 5.0
+near = 0.001
+far = 30.0
+script = ExtResource("1_uow6t")
+parent = NodePath("..")
+
+[node name="PlantGrid" type="Node3D" parent="." node_paths=PackedStringArray("highlight")]
+script = ExtResource("3_ls3q7")
+highlight = NodePath("MeshInstance3D")
+size = null
+tileSize = null
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlantGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00471532, 0)
+material_override = SubResource("StandardMaterial3D_vf72q")
+mesh = SubResource("PlaneMesh_mw4o1")
+
+[node name="GroundTile" type="MeshInstance3D" parent="PlantGrid"]
+mesh = SubResource("PlaneMesh_33a76")
+
+[node name="HUD" type="CanvasLayer" parent="." node_paths=PackedStringArray("GoldLabel", "SunLabel", "PollutionLabel")]
+script = ExtResource("4_5ayop")
+GoldLabel = NodePath("Control/HBoxContainer/HBoxGold/GoldLabel")
+SunLabel = NodePath("Control/HBoxContainer/HBoxSun/SunLabel")
+PollutionLabel = NodePath("Control/HBoxContainer/HBoxPollution/PollutionLabel")
+
+[node name="Control" type="Control" parent="HUD"]
+layout_mode = 3
+anchor_left = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.05
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ColorRect" type="ColorRect" parent="HUD/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.808998, 0.808998, 0.808998, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_right = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxGold" type="HBoxContainer" parent="HUD/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GoldTexture" type="TextureRect" parent="HUD/Control/HBoxContainer/HBoxGold"]
+layout_mode = 2
+texture = ExtResource("4_fy4d8")
+expand_mode = 2
+
+[node name="GoldLabel" type="Label" parent="HUD/Control/HBoxContainer/HBoxGold"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("5_bhnvt")
+horizontal_alignment = 1
+
+[node name="HBoxSun" type="HBoxContainer" parent="HUD/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="SunTexture" type="TextureRect" parent="HUD/Control/HBoxContainer/HBoxSun"]
+layout_mode = 2
+texture = ExtResource("6_wxyij")
+expand_mode = 2
+
+[node name="SunLabel" type="Label" parent="HUD/Control/HBoxContainer/HBoxSun"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("5_bhnvt")
+horizontal_alignment = 1
+
+[node name="HBoxPollution" type="HBoxContainer" parent="HUD/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="PollutionTexture" type="TextureRect" parent="HUD/Control/HBoxContainer/HBoxPollution"]
+layout_mode = 2
+texture = ExtResource("8_lbd1b")
+expand_mode = 2
+
+[node name="PollutionLabel" type="Label" parent="HUD/Control/HBoxContainer/HBoxPollution"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("5_bhnvt")
+horizontal_alignment = 1
+
+[node name="CardsLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("CardsContainer")]
+script = ExtResource("9_mnsiy")
+CardsContainer = NodePath("Control/CardsContainer")
+
+[node name="Control" type="Control" parent="CardsLayer"]
+layout_mode = 3
+anchor_left = 0.2
+anchor_top = 0.7
+anchor_right = 0.8
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="CardsContainer" type="HBoxContainer" parent="CardsLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="CardUI2" parent="CardsLayer/Control/CardsContainer" instance=ExtResource("9_chiuk")]
+layout_mode = 2
+
+[node name="CardUI" parent="CardsLayer/Control/CardsContainer" instance=ExtResource("9_chiuk")]
+layout_mode = 2
+
+[node name="CardUI3" parent="CardsLayer/Control/CardsContainer" instance=ExtResource("9_chiuk")]
+layout_mode = 2
+
+[node name="Haricot" parent="." instance=ExtResource("11_2gf6d")]
+transform = Transform3D(-24.5954, 0, 43.5324, 0, 50, 0, -43.5324, 0, -24.5954, -4.60186, 0, -4.10384)
+
+[connection signal="child_exiting_tree" from="CardsLayer/Control/CardsContainer" to="CardsLayer" method="_on_cards_container_child_exiting_tree"]

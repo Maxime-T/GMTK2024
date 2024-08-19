@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dulssejxb50rk"
-path="res://.godot/imported/haricot.fbx-5413c161db54ff1414876e15cf8c9f56.scn"
+uid="uid://doowffhxo30t1"
+path="res://.godot/imported/petit.fbx-cc7b738dc727b6dc79805067519b6a2c.scn"
 
 [deps]
 
-source_file="res://Plants/haricot.fbx"
-dest_files=["res://.godot/imported/haricot.fbx-5413c161db54ff1414876e15cf8c9f56.scn"]
+source_file="res://Plants/Meshes/Pousse/petit.fbx"
+dest_files=["res://.godot/imported/petit.fbx-cc7b738dc727b6dc79805067519b6a2c.scn"]
 
 [params]
 
