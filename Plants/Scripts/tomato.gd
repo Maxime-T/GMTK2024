@@ -1,17 +1,16 @@
 extends Plant
 
+var zoneArray : Array[Vector2] = [Vector2(1,0), Vector2(-1,0), Vector2(0,1), Vector2(0,-1)]
+
+
 func create_modifier_zones():
-	if grid.is_inside(pos.x+1, pos.y):
-		grid.groundData[pos.x+1][pos.y].incomeRate += 10.
-		
-	if grid.is_inside(pos.x-1, pos.y):
-		grid.groundData[pos.x-1][pos.y].incomeRate += 10.
-		
-	if grid.is_inside(pos.x, pos.y+1):
-		grid.groundData[pos.x][pos.y+1].incomeRate += 10.
-		
-	if grid.is_inside(pos.x, pos.y-1):
-		grid.groundData[pos.x][pos.y-1].incomeRate += 10.
+	for v in zoneArray:
+		if (grid.is_inside(pos.x + v.x, pos.y + v.y)):
+			grid.groundData[pos.x+v.x][pos.y+v.y].incomeRate += .2
+
+
 
 func delete_modifier_zones():
-	pass
+	for v in zoneArray:
+		if (grid.is_inside(pos.x + v.x, pos.y + v.y)):
+			grid.groundData[pos.x+v.x][pos.y+v.y].incomeRate -= .2
