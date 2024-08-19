@@ -1,16 +1,17 @@
-[gd_scene load_steps=28 format=3 uid="uid://bqto2ddsofr8v"]
+[gd_scene load_steps=29 format=3 uid="uid://bqto2ddsofr8v"]
 
 [ext_resource type="Script" path="res://Levels/Garden.gd" id="1_ua47f"]
 [ext_resource type="Script" path="res://CameraMovement.gd" id="1_uow6t"]
 [ext_resource type="Script" path="res://Levels/PlantGrid.gd" id="3_ls3q7"]
 [ext_resource type="Script" path="res://HUD items/HUD.gd" id="4_5ayop"]
-[ext_resource type="Texture2D" uid="uid://c4droap4a4pk" path="res://HUD items/6c6678c2f657e3bd2f87eba5a03636e4.jpg" id="4_fy4d8"]
 [ext_resource type="LabelSettings" uid="uid://g3qcsd0b230q" path="res://Themes & fonts/HUD_top_labels.tres" id="5_bhnvt"]
-[ext_resource type="Texture2D" uid="uid://cds7iw2jnw8cr" path="res://HUD items/6639546.png" id="6_wxyij"]
-[ext_resource type="Texture2D" uid="uid://bgvka5ljnxt43" path="res://HUD items/1394472.png" id="8_lbd1b"]
+[ext_resource type="Texture2D" uid="uid://dc53w6h5afvvd" path="res://HUD items/Argent.png" id="5_c10gl"]
+[ext_resource type="Texture2D" uid="uid://bc0ecge0pqnya" path="res://HUD items/Soleil.png" id="7_hmvc6"]
+[ext_resource type="Texture2D" uid="uid://okjkkv0mqnd" path="res://HUD items/Masque_A_Gaz.png" id="8_6pitr"]
 [ext_resource type="PackedScene" uid="uid://c5t5ibvxcoaaw" path="res://Cards/card_ui.tscn" id="9_chiuk"]
 [ext_resource type="Script" path="res://Levels/CardLayer.gd" id="9_mnsiy"]
-[ext_resource type="PackedScene" uid="uid://dulssejxb50rk" path="res://Plants/Meshes/haricot.fbx" id="11_2gf6d"]
+[ext_resource type="PackedScene" uid="uid://dulssejxb50rk" path="res://Plants/haricot.fbx" id="11_2gf6d"]
+[ext_resource type="PackedScene" uid="uid://bwkdutktjrj7k" path="res://Cards/CarteTomate.tscn" id="11_e3pmh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lkoac"]
 
@@ -235,81 +236,69 @@ PollutionLabel = NodePath("Control/HBoxContainer/HBoxPollution/PollutionLabel")
 
 [node name="Control" type="Control" parent="HUD"]
 layout_mode = 3
-anchor_left = 0.2
-anchor_right = 0.8
-anchor_bottom = 0.05
-grow_horizontal = 2
+anchor_left = 0.01
+anchor_top = 0.01
+anchor_right = 0.1
+anchor_bottom = 0.2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="ColorRect" type="ColorRect" parent="HUD/Control"]
+[node name="HBoxContainer" type="VBoxContainer" parent="HUD/Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.808998, 0.808998, 0.808998, 1)
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HUD/Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 20.0
-offset_right = -20.0
-grow_horizontal = 2
-grow_vertical = 2
+theme_override_constants/separation = -5
 
 [node name="HBoxGold" type="HBoxContainer" parent="HUD/Control/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="GoldTexture" type="TextureRect" parent="HUD/Control/HBoxContainer/HBoxGold"]
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
-texture = ExtResource("4_fy4d8")
+texture = ExtResource("5_c10gl")
 expand_mode = 2
 
 [node name="GoldLabel" type="Label" parent="HUD/Control/HBoxContainer/HBoxGold"]
-custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 text = "0"
 label_settings = ExtResource("5_bhnvt")
-horizontal_alignment = 1
 
 [node name="HBoxSun" type="HBoxContainer" parent="HUD/Control/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-alignment = 1
+size_flags_vertical = 3
 
 [node name="SunTexture" type="TextureRect" parent="HUD/Control/HBoxContainer/HBoxSun"]
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
-texture = ExtResource("6_wxyij")
-expand_mode = 2
+texture = ExtResource("7_hmvc6")
+expand_mode = 3
 
 [node name="SunLabel" type="Label" parent="HUD/Control/HBoxContainer/HBoxSun"]
-custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 text = "0"
 label_settings = ExtResource("5_bhnvt")
-horizontal_alignment = 1
 
 [node name="HBoxPollution" type="HBoxContainer" parent="HUD/Control/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-alignment = 2
+size_flags_vertical = 3
 
 [node name="PollutionTexture" type="TextureRect" parent="HUD/Control/HBoxContainer/HBoxPollution"]
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
-texture = ExtResource("8_lbd1b")
+texture = ExtResource("8_6pitr")
 expand_mode = 2
 
 [node name="PollutionLabel" type="Label" parent="HUD/Control/HBoxContainer/HBoxPollution"]
-custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 text = "0"
 label_settings = ExtResource("5_bhnvt")
-horizontal_alignment = 1
 
 [node name="CardsLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("CardsContainer")]
 script = ExtResource("9_mnsiy")
@@ -330,6 +319,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -20.0
+offset_right = 1.0
+offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 35
@@ -342,6 +335,9 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="CardUI3" parent="CardsLayer/Control/CardsContainer" instance=ExtResource("9_chiuk")]
+layout_mode = 2
+
+[node name="CardUI4" parent="CardsLayer/Control/CardsContainer" instance=ExtResource("11_e3pmh")]
 layout_mode = 2
 
 [node name="Background" type="Node3D" parent="."]
@@ -495,5 +491,8 @@ skeleton = NodePath("")
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 15.1942, -0.0500002, -1.02841)
 mesh = SubResource("ArrayMesh_s8pob")
 skeleton = NodePath("")
+
+[node name="Root Scene" parent="." instance=ExtResource("11_2gf6d")]
+transform = Transform3D(-24.5954, 0, 43.5324, 0, 50, 0, -43.5324, 0, -24.5954, -1.49978, 0, -2.05566)
 
 [connection signal="child_exiting_tree" from="CardsLayer/Control/CardsContainer" to="CardsLayer" method="_on_cards_container_child_exiting_tree"]
