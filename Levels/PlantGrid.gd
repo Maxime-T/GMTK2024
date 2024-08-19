@@ -4,6 +4,7 @@ class_name PlantGrid
 
 @export var highlight : MeshInstance3D
 @export var size : int = 20
+var current_size : int = 4
 @export var tileSize : float = 0.8
 
 var data : Array = []
@@ -17,6 +18,12 @@ var selectedPlant : Plant:
 		selectedPlant = value
 
 var tomato : PackedScene = preload("res://Plants/Scene/tomato.tscn")
+
+#### Gestion des secteurs ####$
+var map_size : int = 5
+var current_fence : int = 4
+@export var X_fences : Node3D
+@export var Z_fences : Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -61,7 +68,7 @@ func harvest_plant(plant : Plant):
 
 func create_plant(x:int, y:int, plantScene:PackedScene):
 	if (is_tile_free(x, y)):
-		if (x >= 0 && x < size && y >= 0 && y < size):
+		if (x >= 0 && x < current_size && y >= 0 && y < current_size):
 			var plant : Plant = plantScene.instantiate()
 			plant.pos = Vector2(x, y)
 			plant.position = Vector3(plant.pos.x*tileSize + tileSize/2, 0, plant.pos.y*tileSize + tileSize/2)
@@ -92,12 +99,12 @@ func get_mouse_tile_position():
 	return intersection_point / tileSize
 
 func is_tile_free(x,y) -> bool:
-	if (x >= 0 && x < size && y >= 0 && y < size):
+	if (x >= 0 && x < current_size && y >= 0 && y < current_size):
 		return !data[x][y] is Plant
 	else: return false
 
 func get_tile_plant(x,y) -> Plant:
-	if (x >= 0 && x < size && y >= 0 && y < size):
+	if (x >= 0 && x < current_size && y >= 0 && y < current_size):
 		return data[x][y]
 	else:
 		return null
@@ -129,6 +136,23 @@ func update_zone_indicator(array: Array[Vector2]):
 		highlight.add_child(h)
 
 func is_inside(x,y):
-	return (x >= 0 && x < size && y >= 0 && y < size)
+	return (x >= 0 && x < current_size && y >= 0 && y < current_size)
+
+func expand_map():
+	X_fences.position.z += 2*tileSize
+	Z_fences.position.x += 2*tileSize
+	current_size += 2
+	X_fences.get_node("fence" + str(current_fence)).visible = true
+	Z_fences.get_node("fence" + str(current_fence)).visible = true
+	current_fence += 1
+	
+	if current_fence == 8:
+		X_fences.get_node("fence" + str(current_fence)).visible = true
+		Z_fences.get_node("fence" + str(current_fence)).visible = true
+		current_fence += 1
+	
+	if current_size == size:
+		X_fences.queue_free()
+		Z_fences.queue_free()
 
 

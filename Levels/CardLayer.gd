@@ -19,12 +19,14 @@ var epics_cards : Array[PackedScene] = [preload("res://Cards/carte_aubergine.tsc
 var lengendary_cards : Array[PackedScene] = [preload("res://Cards/carte_aubergine.tscn")]
 
 @export var RerollButton : Button
+@export var ExpandButton : Button
 @export var baseRerollCost : float = 100
 var currentRerollCost : float = baseRerollCost
 
 func _ready():
 	Global.CardPlayed.connect(carte_played)
 	RerollButton.text = "Reroll : " + str(currentRerollCost) + " g"
+	ExpandButton.text = "Expand : " +str(expand_cost) + " g"
 	for i in range(5):
 		generate_cards()
 
@@ -82,3 +84,19 @@ func _on_reroll_pressed():
 	
 		for i in range(5):
 			generate_cards()
+
+var expand_cost_list : Array[float] = [10, 100, 500, 2500, 5000, 10000, 50000, 99999, 42]
+var expand_list_index : int = 1
+var expand_cost : float = expand_cost_list[0]
+
+func _on_expand_pressed():
+	if Global.gold > expand_cost:
+		Global.gold -= expand_cost
+		expand_cost = expand_cost_list[expand_list_index]
+		expand_list_index += 1
+		PlantGridNode.expand_map()
+		if expand_list_index == expand_cost_list.size():
+			ExpandButton.text = "Max size reached"
+			ExpandButton.disabled = true
+			return
+		ExpandButton.text = "Expand : " +str(expand_cost) + " g"
