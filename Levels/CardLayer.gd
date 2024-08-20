@@ -76,6 +76,7 @@ func clear_cards():
 
 
 func _on_reroll_pressed():
+	Global.sun += 100
 	if Global.gold >= currentRerollCost:
 		Global.gold -= currentRerollCost
 		clear_cards()

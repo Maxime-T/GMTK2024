@@ -1,16 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://bwkdutktjrj7k"]
 
 [ext_resource type="PackedScene" uid="uid://c5t5ibvxcoaaw" path="res://Cards/card_ui.tscn" id="1_prmji"]
-[ext_resource type="Texture2D" uid="uid://beufuxuv7mlyf" path="res://Cards/Tomate.png" id="2_00nju"]
+[ext_resource type="Texture2D" uid="uid://dqjltibnxwdbp" path="res://Cards/Tomate.png" id="2_00nju"]
 [ext_resource type="PackedScene" uid="uid://by1qsb4aiexvw" path="res://Plants/Scene/tomato.tscn" id="2_qponp"]
 
 [node name="CardTomate" instance=ExtResource("1_prmji")]
 PlantScene = ExtResource("2_qponp")
 
-[node name="Background" parent="." index="1"]
+[node name="Background" parent="Control" index="0"]
+offset_left = -102.0
+offset_top = -53.0
+offset_right = 79.0
+offset_bottom = 19.0
 texture = ExtResource("2_00nju")
 
-[node name="Control2" parent="." index="2"]
+[node name="Control2" parent="." index="1"]
 anchor_top = 0.01
 
 [node name="MarginContainer" parent="." index="3"]

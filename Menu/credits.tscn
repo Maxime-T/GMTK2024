@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2eivilk6mahw"]
+[gd_scene load_steps=7 format=3 uid="uid://c2eivilk6mahw"]
 
-[ext_resource type="Texture2D" uid="uid://dg7dp08h517ae" path="res://Menu/Titre.png" id="1_4njh6"]
+[ext_resource type="Texture2D" uid="uid://cgngt51cvojif" path="res://HUD items/TitreFabaceae.png" id="1_rup1n"]
+[ext_resource type="Texture2D" uid="uid://bo68nsqspk7pw" path="res://HUD items/Logo_Tat_blanc.png" id="2_05tm3"]
 [ext_resource type="FontVariation" uid="uid://de7jp8p1536yx" path="res://Themes & fonts/TheNightWatchBOLD.tres" id="2_jdgpj"]
 [ext_resource type="LabelSettings" uid="uid://drgol7je8ol6l" path="res://Themes & fonts/Label32.tres" id="3_u3d3n"]
 [ext_resource type="LabelSettings" uid="uid://dh5lhont4m6sa" path="res://Themes & fonts/Label22.tres" id="4_3u8xv"]
@@ -26,25 +27,43 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Title" type="TextureRect" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_right = -2.0
+offset_bottom = -14.0
 grow_horizontal = 2
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("1_4njh6")
+alignment = 1
+
+[node name="Title" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_rup1n")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 275
+theme_override_constants/margin_top = 32
+
+[node name="TAT" type="TextureRect" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_05tm3")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.2
-anchor_top = 0.3
+anchor_top = 0.35
 anchor_right = 0.8
-anchor_bottom = 0.9
+anchor_bottom = 0.93
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -59,7 +78,7 @@ horizontal_alignment = 1
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/v_separation = 15
+theme_override_constants/v_separation = 20
 columns = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/GridContainer"]
@@ -90,6 +109,15 @@ layout_mode = 2
 text = "Adrian M."
 label_settings = ExtResource("4_3u8xv")
 
+[node name="Control9" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control10" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control11" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
 [node name="Label5" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "2D Artist"
@@ -103,6 +131,26 @@ layout_mode = 2
 layout_mode = 2
 text = "Lou B."
 label_settings = ExtResource("4_3u8xv")
+
+[node name="Control7" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control8" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Label14" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Sacha G."
+label_settings = ExtResource("4_3u8xv")
+
+[node name="Control12" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control13" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control14" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
 
 [node name="Label7" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
@@ -130,4 +178,18 @@ layout_mode = 2
 [node name="Label10" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "None"
+label_settings = ExtResource("4_3u8xv")
+
+[node name="Label11" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Thanks to"
+label_settings = ExtResource("3_u3d3n")
+horizontal_alignment = 2
+
+[node name="Control6" type="Control" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Label12" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Thibaud B. (for company)"
 label_settings = ExtResource("4_3u8xv")

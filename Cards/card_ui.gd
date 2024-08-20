@@ -10,7 +10,7 @@ var CardDescription : String
 
 
 var GoldCost : float
-var waterNeeded : float
+var waterNeeded : int
 var PollutionProd : float
 var SunProd : float
 var GrowTime : float

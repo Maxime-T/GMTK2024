@@ -17,7 +17,7 @@ func _on_h_slider_value_changed(value):
 func _on_mute_toggled(toggled_on):
 	Global.muted = toggled_on
 	if toggled_on:
-		AudioServer.set_bus_volume_db(0, -200)
+		AudioServer.set_bus_volume_db(0, -999)
 	else:
 		AudioServer.set_bus_volume_db(0, $MarginContainer/VBoxContainer/HSlider.value)
 
