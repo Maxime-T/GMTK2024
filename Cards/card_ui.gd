@@ -62,20 +62,10 @@ func _ready():
 	if GoldCost == 0:
 		GoldCostBox.queue_free()
 	
-	waterNeeded = PlantNode.waterNeeded
-	WaterNeededLabel.text = str(waterNeeded)
-	if waterNeeded == 0:
-		WaterCostBox.queue_free()
-	
 	PollutionProd = PlantNode.pollutionGeneration
 	PollutionLabel.text = str(PollutionProd)
 	if PollutionProd == 0:
 		PollutionBox.queue_free()
-	
-	GrowTime = PlantNode.growManager.calculate_grow_time()
-	TimeLabel.text = str(GrowTime)
-	if GrowTime == 0:
-		TimeBox.queue_free()
 	
 	SunProd = PlantNode.sunProd
 	SunProdLabel.text = str(SunProd)
@@ -87,6 +77,19 @@ func _ready():
 	if Income == 0:
 		IncomeBox.queue_free()
 	
+	#REAL PLANT SPECIFIC
+	waterNeeded = PlantNode.waterNeeded
+	WaterNeededLabel.text = str(waterNeeded)
+	if waterNeeded == 0:
+		WaterCostBox.queue_free()
+	
+	if PlantNode.isPlant:
+		GrowTime = PlantNode.growManager.calculate_grow_time()
+		TimeLabel.text = str(GrowTime)
+		if GrowTime == 0:
+			TimeBox.queue_free()
+	else:
+		TimeBox.queue_free()
 
 func _unhandled_input(event):
 	if event.is_action_pressed("right click") and has_focus():

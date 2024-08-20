@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnnmimvaoo5b0"]
+
+[ext_resource type="PackedScene" uid="uid://c5t5ibvxcoaaw" path="res://Cards/card_ui.tscn" id="1_62dy2"]
+[ext_resource type="PackedScene" uid="uid://c3eo4hshmusqg" path="res://Plants/Scene/well.tscn" id="2_tlpxx"]
+
+[node name="carte_well" instance=ExtResource("1_62dy2")]
+PlantScene = ExtResource("2_tlpxx")

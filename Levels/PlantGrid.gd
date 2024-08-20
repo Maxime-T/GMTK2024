@@ -57,8 +57,8 @@ func _unhandled_input(event):
 func before_harvest():
 	var intersection_point = get_mouse_tile_position()
 	var plant : Plant = get_tile_plant(intersection_point.x, intersection_point.z)
-		
-	if plant != null and plant.stage == plant.stages[-1]:
+	
+	if plant != null and plant.isPlant and plant.stage == plant.stages[-1]:
 		harvest_plant(plant)
 
 func harvest_plant(plant : Plant):

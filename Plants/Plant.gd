@@ -10,6 +10,7 @@ var grid : PlantGrid
 @export_category("Plant Info")
 @export_group("General")
 @export var plantName : String
+@export var isPlant : bool = true
 
 @export_group("Costs")
 @export var GoldCost : int = 0
@@ -33,12 +34,12 @@ var incomeRate : float = 1
 var scoreRate : float = 1
 var water : int = 0:
 	set(value):
-		if waterNeeded != 0:
-			waterGrowSpeedRatio = float(value) / float(waterNeeded)
-		else:
-			waterGrowSpeedRatio = 1.
-		growTimer.start(calculate_total_time(stage.time, growRate, waterGrowSpeedRatio))
-		print(calculate_total_time(stage.time, growRate, waterGrowSpeedRatio))
+		if isPlant:
+			if waterNeeded != 0:
+				waterGrowSpeedRatio = float(value) / float(waterNeeded)
+			else:
+				waterGrowSpeedRatio = 1.
+			growTimer.start(calculate_total_time(stage.time, growRate, waterGrowSpeedRatio))
 		water = value
 
 var waterGrowSpeedRatio : float = 1.
@@ -49,23 +50,20 @@ var stage : GrowStage
 var stages : Array[GrowStage]
 var stageIndex : int = 0
 var growTimer : Timer
-var scaleFactor : float = 1:
-	set(val):
-		scale = Vector3(val, val, val)
-		scaleFactor = val
 
 func _ready():
 	create_modifier_zones()
-	
 	rotation.y = randf_range(0, 2*PI)
 	
-	stages = growManager.growStages
-	stage = stages[stageIndex]
-	
-	growTimer = Timer.new()
-	growTimer.one_shot = true
-	growTimer.connect("timeout", timer_end)
-	add_child(growTimer)
+	if isPlant:
+		
+		stages = growManager.growStages
+		stage = stages[stageIndex]
+		
+		growTimer = Timer.new()
+		growTimer.one_shot = true
+		growTimer.connect("timeout", timer_end)
+		add_child(growTimer)
 	
 	next_stage()
 
@@ -75,7 +73,6 @@ func next_stage():
 		stage = stages[stageIndex]
 		meshInstance.mesh = stage.mesh
 		
-		print(calculate_total_time(stage.time, growRate, waterGrowSpeedRatio))
 		growTimer.start( calculate_total_time(stage.time, growRate, waterGrowSpeedRatio) )
 		
 		stageIndex += 1
@@ -99,16 +96,25 @@ var lifetime : float
 @export var animationScale : float = 0.
 
 func _physics_process(delta):
-	lifetime += delta
-	var timeRatio = clamp( lifetime / growManager.totalGrowTime+0.2, 0., 1.)
-	
-	scale = (Vector3(1, 1, 1) * timeRatio * animationScale * clamp(incomeRate,0,2) * clamp(scoreRate,0,2) ).clamp(Vector3(0,0,0), Vector3(3,3,3))
+	if isPlant:
+		lifetime += delta
+		var timeRatio = clamp( lifetime / growManager.totalGrowTime+0.2, 0., 1.)
+		
+		scale = (Vector3(1, 1, 1) * timeRatio * animationScale * clamp(incomeRate,0,2) * clamp(scoreRate,0,2) ).clamp(Vector3(0,0,0), Vector3(3,3,3))
+
+func calculate_total_time(baseTime : float, growRate, waterGrowSpeedRatio):
+	if growRate == 0 or waterGrowSpeedRatio == 0:
+		return 9999999999
+	return stage.time / (growRate * waterGrowSpeedRatio)
 
 func _exit_tree():
 	delete_modifier_zones()
 
+
+#DEFAULTS ######################################################
+
+
 func create_modifier_zones():
-	
 	push_warning("tried to call default function")
 
 func delete_modifier_zones():
@@ -118,10 +124,6 @@ func get_highlight_zones() -> Array[Vector2]:
 	push_warning("tried to call default function")
 	return []
 
-func calculate_total_time(baseTime : float, growRate, waterGrowSpeedRatio):
-	if growRate == 0 or waterGrowSpeedRatio == 0:
-		return 9999999999
-	return stage.time / (growRate * waterGrowSpeedRatio)
 
 
 
