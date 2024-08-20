@@ -329,7 +329,7 @@ directional_shadow_pancake_size = 1.5
 [node name="Camera" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
 
-[node name="Camera3D" type="Camera3D" parent="Camera" node_paths=PackedStringArray("parent")]
+[node name="Camera3D" type="Camera3D" parent="Camera" node_paths=PackedStringArray("parent", "plantGrid")]
 transform = Transform3D(0.707107, -0.541675, 0.45452, 0, 0.642788, 0.766044, -0.707107, -0.541675, 0.45452, 10, 16, 10)
 projection = 1
 current = true
@@ -339,6 +339,7 @@ near = 0.001
 far = 30.0
 script = ExtResource("1_uow6t")
 parent = NodePath("..")
+plantGrid = NodePath("../../PlantGrid")
 
 [node name="PlantGrid" type="Node3D" parent="." node_paths=PackedStringArray("highlight", "X_fences", "Z_fences")]
 script = ExtResource("3_ls3q7")

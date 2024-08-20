@@ -13,7 +13,10 @@ config_version=5
 config/name="GMTK2024"
 run/main_scene="res://Menu/menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="res://HUD items/Logo_Tat_blanc.png"
 config/icon="res://Menu/Logo.png"
+boot_splash/minimum_display_time=1500
 
 [autoload]
 

@@ -1,5 +1,11 @@
 extends Control
 
+func _enter_tree():
+	modulate = Color(0,0,0,1)
+	var t : Tween = get_tree().create_tween()
+	t.tween_property(self, "modulate", Color(0.,0.,0.,1),0.3).set_ease(Tween.EASE_OUT)
+	t.tween_property(self, "modulate", Color(1,1,1,1),0.8).set_ease(Tween.EASE_OUT)
+
 func _on_play_button_pressed():
 	get_tree().change_scene_to_file("res://Levels/Garden.tscn")
 

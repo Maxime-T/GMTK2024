@@ -6,6 +6,7 @@ extends Camera3D
 @export var ROTATESPEED : float = 2
 
 @export var parent : Node3D
+@export var plantGrid : PlantGrid
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,7 +23,7 @@ func _process(delta):
 	var velocity = transform.basis.x * realDirection.x
 	velocity += project_vector_onto_plane(transform.basis.z, Vector3(0,1,0)).normalized() * realDirection.y
 	parent.translate(velocity * SPEED * (clamp(size/5.,0.8,2.)) * delta)
-	parent.position = parent.position.clamp(Vector3(-1,-1,-1), Vector3(16,16,16))
+	parent.position = parent.position.clamp(Vector3(-1,-1,-1), Vector3.ONE * plantGrid.current_size * plantGrid.tileSize)
 	
 	parent.rotation.y += Input.get_axis("Rotate_Clockwise", "Rotate_CounterClockwise") * ROTATESPEED * delta
 	#parent.rotation.y = move_toward(parent.rotation.y, 0, delta)
