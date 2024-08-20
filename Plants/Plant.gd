@@ -25,8 +25,9 @@ var grid : PlantGrid
 var growRate : float = 1 :
 	set(value):
 		#growManager.totalGrowTime /= value
-		if value > growRate:
-			growTimer.start(calculate_total_time(stage.time, growRate, waterGrowSpeedRatio))
+		if isPlant:
+			if value > growRate:
+				growTimer.start(calculate_total_time(stage.time, value, waterGrowSpeedRatio))
 		
 		growRate = value
 
@@ -68,6 +69,7 @@ var noWaterNode : Sprite3D
 var warningWaterNode : Sprite3D
 
 func _ready():
+	
 	warningWaterNode = load("res://Plants/warning_water_logo.tscn").instantiate()
 	warningWaterNode.visible = false
 	add_child(warningWaterNode)
