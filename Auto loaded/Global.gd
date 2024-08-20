@@ -2,7 +2,7 @@ extends Node
 
 var SettingsScene : PackedScene = preload("res://Menu/settings.tscn")
 
-var slider_value = 10
+var slider_value = 0
 var muted : bool = false
 var fullscreen : bool = false
 var music_selected = 0

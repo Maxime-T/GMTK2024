@@ -6,7 +6,6 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_72glo"]
 resource_name = "_defaultMat"
-albedo_color = Color(1, 1, 1, 1)
 metallic = 0.4
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jssxv"]

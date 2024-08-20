@@ -1,0 +1,78 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcnab0fummxdq"]
+
+[ext_resource type="Script" path="res://Menu/Win.gd" id="1_sfdo2"]
+[ext_resource type="FontVariation" uid="uid://bi6br6mf63upq" path="res://Themes & fonts/NightWatchB_Label.tres" id="2_2o3jn"]
+[ext_resource type="LabelSettings" uid="uid://drgol7je8ol6l" path="res://Themes & fonts/Label32.tres" id="3_qrwi1"]
+
+[node name="WinLayer" type="CanvasLayer"]
+
+[node name="Win" type="Control" parent="."]
+custom_minimum_size = Vector2(504, 486)
+layout_mode = 3
+anchor_left = 0.325
+anchor_top = 0.2
+anchor_right = 0.675
+anchor_bottom = 0.673
+offset_left = -6.10352e-05
+offset_bottom = 0.159973
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sfdo2")
+
+[node name="TextureRect" type="ColorRect" parent="Win"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.165656, 0.165656, 0.165656, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Win"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 60
+
+[node name="GoToMenu" type="Button" parent="Win/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("2_2o3jn")
+theme_override_font_sizes/font_size = 28
+text = "Go to main menu"
+
+[node name="Leave" type="Button" parent="Win"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_top = 10.0
+offset_right = -10.0
+grow_horizontal = 0
+text = "X"
+
+[node name="Label" type="Label" parent="Win"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Congratulation, you win !!"
+label_settings = ExtResource("3_qrwi1")
+
+[connection signal="pressed" from="Win/MarginContainer/GoToMenu" to="Win" method="_on_go_to_menu_pressed"]
+[connection signal="pressed" from="Win/Leave" to="Win" method="_on_leave_pressed"]

@@ -53,8 +53,8 @@ label_settings = ExtResource("2_m5scx")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-max_value = 20.0
-value = 10.0
+min_value = -10.0
+max_value = 10.0
 tick_count = 20
 
 [node name="Label4" type="Label" parent="Settings/MarginContainer/VBoxContainer"]

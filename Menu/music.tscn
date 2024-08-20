@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cadrejsumhxlf"]
+
+[ext_resource type="AudioStream" uid="uid://bdfx64gy0jufx" path="res://Menu/Climb to the Stars.mp3" id="1_jafjf"]
+
+[node name="Music" type="Node"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_jafjf")
+autoplay = true

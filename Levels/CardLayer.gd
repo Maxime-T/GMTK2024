@@ -20,7 +20,7 @@ preload("res://Cards/carte_corn.tscn"),preload("res://Cards/carte_wheat.tscn"), 
 
 var rare_cards : Array[PackedScene] = [preload("res://Cards/carte_aubergine.tscn"), preload("res://Cards/carte_well.tscn"),
 preload("res://Cards/carte_pumpkin.tscn"),preload("res://Cards/shovel.tscn")]
-var epics_cards : Array[PackedScene] = [preload("res://Cards/carte_aubergine.tscn")]
+var epics_cards : Array[PackedScene] = [preload("res://Cards/carte_sprinkler.tscn")]
 var lengendary_cards : Array[PackedScene] = [preload("res://Cards/carte_aubergine.tscn")]
 
 @export var RerollButton : Button
@@ -30,6 +30,7 @@ var currentRerollCost : float = baseRerollCost
 
 func _ready():
 	PlantDescriptionLabel.text = ""
+	DescriptionControlNode.position = Vector2(-400,294)
 	Global.CardPlayed.connect(carte_played)
 	RerollButton.text = "Reroll : " + str(currentRerollCost) + " g"
 	ExpandButton.text = "Expand : " +str(expand_cost) + " g"
@@ -87,6 +88,7 @@ func clear_cards():
 
 
 func _on_reroll_pressed():
+	Global.sun += 100
 	if Global.gold >= currentRerollCost:
 		Global.gold -= currentRerollCost
 		clear_cards()
@@ -101,7 +103,6 @@ var expand_list_index : int = 1
 var expand_cost : float = expand_cost_list[0]
 
 func _on_expand_pressed():
-	#Global.sun += 100
 	if Global.gold > expand_cost:
 		Global.gold -= expand_cost
 		expand_cost = expand_cost_list[expand_list_index]

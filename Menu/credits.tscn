@@ -177,7 +177,7 @@ layout_mode = 2
 
 [node name="Label10" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
-text = "None"
+text = "Ryan T."
 label_settings = ExtResource("4_3u8xv")
 
 [node name="Label11" type="Label" parent="VBoxContainer/GridContainer"]
