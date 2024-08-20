@@ -366,7 +366,7 @@ growManager = NodePath("GrowManager")
 anim = NodePath("AnimationPlayer")
 plantName = "Well"
 isPlant = false
-GoldCost = 10
+GoldCost = 80
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)

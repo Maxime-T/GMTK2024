@@ -24,4 +24,4 @@ func get_highlight_zones() -> Array[Vector2]:
 	return zoneArray
 
 func get_description():
-	return "give +1 water in □ tiles."
+	return "Provides +1 water in □ tiles."

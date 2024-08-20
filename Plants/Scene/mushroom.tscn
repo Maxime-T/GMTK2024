@@ -140,6 +140,10 @@ script = ExtResource("1_cksta")
 meshInstance = NodePath("Mesh")
 growManager = NodePath("GrowManager")
 anim = NodePath("AnimationPlayer")
+plantName = "Mushroom"
+GoldCost = 20
+income = 5.0
+sunProd = 5.0
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 0, 0, 0)
@@ -149,12 +153,11 @@ script = ExtResource("2_oki3b")
 
 [node name="GrowStage" type="Node" parent="GrowManager"]
 script = ExtResource("3_f5ccg")
-time = 10.0
+time = 120.0
 mesh = SubResource("ArrayMesh_bvm8x")
 
 [node name="GrowStage2" type="Node" parent="GrowManager"]
 script = ExtResource("3_f5ccg")
-time = 1.0
 mesh = SubResource("ArrayMesh_r6too")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

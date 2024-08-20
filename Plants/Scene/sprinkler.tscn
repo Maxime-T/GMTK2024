@@ -189,10 +189,12 @@ shadow_mesh = SubResource("ArrayMesh_vdl72")
 script = ExtResource("2_nvfyu")
 plantName = "Sprinkler"
 isPlant = true
-GoldCost = 0
+GoldCost = 500
+pollutionGeneration = 5.0
 
 [node name="Mesh" parent="." index="0"]
 mesh = SubResource("ArrayMesh_8x8lh")
 
 [node name="GrowStage" parent="GrowManager" index="0"]
+time = 9999.0
 mesh = SubResource("ArrayMesh_0n7im")

@@ -112,10 +112,10 @@ meshInstance = NodePath("Mesh")
 growManager = NodePath("GrowManager")
 anim = NodePath("AnimationPlayer")
 plantName = "Carrot"
-GoldCost = 100
+GoldCost = 40
 waterNeeded = 1
-income = 32.0
-sunProd = 16.0
+income = 15.0
+sunProd = 25.0
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
@@ -125,12 +125,11 @@ script = ExtResource("1_kayus")
 
 [node name="GrowStage" type="Node" parent="GrowManager"]
 script = ExtResource("2_yiu74")
-time = 10.0
+time = 120.0
 mesh = SubResource("ArrayMesh_045er")
 
 [node name="GrowStage2" type="Node" parent="GrowManager"]
 script = ExtResource("2_yiu74")
-time = 1.0
 mesh = SubResource("ArrayMesh_045er")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

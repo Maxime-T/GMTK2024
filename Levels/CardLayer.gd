@@ -10,18 +10,23 @@ enum {COMMON, RARE, EPIC, LENGENDARY}
 @export var AutoRerollLAb : Label
 var carteEnMain : int = 5
 
-var common_prob : float = 0.69
+var common_prob : float = 0.64
 var rare_prob : float = 0.25
-var epic_prob : float = 0.05
+var epic_prob : float = 0.10
 var legendary_prob : float = 0.01
 
-var common_cards : Array[PackedScene] = [preload("res://Cards/carte_aubergine.tscn"),preload("res://Cards/CarteTomate.tscn"),preload("res://Cards/carte_cucumber.tscn"),
-preload("res://Cards/carte_corn.tscn"),preload("res://Cards/carte_wheat.tscn"), preload("res://Cards/carte_carrot.tscn"),preload("res://Cards/carte_champi.tscn")]
+var common_cards : Array[PackedScene] = [preload("res://Cards/carte_corn.tscn"),
+preload("res://Cards/carte_cucumber.tscn"),
+preload("res://Cards/carte_champi.tscn")]
 
-var rare_cards : Array[PackedScene] = [preload("res://Cards/carte_aubergine.tscn"), preload("res://Cards/carte_well.tscn"),
-preload("res://Cards/carte_pumpkin.tscn"),preload("res://Cards/shovel.tscn")]
-var epics_cards : Array[PackedScene] = [preload("res://Cards/carte_sprinkler.tscn")]
-var lengendary_cards : Array[PackedScene] = [preload("res://Cards/carte_aubergine.tscn")]
+var rare_cards : Array[PackedScene] = [preload("res://Cards/carte_carrot.tscn"),
+preload("res://Cards/CarteTomate.tscn"), preload("res://Cards/carte_wheat.tscn")]
+
+var epics_cards : Array[PackedScene] = [preload("res://Cards/carte_aubergine.tscn"),
+preload("res://Cards/carte_well.tscn"),
+preload("res://Cards/shovel.tscn")]
+
+var lengendary_cards : Array[PackedScene] = [preload("res://Cards/carte_sprinkler.tscn")]
 
 @export var RerollButton : Button
 @export var ExpandButton : Button
@@ -98,7 +103,7 @@ func _on_reroll_pressed():
 		for i in range(5):
 			generate_cards()
 
-var expand_cost_list : Array[float] = [10, 100, 500, 2500, 5000, 10000, 50000, 99999, 42]
+var expand_cost_list : Array[float] = [10, 50, 100, 500, 1000, 10000, 50000, 99999, 42]
 var expand_list_index : int = 1
 var expand_cost : float = expand_cost_list[0]
 

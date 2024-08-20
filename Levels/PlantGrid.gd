@@ -30,6 +30,7 @@ func _ready():
 	highlight.mesh.size = Vector2(tileSize, tileSize)
 	init_data()
 	create_ground()
+	create_plant(1,1,load("res://Plants/Scene/well.tscn"))
 
 func _physics_process(delta):
 	var mouseTile = get_mouse_tile_position()

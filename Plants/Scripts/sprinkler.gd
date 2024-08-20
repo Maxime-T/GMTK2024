@@ -3,6 +3,10 @@ class_name Sprinkler
 
 var zoneArray : Array[Vector2] 
 
+func get_description():
+	return "Provides +2 water for □ tiles."
+	
+	
 func create_modifier_zones():
 	for v in get_highlight_zones():
 		if (grid.is_inside(pos.x + v.x, pos.y + v.y)):
