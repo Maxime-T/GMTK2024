@@ -16,10 +16,10 @@ var epic_prob : float = 0.05
 var legendary_prob : float = 0.01
 
 var common_cards : Array[PackedScene] = [preload("res://Cards/carte_aubergine.tscn"),preload("res://Cards/CarteTomate.tscn"),preload("res://Cards/carte_cucumber.tscn"),
-preload("res://Cards/carte_corn.tscn"),preload("res://Cards/carte_wheat.tscn"), preload("res://Cards/carte_carrot.tscn")]
+preload("res://Cards/carte_corn.tscn"),preload("res://Cards/carte_wheat.tscn"), preload("res://Cards/carte_carrot.tscn"),preload("res://Cards/carte_champi.tscn")]
 
 var rare_cards : Array[PackedScene] = [preload("res://Cards/carte_aubergine.tscn"), preload("res://Cards/carte_well.tscn"),
-preload("res://Cards/carte_pumpkin.tscn")]
+preload("res://Cards/carte_pumpkin.tscn"),preload("res://Cards/shovel.tscn")]
 var epics_cards : Array[PackedScene] = [preload("res://Cards/carte_aubergine.tscn")]
 var lengendary_cards : Array[PackedScene] = [preload("res://Cards/carte_aubergine.tscn")]
 
@@ -29,6 +29,7 @@ var lengendary_cards : Array[PackedScene] = [preload("res://Cards/carte_aubergin
 var currentRerollCost : float = baseRerollCost
 
 func _ready():
+	PlantDescriptionLabel.text = ""
 	Global.CardPlayed.connect(carte_played)
 	RerollButton.text = "Reroll : " + str(currentRerollCost) + " g"
 	ExpandButton.text = "Expand : " +str(expand_cost) + " g"
