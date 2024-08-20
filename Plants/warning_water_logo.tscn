@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjskn5g8ql5hd"]
+
+[ext_resource type="Texture2D" uid="uid://iyp0knuxjmki" path="res://HUD items/Eau_waring.png" id="1_4fioi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wf72b"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.792157)
+albedo_texture = ExtResource("1_4fioi")
+billboard_mode = 1
+
+[node name="Sprite3D" type="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+material_override = SubResource("StandardMaterial3D_wf72b")
+cast_shadow = 0
+pixel_size = 0.001
+texture = ExtResource("1_4fioi")

@@ -30,8 +30,6 @@ func _ready():
 	highlight.mesh.size = Vector2(tileSize, tileSize)
 	init_data()
 	create_ground()
-	groundData[0][0].water = 1.
-	create_plant(1, 0, tomato)
 
 func _physics_process(delta):
 	var mouseTile = get_mouse_tile_position()
@@ -40,7 +38,10 @@ func _physics_process(delta):
 	if is_tile_free(mouseTile.x, mouseTile.z):
 		highlight.material_override.albedo_color = Color(0.8,0.8,0.8,0.4)
 		for h in highlightArray:
-			h.mesh.material.albedo_color = Color(0.082, 0.957, 0.282, 0.4)
+			if is_inside((highlight.position.x + h.position.x)/tileSize, (highlight.position.z + h.position.z)/tileSize):
+				h.mesh.material.albedo_color = Color(0.082, 0.957, 0.282, 0.4)
+			else:
+				h.mesh.material.albedo_color = Color(0.2, 0.2, 0.2, 0.4)
 	else:
 		highlight.material_override.albedo_color = Color(1,0,0,0.4)
 		for h in highlightArray:

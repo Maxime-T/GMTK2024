@@ -24,7 +24,7 @@ var grid : PlantGrid
 
 var growRate : float = 1 :
 	set(value):
-		growManager.totalGrowTime /= value
+		#growManager.totalGrowTime /= value
 		if value > growRate:
 			growTimer.start(calculate_total_time(stage.time, growRate, waterGrowSpeedRatio))
 		
@@ -35,10 +35,23 @@ var scoreRate : float = 1
 var water : int = 0:
 	set(value):
 		if isPlant:
+			if (value < waterNeeded):
+				if value == 0:
+					noWaterNode.visible = true
+					warningWaterNode.visible = false
+				else:
+					noWaterNode.visible = false
+					warningWaterNode.visible = true
+				
+			else:
+				noWaterNode.visible = false
+				warningWaterNode.visible = false
+			
 			if waterNeeded != 0:
 				waterGrowSpeedRatio = float(value) / float(waterNeeded)
 			else:
 				waterGrowSpeedRatio = 1.
+			#growManager.totalGrowTime /= waterGrowSpeedRatio
 			growTimer.start(calculate_total_time(stage.time, growRate, waterGrowSpeedRatio))
 		water = value
 
@@ -51,7 +64,18 @@ var stages : Array[GrowStage]
 var stageIndex : int = 0
 var growTimer : Timer
 
+var noWaterNode : Sprite3D
+var warningWaterNode : Sprite3D
+
 func _ready():
+	warningWaterNode = load("res://Plants/warning_water_logo.tscn").instantiate()
+	warningWaterNode.visible = false
+	add_child(warningWaterNode)
+	
+	noWaterNode = load("res://Plants/no_water_logo.tscn").instantiate()
+	noWaterNode.visible = false
+	add_child(noWaterNode)
+	
 	create_modifier_zones()
 	rotation.y = randf_range(0, 2*PI)
 	
@@ -97,8 +121,8 @@ var lifetime : float
 
 func _physics_process(delta):
 	if isPlant:
-		lifetime += delta
-		var timeRatio = clamp( lifetime / growManager.totalGrowTime+0.2, 0., 1.)
+		lifetime += delta * waterGrowSpeedRatio * growRate
+		var timeRatio = clamp( lifetime / growManager.totalGrowTime + 0.4, 0.4, 1.)
 		
 		scale = (Vector3(1, 1, 1) * timeRatio * animationScale * clamp(incomeRate,0,2) * clamp(scoreRate,0,2) ).clamp(Vector3(0,0,0), Vector3(3,3,3))
 
