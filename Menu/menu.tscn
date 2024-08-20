@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://diwitowvw2ng0"]
 
-[ext_resource type="Texture2D" uid="uid://brpgoi7ltwck0" path="res://Menu/map.png" id="1_d14ns"]
 [ext_resource type="Script" path="res://Menu/menu.gd" id="1_jlnt2"]
+[ext_resource type="Texture2D" uid="uid://bdb8utuwc8s6n" path="res://Menu/Menu.png" id="2_wuqky"]
 [ext_resource type="Texture2D" uid="uid://cgngt51cvojif" path="res://HUD items/TitreFabaceae.png" id="3_o016b"]
-[ext_resource type="Theme" uid="uid://erwh3ku3ow4c" path="res://Themes & fonts/Theme Boutons.tres" id="3_s3myj"]
+[ext_resource type="Theme" uid="uid://erwh3ku3ow4c" path="res://Themes & fonts/Theme Menu Boutons.tres" id="3_s3myj"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -15,14 +15,14 @@ grow_vertical = 2
 script = ExtResource("1_jlnt2")
 
 [node name="Background" type="TextureRect" parent="."]
-modulate = Color(0.596078, 1, 0.584314, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_d14ns")
+texture = ExtResource("2_wuqky")
+expand_mode = 2
 
 [node name="Title" type="TextureRect" parent="."]
 layout_mode = 1
@@ -45,7 +45,7 @@ anchor_right = 0.8
 anchor_bottom = 0.9
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 40
+theme_override_constants/separation = 70
 alignment = 1
 
 [node name="PlayButton" type="Button" parent="VBoxContainer"]

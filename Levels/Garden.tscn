@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bqto2ddsofr8v"]
+[gd_scene load_steps=41 format=3 uid="uid://bqto2ddsofr8v"]
 
 [ext_resource type="Script" path="res://Levels/Garden.gd" id="1_ua47f"]
 [ext_resource type="Script" path="res://CameraMovement.gd" id="1_uow6t"]
@@ -12,6 +12,9 @@
 [ext_resource type="Script" path="res://Levels/CardLayer.gd" id="9_mnsiy"]
 [ext_resource type="Texture2D" uid="uid://cxpe7wpwo8s8q" path="res://HUD items/Sur_la_vigne.png" id="10_qnsx1"]
 [ext_resource type="Texture2D" uid="uid://d3ko4vwc034gp" path="res://HUD items/Vigne.png" id="11_1fclw"]
+[ext_resource type="Theme" uid="uid://ctlhecc2jg45c" path="res://Themes & fonts/Theme Small Boutons.tres" id="13_lv1rs"]
+[ext_resource type="LabelSettings" uid="uid://dh5lhont4m6sa" path="res://Themes & fonts/Label22.tres" id="14_xw8wq"]
+[ext_resource type="Theme" uid="uid://o2ifm672inos" path="res://Themes & fonts/ThemeRichLabel.tres" id="15_hgncd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lkoac"]
 
@@ -461,11 +464,12 @@ position = Vector2(158, 760)
 scale = Vector2(0.22, 0.22)
 texture = ExtResource("11_1fclw")
 
-[node name="CardsLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("CardsContainer", "PlantGridNode", "PlantDescriptionLabel", "RerollButton", "ExpandButton")]
+[node name="CardsLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("CardsContainer", "PlantGridNode", "PlantDescriptionLabel", "AutoRerollLAb", "RerollButton", "ExpandButton")]
 script = ExtResource("9_mnsiy")
 CardsContainer = NodePath("Control/CardsContainer")
 PlantGridNode = NodePath("../PlantGrid")
 PlantDescriptionLabel = NodePath("Control3/MarginContainer/PlantDescription")
+AutoRerollLAb = NodePath("Control2/LabelAutotReroll")
 RerollButton = NodePath("Control2/MarginContainer/Reroll")
 ExpandButton = NodePath("Control2/MarginContainer2/Expand")
 
@@ -506,21 +510,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/margin_top = 0
 
 [node name="Reroll" type="Button" parent="CardsLayer/Control2/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+focus_mode = 0
+theme = ExtResource("13_lv1rs")
 theme_override_font_sizes/font_size = 26
-text = "Reroll : 666 g"
+text = "Reroll : 777 g"
 
-[node name="Label" type="Label" parent="CardsLayer/Control2"]
-layout_mode = 2
-offset_top = 137.0
-offset_right = 384.0
-offset_bottom = 160.0
+[node name="LabelAutotReroll" type="Label" parent="CardsLayer/Control2"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -62.0
+offset_right = 192.0
+offset_bottom = -39.0
+grow_horizontal = 2
+grow_vertical = 0
 text = "Use 4 cards to auto-reroll"
+label_settings = ExtResource("14_xw8wq")
 horizontal_alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="CardsLayer/Control2"]
@@ -536,6 +550,8 @@ mouse_filter = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+focus_mode = 0
+theme = ExtResource("13_lv1rs")
 theme_override_font_sizes/font_size = 26
 text = "Expand : 666 g"
 
@@ -562,6 +578,7 @@ theme_override_constants/margin_bottom = 40
 [node name="PlantDescription" type="RichTextLabel" parent="CardsLayer/Control3/MarginContainer"]
 layout_mode = 2
 mouse_filter = 2
+theme = ExtResource("15_hgncd")
 text = "jkljlkkjlkjlkjl"
 
 [node name="Background" type="Node3D" parent="."]

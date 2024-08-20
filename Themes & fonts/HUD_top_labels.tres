@@ -1,9 +1,9 @@
 [gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://g3qcsd0b230q"]
 
-[ext_resource type="FontVariation" uid="uid://de7jp8p1536yx" path="res://Themes & fonts/TheNightWatchBOLD.tres" id="1_gblpp"]
+[ext_resource type="FontVariation" uid="uid://bi6br6mf63upq" path="res://Themes & fonts/NightWatchB_Label.tres" id="1_5shba"]
 
 [resource]
-font = ExtResource("1_gblpp")
+font = ExtResource("1_5shba")
 font_size = 26
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)

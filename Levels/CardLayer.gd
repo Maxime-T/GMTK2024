@@ -6,6 +6,9 @@ enum {COMMON, RARE, EPIC, LENGENDARY}
 @export var PlantGridNode : PlantGrid
 @export var PlantDescriptionLabel : RichTextLabel
 
+@export var AutoRerollLAb : Label
+var carteEnMain : int = 5
+
 var common_prob : float = 0.69
 var rare_prob : float = 0.25
 var epic_prob : float = 0.05
@@ -31,6 +34,8 @@ func _ready():
 		generate_cards()
 
 func carte_played():
+	carteEnMain -= 1
+	AutoRerollLAb.text = "Use " + str(carteEnMain-1) + " cards to auto-reroll"
 	if CardsContainer.get_child_count()-1 <= 1:
 		clear_cards()
 		for i in range(5):
@@ -40,6 +45,8 @@ func carte_played():
 			RerollButton.text = "Reroll : " + str(currentRerollCost) + " g"
 
 func generate_cards():
+	carteEnMain = 5
+	AutoRerollLAb.text = "Use " + str(carteEnMain-1) + " cards to auto-reroll"
 	
 	var gen = randf()
 	

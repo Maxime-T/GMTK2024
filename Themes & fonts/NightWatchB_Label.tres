@@ -1,0 +1,9 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://bi6br6mf63upq"]
+
+[ext_resource type="FontFile" uid="uid://6cekf7q1lk1j" path="res://Themes & fonts/TheNightWatch.ttf" id="1_0c830"]
+
+[resource]
+base_font = ExtResource("1_0c830")
+variation_embolden = 0.7
+spacing_top = 2
+spacing_bottom = -5

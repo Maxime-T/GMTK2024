@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://450adnkyaqqx"]
+[gd_scene load_steps=4 format=3 uid="uid://450adnkyaqqx"]
 
 [ext_resource type="Script" path="res://Menu/settings.gd" id="1_cks2g"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_rntgd"]
+[ext_resource type="LabelSettings" uid="uid://dh5lhont4m6sa" path="res://Themes & fonts/Label22.tres" id="2_m5scx"]
+[ext_resource type="FontVariation" uid="uid://bi6br6mf63upq" path="res://Themes & fonts/NightWatchB_Label.tres" id="3_rysh4"]
 
 [node name="SettingsLayer" type="CanvasLayer"]
 
@@ -41,12 +41,13 @@ theme_override_constants/margin_bottom = 60
 [node name="VBoxContainer" type="GridContainer" parent="Settings/MarginContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 40
-theme_override_constants/v_separation = 30
+theme_override_constants/v_separation = 40
 columns = 2
 
 [node name="Label" type="Label" parent="Settings/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Volume"
+label_settings = ExtResource("2_m5scx")
 
 [node name="HSlider" type="HSlider" parent="Settings/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -58,12 +59,14 @@ tick_count = 20
 
 [node name="Label4" type="Label" parent="Settings/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Musique"
-label_settings = SubResource("LabelSettings_rntgd")
+text = "Music"
+label_settings = ExtResource("2_m5scx")
 
 [node name="OptionButton" type="OptionButton" parent="Settings/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_rysh4")
+theme_override_font_sizes/font_size = 22
 item_count = 1
 selected = 0
 popup/item_0/text = "Main theme"
@@ -72,6 +75,7 @@ popup/item_0/id = 0
 [node name="Label2" type="Label" parent="Settings/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Mute"
+label_settings = ExtResource("2_m5scx")
 
 [node name="Mute" type="CheckBox" parent="Settings/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -80,6 +84,7 @@ size_flags_horizontal = 4
 [node name="Label3" type="Label" parent="Settings/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Fullscreen"
+label_settings = ExtResource("2_m5scx")
 
 [node name="Fullscreen" type="CheckBox" parent="Settings/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -89,7 +94,8 @@ size_flags_horizontal = 4
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-theme_override_font_sizes/font_size = 25
+theme_override_fonts/font = ExtResource("3_rysh4")
+theme_override_font_sizes/font_size = 28
 text = "Go to main menu"
 
 [node name="Leave" type="Button" parent="Settings"]

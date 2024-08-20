@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://o2ifm672inos"]
+
+[ext_resource type="FontVariation" uid="uid://bi6br6mf63upq" path="res://Themes & fonts/NightWatchB_Label.tres" id="1_boq0d"]
+
+[resource]
+RichTextLabel/fonts/normal_font = ExtResource("1_boq0d")

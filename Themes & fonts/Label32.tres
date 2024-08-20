@@ -1,6 +1,6 @@
 [gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://drgol7je8ol6l"]
 
-[ext_resource type="FontVariation" uid="uid://de7jp8p1536yx" path="res://Themes & fonts/TheNightWatchBOLD.tres" id="1_bgr5c"]
+[ext_resource type="FontVariation" uid="uid://de7jp8p1536yx" path="res://Themes & fonts/NightWatchB_MenuButton.tres" id="1_bgr5c"]
 
 [resource]
 font = ExtResource("1_bgr5c")

@@ -1,0 +1,38 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://erwh3ku3ow4c"]
+
+[ext_resource type="FontVariation" uid="uid://de7jp8p1536yx" path="res://Themes & fonts/NightWatchB_MenuButton.tres" id="1_uxf13"]
+[ext_resource type="Texture2D" uid="uid://bcm3ne6u4mg3g" path="res://Menu/Bouton_Allumer.png" id="2_nedsu"]
+[ext_resource type="Texture2D" uid="uid://cqkusoil610fr" path="res://Menu/Bouton.png" id="3_4ncfx"]
+[ext_resource type="Texture2D" uid="uid://bha5iw1qm30b3" path="res://Menu/Bouton_pressed.png" id="4_wi7up"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_13lhg"]
+texture = ExtResource("2_nedsu")
+expand_margin_left = 110.0
+expand_margin_top = 50.0
+expand_margin_right = 110.0
+expand_margin_bottom = 50.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b04i2"]
+texture = ExtResource("3_4ncfx")
+expand_margin_left = 110.0
+expand_margin_top = 50.0
+expand_margin_right = 110.0
+expand_margin_bottom = 50.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eltgg"]
+texture = ExtResource("4_wi7up")
+expand_margin_left = 110.0
+expand_margin_top = 50.0
+expand_margin_right = 110.0
+expand_margin_bottom = 50.0
+
+[resource]
+default_font = ExtResource("1_uxf13")
+default_font_size = 50
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 10
+Button/font_sizes/font_size = 64
+Button/fonts/font = ExtResource("1_uxf13")
+Button/styles/hover = SubResource("StyleBoxTexture_13lhg")
+Button/styles/normal = SubResource("StyleBoxTexture_b04i2")
+Button/styles/pressed = SubResource("StyleBoxTexture_eltgg")

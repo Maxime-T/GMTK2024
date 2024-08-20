@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://olk1vcfq20y8"]
+
+[ext_resource type="FontVariation" uid="uid://bi6br6mf63upq" path="res://Themes & fonts/NightWatchB_Label.tres" id="1_ckedx"]
+
+[resource]
+font = ExtResource("1_ckedx")
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)

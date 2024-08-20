@@ -1,7 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://c5t5ibvxcoaaw"]
 
 [ext_resource type="Script" path="res://Cards/card_ui.gd" id="1_g1nst"]
-[ext_resource type="LabelSettings" uid="uid://drxvryb2vhcpj" path="res://Themes & fonts/Label_card_ui.tres" id="2_gjth8"]
 [ext_resource type="Texture2D" uid="uid://dc53w6h5afvvd" path="res://HUD items/Argent.png" id="3_8cf76"]
 [ext_resource type="Texture2D" uid="uid://chxljqlujtj8t" path="res://HUD items/Eau.png" id="4_y0lqs"]
 [ext_resource type="Texture2D" uid="uid://okjkkv0mqnd" path="res://HUD items/Masque_A_Gaz.png" id="5_0hfgj"]
@@ -9,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bc0ecge0pqnya" path="res://HUD items/Soleil.png" id="7_hmw8w"]
 [ext_resource type="Texture2D" uid="uid://cwij1jew0k2bk" path="res://HUD items/Argent+.png" id="8_wlunw"]
 [ext_resource type="Texture2D" uid="uid://b5kmr27mipurn" path="res://Cards/Carte.png" id="9_vvvpl"]
+[ext_resource type="LabelSettings" uid="uid://olk1vcfq20y8" path="res://Themes & fonts/Label_carte.tres" id="10_hsnxa"]
 
 [node name="CardUI" type="Control" node_paths=PackedStringArray("GoldCostLabel", "WaterNeededLabel", "PollutionLabel", "TimeLabel", "SunProdLabel", "IncomeLabel", "CardNameLabel", "GoldCostBox", "WaterCostBox", "PollutionBox", "TimeBox", "SunProdBox", "IncomeBox")]
 custom_minimum_size = Vector2(200, 175)
@@ -84,7 +84,7 @@ texture_filter = 1
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 text = "fgf"
-label_settings = ExtResource("2_gjth8")
+label_settings = ExtResource("10_hsnxa")
 
 [node name="TextureWater" type="Sprite2D" parent="Control2/VBoxContainer/HBoxWater"]
 position = Vector2(41, 10)
@@ -100,7 +100,7 @@ texture_filter = 1
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 text = "fgf"
-label_settings = ExtResource("2_gjth8")
+label_settings = ExtResource("10_hsnxa")
 
 [node name="TexturePollution" type="Sprite2D" parent="Control2/VBoxContainer/HBoxPollution"]
 position = Vector2(40, 9)
@@ -116,7 +116,7 @@ texture_filter = 1
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 text = "fugu"
-label_settings = ExtResource("2_gjth8")
+label_settings = ExtResource("10_hsnxa")
 
 [node name="TextureTime" type="Sprite2D" parent="Control2/VBoxContainer/HBoxTime"]
 position = Vector2(41, 8)
@@ -132,7 +132,7 @@ texture_filter = 1
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 text = "fgf"
-label_settings = ExtResource("2_gjth8")
+label_settings = ExtResource("10_hsnxa")
 
 [node name="TextureSun" type="Sprite2D" parent="Control2/VBoxContainer/HBoxSun"]
 position = Vector2(40, 10)
@@ -147,7 +147,7 @@ texture_filter = 1
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 text = "fgf"
-label_settings = ExtResource("2_gjth8")
+label_settings = ExtResource("10_hsnxa")
 
 [node name="TextureIncome" type="Sprite2D" parent="Control2/VBoxContainer/VBoxIncome"]
 position = Vector2(41, 9)
@@ -177,12 +177,16 @@ offset_left = -20.0
 offset_right = 20.0
 offset_bottom = 40.0
 grow_horizontal = 2
+theme_override_constants/margin_left = -10
 theme_override_constants/margin_top = -100
 
 [node name="NameLabel" type="Label" parent="MarginContainer"]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 text = "ippè"
-label_settings = ExtResource("2_gjth8")
+label_settings = ExtResource("10_hsnxa")
+horizontal_alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -190,6 +194,7 @@ offset_right = 71.0
 offset_bottom = 30.0
 theme_override_constants/margin_left = 7
 theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = -10
 
 [node name="HBoxGold" type="HBoxContainer" parent="MarginContainer2"]
 layout_mode = 2
@@ -206,7 +211,7 @@ custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "fjj"
-label_settings = ExtResource("2_gjth8")
+label_settings = ExtResource("10_hsnxa")
 horizontal_alignment = 1
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]

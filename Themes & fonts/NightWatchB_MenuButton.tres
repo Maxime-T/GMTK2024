@@ -1,0 +1,8 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://de7jp8p1536yx"]
+
+[ext_resource type="FontFile" uid="uid://6cekf7q1lk1j" path="res://Themes & fonts/TheNightWatch.ttf" id="1_avlli"]
+
+[resource]
+base_font = ExtResource("1_avlli")
+variation_embolden = 0.7
+spacing_top = 10
