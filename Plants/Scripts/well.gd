@@ -3,7 +3,6 @@ class_name Well
 
 var zoneArray : Array[Vector2] 
 
-
 func create_modifier_zones():
 	for v in get_highlight_zones():
 		if (grid.is_inside(pos.x + v.x, pos.y + v.y)):

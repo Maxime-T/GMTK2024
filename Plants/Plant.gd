@@ -24,6 +24,7 @@ var grid : PlantGrid
 
 var growRate : float = 1 :
 	set(value):
+		value = clamp(value, 0,1)
 		#growManager.totalGrowTime /= value
 		if isPlant:
 			if value > growRate:
@@ -32,9 +33,14 @@ var growRate : float = 1 :
 		growRate = value
 
 var incomeRate : float = 1
-var scoreRate : float = 1
+var scoreRate : float = 1:
+	set(value):
+		value = max(value, 0)
+		scoreRate = value
+
 var water : int = 0:
 	set(value):
+		value = max(value, 0)
 		if isPlant:
 			if (value < waterNeeded):
 				if value == 0:
