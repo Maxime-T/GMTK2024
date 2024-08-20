@@ -5,6 +5,7 @@ enum {COMMON, RARE, EPIC, LENGENDARY}
 @export var CardsContainer : HBoxContainer
 @export var PlantGridNode : PlantGrid
 @export var PlantDescriptionLabel : RichTextLabel
+@export var DescriptionControlNode : Control
 
 @export var AutoRerollLAb : Label
 var carteEnMain : int = 5
@@ -15,9 +16,10 @@ var epic_prob : float = 0.05
 var legendary_prob : float = 0.01
 
 var common_cards : Array[PackedScene] = [preload("res://Cards/carte_aubergine.tscn"),preload("res://Cards/CarteTomate.tscn"),preload("res://Cards/carte_cucumber.tscn"),
-preload("res://Cards/carte_corn.tscn")]
+preload("res://Cards/carte_corn.tscn"),preload("res://Cards/carte_wheat.tscn"), preload("res://Cards/carte_carrot.tscn")]
 
-var rare_cards : Array[PackedScene] = [preload("res://Cards/carte_aubergine.tscn"), preload("res://Cards/carte_well.tscn")]
+var rare_cards : Array[PackedScene] = [preload("res://Cards/carte_aubergine.tscn"), preload("res://Cards/carte_well.tscn"),
+preload("res://Cards/carte_pumpkin.tscn")]
 var epics_cards : Array[PackedScene] = [preload("res://Cards/carte_aubergine.tscn")]
 var lengendary_cards : Array[PackedScene] = [preload("res://Cards/carte_aubergine.tscn")]
 
@@ -73,6 +75,7 @@ func create_cards(RARITY):
 		LENGENDARY:
 			instance = lengendary_cards[randi_range(0, lengendary_cards.size())-1].instantiate()
 	
+	instance.DescriptionControlNode = DescriptionControlNode
 	instance.PlantGridNode = PlantGridNode
 	instance.PlantDescriptionLabel = PlantDescriptionLabel
 	CardsContainer.add_child.call_deferred(instance)
@@ -97,6 +100,7 @@ var expand_list_index : int = 1
 var expand_cost : float = expand_cost_list[0]
 
 func _on_expand_pressed():
+	#Global.sun += 100
 	if Global.gold > expand_cost:
 		Global.gold -= expand_cost
 		expand_cost = expand_cost_list[expand_list_index]

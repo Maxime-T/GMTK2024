@@ -71,10 +71,11 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 5.0
+offset_top = 2.0
+offset_bottom = 0.499985
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 15
+theme_override_constants/separation = 20
 
 [node name="HBoxWater" type="HBoxContainer" parent="Control2/VBoxContainer"]
 layout_mode = 2
@@ -87,7 +88,7 @@ text = "fgf"
 label_settings = ExtResource("10_hsnxa")
 
 [node name="TextureWater" type="Sprite2D" parent="Control2/VBoxContainer/HBoxWater"]
-position = Vector2(41, 10)
+position = Vector2(41, 13)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("4_y0lqs")
 
@@ -103,7 +104,7 @@ text = "fgf"
 label_settings = ExtResource("10_hsnxa")
 
 [node name="TexturePollution" type="Sprite2D" parent="Control2/VBoxContainer/HBoxPollution"]
-position = Vector2(40, 9)
+position = Vector2(40, 14)
 scale = Vector2(0.11, 0.11)
 texture = ExtResource("5_0hfgj")
 
@@ -119,7 +120,7 @@ text = "fugu"
 label_settings = ExtResource("10_hsnxa")
 
 [node name="TextureTime" type="Sprite2D" parent="Control2/VBoxContainer/HBoxTime"]
-position = Vector2(41, 8)
+position = Vector2(42, 15)
 scale = Vector2(0.11, 0.11)
 texture = ExtResource("6_d3rp4")
 
@@ -135,7 +136,7 @@ text = "fgf"
 label_settings = ExtResource("10_hsnxa")
 
 [node name="TextureSun" type="Sprite2D" parent="Control2/VBoxContainer/HBoxSun"]
-position = Vector2(40, 10)
+position = Vector2(40, 16)
 scale = Vector2(0.11, 0.11)
 texture = ExtResource("7_hmw8w")
 
@@ -150,7 +151,7 @@ text = "fgf"
 label_settings = ExtResource("10_hsnxa")
 
 [node name="TextureIncome" type="Sprite2D" parent="Control2/VBoxContainer/VBoxIncome"]
-position = Vector2(41, 9)
+position = Vector2(41, 15)
 scale = Vector2(0.11, 0.11)
 texture = ExtResource("8_wlunw")
 

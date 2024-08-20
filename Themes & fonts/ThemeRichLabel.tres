@@ -1,6 +1,8 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://o2ifm672inos"]
 
-[ext_resource type="FontVariation" uid="uid://bi6br6mf63upq" path="res://Themes & fonts/NightWatchB_Label.tres" id="1_boq0d"]
+[ext_resource type="FontVariation" uid="uid://bpn0sd08toxjy" path="res://Themes & fonts/NightWatchB_Cards.tres" id="1_2nlft"]
 
 [resource]
-RichTextLabel/fonts/normal_font = ExtResource("1_boq0d")
+RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+RichTextLabel/font_sizes/normal_font_size = 20
+RichTextLabel/fonts/normal_font = ExtResource("1_2nlft")

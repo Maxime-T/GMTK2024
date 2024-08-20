@@ -3,6 +3,7 @@ class_name Card
 
 var PlantGridNode : PlantGrid
 var PlantDescriptionLabel : RichTextLabel
+var DescriptionControlNode : Control
 
 var CardName : String
 var CardDescription : String
@@ -124,8 +125,10 @@ func _on_focus_entered():
 	PlantGridNode.selectedPlant = PlantNode
 	confirmed = true
 	PlantDescriptionLabel.text = CardDescription
+	DescriptionControlNode.position = Vector2(0,294)
 
 
 func _on_focus_exited():
 	confirmed = false
 	PlantDescriptionLabel.text = ""
+	DescriptionControlNode.position = Vector2(-400,294)

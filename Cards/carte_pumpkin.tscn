@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwifpr48bjfw3"]
+
+[ext_resource type="PackedScene" uid="uid://c5t5ibvxcoaaw" path="res://Cards/card_ui.tscn" id="1_oplrn"]
+[ext_resource type="PackedScene" uid="uid://cl5il7oeaqwq0" path="res://Plants/Scene/pumpkin.tscn" id="2_jps0a"]
+[ext_resource type="Texture2D" uid="uid://lipkuvu1u1v1" path="res://Cards/Pumpkin.png" id="3_a3jv7"]
+
+[node name="CartePumpkin" instance=ExtResource("1_oplrn")]
+PlantScene = ExtResource("2_jps0a")
+
+[node name="Background" parent="Control" index="0"]
+offset_left = -68.0
+offset_top = -35.0
+offset_right = 76.0
+offset_bottom = 54.0
+texture = ExtResource("3_a3jv7")
