@@ -11,6 +11,8 @@ func updatePlantModifiers():
 	plant.growRate = growRate
 	plant.incomeRate = incomeRate
 	plant.scoreRate = scoreRate
+	plant.water = water
+	
 
 var growRate : float = 1 :
 	set(value):
@@ -27,6 +29,12 @@ var scoreRate : float = 1:
 		scoreRate = value
 		if plant != null:
 			plant.scoreRate = value
+
+var water : int = 0:
+	set(value):
+		water = value
+		if plant != null:
+			plant.water = value
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

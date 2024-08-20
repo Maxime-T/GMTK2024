@@ -337,11 +337,9 @@ far = 30.0
 script = ExtResource("1_uow6t")
 parent = NodePath("..")
 
-[node name="PlantGrid" type="Node3D" parent="." node_paths=PackedStringArray("highlight", "X_fences", "Z_fences")]
+[node name="PlantGrid" type="Node3D" parent="." node_paths=PackedStringArray("highlight")]
 script = ExtResource("3_ls3q7")
 highlight = NodePath("MeshInstance3D")
-X_fences = NodePath("../Background/InnerFences/FencesP1")
-Z_fences = NodePath("../Background/InnerFences/FencesP2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PlantGrid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00471532, 0)

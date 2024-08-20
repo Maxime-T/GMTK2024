@@ -25,12 +25,23 @@ var growRate : float = 1 :
 	set(value):
 		growManager.totalGrowTime /= value
 		if value > growRate:
-			growTimer.start(growTimer.wait_time / value)
+			growTimer.start(calculate_total_time(stage.time, growRate, waterGrowSpeedRatio))
 		
 		growRate = value
 
 var incomeRate : float = 1
 var scoreRate : float = 1
+var water : int = 0:
+	set(value):
+		if waterNeeded != 0:
+			waterGrowSpeedRatio = float(value) / float(waterNeeded)
+		else:
+			waterGrowSpeedRatio = 1.
+		growTimer.start(calculate_total_time(stage.time, growRate, waterGrowSpeedRatio))
+		print(calculate_total_time(stage.time, growRate, waterGrowSpeedRatio))
+		water = value
+
+var waterGrowSpeedRatio : float = 1.
 
 var pos : Vector2
 
@@ -64,7 +75,8 @@ func next_stage():
 		stage = stages[stageIndex]
 		meshInstance.mesh = stage.mesh
 		
-		growTimer.start(stage.time / growRate)
+		print(calculate_total_time(stage.time, growRate, waterGrowSpeedRatio))
+		growTimer.start( calculate_total_time(stage.time, growRate, waterGrowSpeedRatio) )
 		
 		stageIndex += 1
 
@@ -96,6 +108,7 @@ func _exit_tree():
 	delete_modifier_zones()
 
 func create_modifier_zones():
+	
 	push_warning("tried to call default function")
 
 func delete_modifier_zones():
@@ -105,7 +118,10 @@ func get_highlight_zones() -> Array[Vector2]:
 	push_warning("tried to call default function")
 	return []
 
-
+func calculate_total_time(baseTime : float, growRate, waterGrowSpeedRatio):
+	if growRate == 0 or waterGrowSpeedRatio == 0:
+		return 9999999999
+	return stage.time / (growRate * waterGrowSpeedRatio)
 
 
 

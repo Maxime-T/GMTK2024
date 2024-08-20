@@ -76,10 +76,7 @@ shadow_mesh = SubResource("ArrayMesh_2psd8")
 [node name="Aubergine" instance=ExtResource("1_jw5jb")]
 script = ExtResource("2_3hkd1")
 plantName = "Aubergine"
-GoldCost = 0
-waterNeeded = 0
-income = 0.0
-sunProd = 0.0
+waterNeeded = 1
 animationScale = 0.0
 
 [node name="GrowStage4" parent="GrowManager" index="3"]

@@ -30,7 +30,7 @@ func _ready():
 	highlight.mesh.size = Vector2(tileSize, tileSize)
 	init_data()
 	create_ground()
-	create_plant(0, 0, tomato)
+	groundData[0][0].water = 1.
 	create_plant(1, 0, tomato)
 
 func _physics_process(delta):
@@ -62,8 +62,8 @@ func before_harvest():
 		harvest_plant(plant)
 
 func harvest_plant(plant : Plant):
-	Global.sun += plant.sunProd
-	Global.gold += plant.income
+	Global.sun += plant.sunProd * plant.scoreRate
+	Global.gold += plant.income * plant.incomeRate
 	plant.reset_growth()
 
 func create_plant(x:int, y:int, plantScene:PackedScene):
