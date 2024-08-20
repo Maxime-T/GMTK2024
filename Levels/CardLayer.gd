@@ -10,10 +10,10 @@ enum {COMMON, RARE, EPIC, LENGENDARY}
 @export var AutoRerollLAb : Label
 var carteEnMain : int = 5
 
-var common_prob : float = 0.64
-var rare_prob : float = 0.25
-var epic_prob : float = 0.10
-var legendary_prob : float = 0.01
+var common_prob : float = 0.50
+var rare_prob : float = 0.30
+var epic_prob : float = 0.15
+var legendary_prob : float = 0.05
 
 var common_cards : Array[PackedScene] = [preload("res://Cards/carte_corn.tscn"),
 preload("res://Cards/carte_cucumber.tscn"),
@@ -30,7 +30,7 @@ var lengendary_cards : Array[PackedScene] = [preload("res://Cards/carte_sprinkle
 
 @export var RerollButton : Button
 @export var ExpandButton : Button
-@export var baseRerollCost : float = 100
+@export var baseRerollCost : float = 50
 var currentRerollCost : float = baseRerollCost
 
 func _ready():
@@ -103,7 +103,7 @@ func _on_reroll_pressed():
 		for i in range(5):
 			generate_cards()
 
-var expand_cost_list : Array[float] = [10, 50, 100, 500, 1000, 10000, 50000, 99999, 42]
+var expand_cost_list : Array[float] = [20, 50, 100, 500, 1000, 10000, 50000, 99999, 42]
 var expand_list_index : int = 1
 var expand_cost : float = expand_cost_list[0]
 

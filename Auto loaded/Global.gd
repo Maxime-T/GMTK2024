@@ -4,13 +4,13 @@ var SettingsScene : PackedScene = preload("res://Menu/settings.tscn")
 
 var slider_value = 0
 var muted : bool = false
-var fullscreen : bool = false
+var fullscreen : bool = true
 var music_selected = 0
 
 signal G_S_P_changed
 signal CardPlayed
 
-var gold : float = 100:
+var gold : float = 200:
 	set(val):
 		gold = snapped(val, 0.01)
 		emit_signal("G_S_P_changed")

@@ -8,10 +8,10 @@
 PlantScene = ExtResource("2_tlpxx")
 
 [node name="Background" parent="Control" index="0"]
-offset_left = -40.0
-offset_top = -33.0
-offset_right = 27.0
-offset_bottom = 36.0
+offset_left = -26.0
+offset_top = -40.0
+offset_right = 59.0
+offset_bottom = 43.0
 texture = ExtResource("3_ssxuj")
 
 [node name="ColorRect" parent="." index="2"]

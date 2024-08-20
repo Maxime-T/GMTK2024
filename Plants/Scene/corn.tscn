@@ -344,17 +344,17 @@ script = ExtResource("2_xsdga")
 
 [node name="GrowStage" type="Node" parent="GrowManager"]
 script = ExtResource("3_t2nxf")
-time = 60.0
+time = 30.0
 mesh = SubResource("ArrayMesh_b6txa")
 
 [node name="GrowStage2" type="Node" parent="GrowManager"]
 script = ExtResource("3_t2nxf")
-time = 60.0
+time = 30.0
 mesh = SubResource("ArrayMesh_yi2i8")
 
 [node name="GrowStage3" type="Node" parent="GrowManager"]
 script = ExtResource("3_t2nxf")
-time = 60.0
+time = 30.0
 mesh = SubResource("ArrayMesh_h8hxm")
 
 [node name="GrowStage4" type="Node" parent="GrowManager"]

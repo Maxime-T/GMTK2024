@@ -153,7 +153,7 @@ script = ExtResource("2_oki3b")
 
 [node name="GrowStage" type="Node" parent="GrowManager"]
 script = ExtResource("3_f5ccg")
-time = 120.0
+time = 100.0
 mesh = SubResource("ArrayMesh_bvm8x")
 
 [node name="GrowStage2" type="Node" parent="GrowManager"]

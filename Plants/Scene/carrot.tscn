@@ -125,7 +125,7 @@ script = ExtResource("1_kayus")
 
 [node name="GrowStage" type="Node" parent="GrowManager"]
 script = ExtResource("2_yiu74")
-time = 120.0
+time = 60.0
 mesh = SubResource("ArrayMesh_045er")
 
 [node name="GrowStage2" type="Node" parent="GrowManager"]

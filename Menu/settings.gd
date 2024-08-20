@@ -43,3 +43,4 @@ func _on_option_button_item_selected(index):
 
 func _on_go_to_menu_pressed():
 	get_tree().change_scene_to_file("res://Menu/menu.tscn")
+	queue_free()

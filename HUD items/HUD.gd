@@ -25,7 +25,7 @@ func update_topHUD():
 	SunLabel.text = str(Global.sun)
 	PollutionLabel.text = str(Global.pollution)
 	
-	pixel_up = int(Global.sun) / 10
+	pixel_up = int(Global.sun) / 40
 	if base_y - pixel_up >= max_y:
 		HaricotSprite.position.y = base_y - pixel_up
 	
