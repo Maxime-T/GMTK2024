@@ -19,4 +19,4 @@ func get_highlight_zones() -> Array[Vector2]:
 	return zoneArray
 
 func get_description():
-	return "TEUMATE"
+	return "The □ plants become bigger and earn you 10% more yields."

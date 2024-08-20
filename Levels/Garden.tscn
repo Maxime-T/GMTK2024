@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bqto2ddsofr8v"]
+[gd_scene load_steps=38 format=3 uid="uid://bqto2ddsofr8v"]
 
 [ext_resource type="Script" path="res://Levels/Garden.gd" id="1_ua47f"]
 [ext_resource type="Script" path="res://CameraMovement.gd" id="1_uow6t"]
@@ -8,7 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://dc53w6h5afvvd" path="res://HUD items/Argent.png" id="5_c10gl"]
 [ext_resource type="Texture2D" uid="uid://bc0ecge0pqnya" path="res://HUD items/Soleil.png" id="7_hmvc6"]
 [ext_resource type="Texture2D" uid="uid://okjkkv0mqnd" path="res://HUD items/Masque_A_Gaz.png" id="8_6pitr"]
+[ext_resource type="Texture2D" uid="uid://brmo2bin2pr8o" path="res://HUD items/Jauge.png" id="9_ib5ua"]
 [ext_resource type="Script" path="res://Levels/CardLayer.gd" id="9_mnsiy"]
+[ext_resource type="Texture2D" uid="uid://cxpe7wpwo8s8q" path="res://HUD items/Sur_la_vigne.png" id="10_qnsx1"]
+[ext_resource type="Texture2D" uid="uid://d3ko4vwc034gp" path="res://HUD items/Vigne.png" id="11_1fclw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lkoac"]
 
@@ -337,20 +340,23 @@ far = 30.0
 script = ExtResource("1_uow6t")
 parent = NodePath("..")
 
-[node name="PlantGrid" type="Node3D" parent="." node_paths=PackedStringArray("highlight")]
+[node name="PlantGrid" type="Node3D" parent="." node_paths=PackedStringArray("highlight", "X_fences", "Z_fences")]
 script = ExtResource("3_ls3q7")
 highlight = NodePath("MeshInstance3D")
+X_fences = NodePath("../Background/InnerFences/FencesP1")
+Z_fences = NodePath("../Background/InnerFences/FencesP2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PlantGrid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00471532, 0)
 material_override = SubResource("StandardMaterial3D_vf72q")
 mesh = SubResource("PlaneMesh_mw4o1")
 
-[node name="HUD" type="CanvasLayer" parent="." node_paths=PackedStringArray("GoldLabel", "SunLabel", "PollutionLabel")]
+[node name="HUD" type="CanvasLayer" parent="." node_paths=PackedStringArray("GoldLabel", "SunLabel", "PollutionLabel", "HaricotSprite")]
 script = ExtResource("4_5ayop")
 GoldLabel = NodePath("Resources/HBoxContainer/HBoxGold/GoldLabel")
 SunLabel = NodePath("Resources/HBoxContainer/HBoxSun/SunLabel")
 PollutionLabel = NodePath("Resources/HBoxContainer/HBoxPollution/PollutionLabel")
+HaricotSprite = NodePath("Jauge/MarginContainer/Polygon2D/TextureHaricot")
 
 [node name="Resources" type="Control" parent="HUD"]
 layout_mode = 3
@@ -437,10 +443,12 @@ grow_vertical = 2
 
 [node name="TextureJauge" type="TextureRect" parent="HUD/Jauge/MarginContainer"]
 layout_mode = 2
+texture = ExtResource("9_ib5ua")
 expand_mode = 3
 
 [node name="TextureOver" type="TextureRect" parent="HUD/Jauge/MarginContainer"]
 layout_mode = 2
+texture = ExtResource("10_qnsx1")
 expand_mode = 3
 
 [node name="Polygon2D" type="Polygon2D" parent="HUD/Jauge/MarginContainer"]
@@ -450,6 +458,7 @@ polygon = PackedVector2Array(297.632, 0, 13.6318, 1, 35.6318, 558, 143.632, 566,
 [node name="TextureHaricot" type="Sprite2D" parent="HUD/Jauge/MarginContainer/Polygon2D"]
 position = Vector2(158, 760)
 scale = Vector2(0.22, 0.22)
+texture = ExtResource("11_1fclw")
 
 [node name="CardsLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("CardsContainer", "PlantGridNode", "PlantDescriptionLabel", "RerollButton", "ExpandButton")]
 script = ExtResource("9_mnsiy")
@@ -477,7 +486,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 50
+theme_override_constants/separation = 60
 alignment = 1
 
 [node name="Control2" type="Control" parent="CardsLayer"]

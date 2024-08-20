@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://dnlxg3an21kk2"]
 
-[ext_resource type="Script" path="res://Plants/Plant.gd" id="1_yndg3"]
+[ext_resource type="Script" path="res://Plants/Scripts/corn.gd" id="1_q2774"]
 [ext_resource type="Script" path="res://Plants/GrowManager.gd" id="2_xsdga"]
 [ext_resource type="Script" path="res://Plants/GrowStage.gd" id="3_t2nxf"]
 
@@ -224,16 +224,11 @@ _data = {
 
 [node name="Corn" type="Node3D" node_paths=PackedStringArray("meshInstance", "growManager", "anim")]
 transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-script = ExtResource("1_yndg3")
+script = ExtResource("1_q2774")
 meshInstance = NodePath("Mesh")
 growManager = NodePath("GrowManager")
 anim = NodePath("AnimationPlayer")
 plantName = "Corn"
-GoldCost = 50
-waterNeeded = 2
-income = 25.0
-sunProd = 10.0
-animationScale = 1.0
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
