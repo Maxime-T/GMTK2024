@@ -22,3 +22,6 @@ func get_highlight_zones() -> Array[Vector2]:
 			if !(x==0 and y==0):
 				zoneArray.append(Vector2(x,y))
 	return zoneArray
+
+func get_description():
+	return "give +1 water in □ tiles."
