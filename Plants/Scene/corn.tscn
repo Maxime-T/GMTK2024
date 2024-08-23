@@ -1,8 +1,8 @@
 [gd_scene load_steps=25 format=3 uid="uid://dnlxg3an21kk2"]
 
 [ext_resource type="Script" path="res://Plants/Scripts/corn.gd" id="1_q2774"]
-[ext_resource type="Script" path="res://Plants/GrowManager.gd" id="2_xsdga"]
-[ext_resource type="Script" path="res://Plants/GrowStage.gd" id="3_t2nxf"]
+[ext_resource type="Script" path="res://Plants/Grow/GrowManager.gd" id="2_xsdga"]
+[ext_resource type="Script" path="res://Plants/Grow/GrowStage.gd" id="3_t2nxf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fhsvq"]
 resource_name = "grass1"
@@ -322,18 +322,16 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_f6oc4")
 
-[node name="Corn" type="Node3D" node_paths=PackedStringArray("meshInstance", "growManager", "anim")]
+[node name="Corn" type="Node3D" node_paths=PackedStringArray("growManager", "meshInstance")]
 transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 script = ExtResource("1_q2774")
-meshInstance = NodePath("Mesh")
 growManager = NodePath("GrowManager")
-anim = NodePath("AnimationPlayer")
+meshInstance = NodePath("Mesh")
 plantName = "Corn"
 GoldCost = 35
 waterNeeded = 1
 income = 20.0
 sunProd = 10.0
-animationScale = 1.0
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)

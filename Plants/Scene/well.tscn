@@ -1,8 +1,8 @@
 [gd_scene load_steps=17 format=3 uid="uid://c3eo4hshmusqg"]
 
 [ext_resource type="Script" path="res://Plants/Scripts/well.gd" id="1_m1skh"]
-[ext_resource type="Script" path="res://Plants/GrowManager.gd" id="2_ecv4o"]
-[ext_resource type="Script" path="res://Plants/GrowStage.gd" id="3_g8qo8"]
+[ext_resource type="Script" path="res://Plants/Grow/GrowManager.gd" id="2_ecv4o"]
+[ext_resource type="Script" path="res://Plants/Grow/GrowStage.gd" id="3_g8qo8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sgw7b"]
 resource_name = "lambert8"
@@ -359,11 +359,10 @@ _data = {
 "startStage": SubResource("Animation_easob")
 }
 
-[node name="Well" type="Node3D" node_paths=PackedStringArray("meshInstance", "growManager", "anim")]
+[node name="Well" type="Node3D" node_paths=PackedStringArray("growManager", "meshInstance")]
 script = ExtResource("1_m1skh")
-meshInstance = NodePath("Mesh")
 growManager = NodePath("GrowManager")
-anim = NodePath("AnimationPlayer")
+meshInstance = NodePath("Mesh")
 plantName = "Well"
 isPlant = false
 GoldCost = 80

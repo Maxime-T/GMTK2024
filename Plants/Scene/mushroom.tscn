@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://dym8w2432krdx"]
 
 [ext_resource type="Script" path="res://Plants/Scripts/mushroom.gd" id="1_cksta"]
-[ext_resource type="Script" path="res://Plants/GrowManager.gd" id="2_oki3b"]
-[ext_resource type="Script" path="res://Plants/GrowStage.gd" id="3_f5ccg"]
+[ext_resource type="Script" path="res://Plants/Grow/GrowManager.gd" id="2_oki3b"]
+[ext_resource type="Script" path="res://Plants/Grow/GrowStage.gd" id="3_f5ccg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_72glo"]
 resource_name = "_defaultMat"
@@ -135,11 +135,10 @@ _data = {
 "startStage": SubResource("Animation_easob")
 }
 
-[node name="Mushroom" type="Node3D" node_paths=PackedStringArray("meshInstance", "growManager", "anim")]
+[node name="Mushroom" type="Node3D" node_paths=PackedStringArray("growManager", "meshInstance")]
 script = ExtResource("1_cksta")
-meshInstance = NodePath("Mesh")
 growManager = NodePath("GrowManager")
-anim = NodePath("AnimationPlayer")
+meshInstance = NodePath("Mesh")
 plantName = "Mushroom"
 GoldCost = 20
 income = 5.0

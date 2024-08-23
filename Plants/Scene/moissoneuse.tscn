@@ -164,7 +164,6 @@ script = ExtResource("2_2jqp2")
 plantName = "Combine"
 isPlant = true
 GoldCost = 0
-animationScale = 1.0
 
 [node name="Mesh" parent="." index="0"]
 mesh = SubResource("ArrayMesh_yvube")

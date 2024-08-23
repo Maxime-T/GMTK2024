@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://cw55ao4xb68xc"]
 
-[ext_resource type="Script" path="res://Plants/GrowManager.gd" id="1_kayus"]
+[ext_resource type="Script" path="res://Plants/Grow/GrowManager.gd" id="1_kayus"]
 [ext_resource type="Script" path="res://Plants/Scripts/carrot.gd" id="1_stwbu"]
-[ext_resource type="Script" path="res://Plants/GrowStage.gd" id="2_yiu74"]
+[ext_resource type="Script" path="res://Plants/Grow/GrowStage.gd" id="2_yiu74"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b5xna"]
 resource_name = "grass"
@@ -106,11 +106,10 @@ _data = {
 "startStage": SubResource("Animation_easob")
 }
 
-[node name="Carrot" type="Node3D" node_paths=PackedStringArray("meshInstance", "growManager", "anim")]
+[node name="Carrot" type="Node3D" node_paths=PackedStringArray("growManager", "meshInstance")]
 script = ExtResource("1_stwbu")
-meshInstance = NodePath("Mesh")
 growManager = NodePath("GrowManager")
-anim = NodePath("AnimationPlayer")
+meshInstance = NodePath("Mesh")
 plantName = "Carrot"
 GoldCost = 40
 waterNeeded = 1

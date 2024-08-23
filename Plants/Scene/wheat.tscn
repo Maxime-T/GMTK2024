@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://byx2c3u4c175b"]
 
 [ext_resource type="Script" path="res://Plants/Scripts/Wheat.gd" id="1_thwl4"]
-[ext_resource type="Script" path="res://Plants/GrowManager.gd" id="2_if416"]
-[ext_resource type="Script" path="res://Plants/GrowStage.gd" id="3_0biuy"]
+[ext_resource type="Script" path="res://Plants/Grow/GrowManager.gd" id="2_if416"]
+[ext_resource type="Script" path="res://Plants/Grow/GrowStage.gd" id="3_0biuy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3umoi"]
 resource_name = "grass"
@@ -142,11 +142,10 @@ _data = {
 "startStage": SubResource("Animation_easob")
 }
 
-[node name="Wheat" type="Node3D" node_paths=PackedStringArray("meshInstance", "growManager", "anim")]
+[node name="Wheat" type="Node3D" node_paths=PackedStringArray("growManager", "meshInstance")]
 script = ExtResource("1_thwl4")
-meshInstance = NodePath("Mesh")
 growManager = NodePath("GrowManager")
-anim = NodePath("AnimationPlayer")
+meshInstance = NodePath("Mesh")
 plantName = "Wheat"
 GoldCost = 50
 waterNeeded = 2
