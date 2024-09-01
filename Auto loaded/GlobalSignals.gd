@@ -1,2 +1,2 @@
 extends Node
-signal plant_selected
+signal plant_selected(plant : Plant)

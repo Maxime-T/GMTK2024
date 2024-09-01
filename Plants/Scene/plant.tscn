@@ -5,7 +5,8 @@
 [ext_resource type="Script" path="res://Plants/Grow/GrowManager.gd" id="2_gwp11"]
 [ext_resource type="Script" path="res://Plants/Grow/GrowStage.gd" id="3_r7i2m"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_efksj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ngnas"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_f66d0")
 shader_parameter/enabled = null
@@ -57,7 +58,7 @@ meshInstance = NodePath("Mesh")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
-material_overlay = SubResource("ShaderMaterial_efksj")
+material_overlay = SubResource("ShaderMaterial_ngnas")
 
 [node name="GrowManager" type="Node" parent="."]
 script = ExtResource("2_gwp11")

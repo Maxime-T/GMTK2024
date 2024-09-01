@@ -4,26 +4,113 @@ class_name PlantGrid
 @export var size : int = 16
 @export var tileSize : float = 0.8
 
+var mouseTilePosition : Vector3
+var selectedPlant : Plant
+
+#################################
 var data : Array = []
 
-func _ready():
-	init_data()
-	create_plant(0, 0, null)
+func get_tile(x : int,y : int) -> Tile:
+	x = clamp(x,0,size-1)
+	y = clamp(y,0,size-1)
+	return data[x][y]
 
-func init_data():
+func get_ground(x : int,y : int) -> GroundTile:
+	x = clamp(x,0,size-1)
+	y = clamp(y,0,size-1)
+	return data[x][y].ground
+
+func get_plant(x : int,y : int) -> Plant:
+	x = clamp(x,0,size-1)
+	y = clamp(y,0,size-1)
+	return data[x][y].plant
+
+#################################
+
+
+func _ready():
+	GlobalSignals.connect("plant_selected", _on_plant_selected)
+	
+	
+	init_data()
+	init_ground()
+	create_plant(0, 0, load("res://Plants/Scene/tomato.tscn"))
+
+func _physics_process(delta):
+	mouse_highlight()
+
+func init_data() -> void:
 	for i in range(size):
 		data.append([])
 		for j in range(size):
-			data[i].append(null)
+			data[i].append(Tile.new(null, 0, null))
+	
+	for x in range(6):
+		for y in range(6):
+			get_tile(x,y).locked = false
 
-func create_plant(x:int, y:int, plantScene:PackedScene):
-	var plant = load("res://Plants/Scene/tomato.tscn").instantiate()
+func init_ground()-> void:
+	for x in range(size):
+		for y in range(size):
+			create_ground(x,y, null)
+
+func is_tile_free(x:int, y:int) -> bool:
+	if !get_tile(x,y).locked:
+		if get_plant(x,y) == null:
+			return true
+	return false
+
+func create_plant(x:int, y:int, plantScene:PackedScene) -> void:
+	var plant = plantScene.instantiate()
 	plant.position = get_real_position(x,y)
-	data[x][y] = plant
+	data[x][y].plant = plant
 	add_child(plant)
+
+func create_ground( x:int, y:int, type : PackedScene) -> void:
+	var ground : GroundTile = load("res://Plants/Grounds/ground_tile.tscn").instantiate()
+	
+	data[x][y].ground = ground
+	ground.position = get_real_position(x,y)
+	add_child(ground)
 
 func get_real_position(x:int, y:int) -> Vector3:
 	return Vector3(x*tileSize+tileSize/2, 0, y*tileSize+tileSize/2)
+
+func get_real_position_v(pos : Vector3) -> Vector3:
+	return Vector3(pos.x*tileSize+tileSize/2, 0, pos.y*tileSize+tileSize/2)
+
+func get_mouse_tile_position() -> Vector3:
+	var mouse_pos = get_viewport().get_mouse_position()
+	var camera = get_viewport().get_camera_3d()
+	var ray_origin = camera.project_ray_origin(mouse_pos)
+	var ray_direction = camera.project_ray_normal(mouse_pos)
+	var t = -ray_origin.y / ray_direction.y
+	var intersection_point = ray_origin + t * ray_direction
+	return intersection_point / tileSize
+
+func mouse_highlight() -> void:
+	for x in size:
+		for y in size:
+			get_ground(x,y).set_highlight(Color(0,0,0,0))
+	
+	var pos : Vector3 = get_mouse_tile_position()
+	var ground : GroundTile = get_ground(pos.x, pos.z)
+	ground.set_highlight(Color(0.2,0.2,0.2,0))
+
+func _on_plant_selected(plant : Plant):
+	selectedPlant = plant
+
+class Tile:
+	var plant : Plant
+	var water : int
+	var ground : GroundTile
+	var locked : bool
+	
+	func _init(_plant : Plant, _water : int, _ground : GroundTile):
+		plant = _plant
+		water = _water
+		ground = _ground
+		locked = true
 
 #@export var highlight : MeshInstance3D
 #@export var size : int = 20
@@ -179,5 +266,11 @@ func get_real_position(x:int, y:int) -> Vector3:
 	#if current_size == size:
 		#X_fences.queue_free()
 		#Z_fences.queue_free()
+
+
+
+
+
+
 
 

@@ -36,6 +36,12 @@ var water : int = 0:
 		if plant != null:
 			plant.water = value
 
+
+@onready var baseColor : Color = mesh.surface_get_material(0).albedo_color
+
+func set_highlight(color : Color):
+	mesh.surface_get_material(0).albedo_color = baseColor + color
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

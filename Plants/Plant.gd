@@ -1,8 +1,6 @@
 extends Node3D
 class_name Plant
 
-signal harvestable
-
 @export_category("Setup")
 @export var growManager : GrowManager
 @export var meshInstance : MeshInstance3D
@@ -27,31 +25,35 @@ var growSpeed : float = 1. :
 		growManager.growSpeed = v
 		growSpeed = growManager.growSpeed
 var animationScale : float = 1.
+var harvestable : bool = false
 
 func _ready():
+	play_aparition_animation()
 	meshInstance.mesh = growManager.growStages[0].mesh
 	
 	#Conect Signals
-	growManager.stage_changed.connect(stage_changed)
-	growManager.fully_grown.connect(fully_grown)
+	growManager.stage_changed.connect(on_stage_changed)
+	growManager.fully_grown.connect(on_fully_grown)
 	
 
 func _physics_process(delta):
-	scale = Vector3.ONE * animationScale * growManager.growPourcent
+	scale = Vector3.ONE * animationScale * (growManager.growPourcent+0.2 / (1+0.2))
 
-func stage_changed(newStage : GrowStage):
+func on_stage_changed(newStage : GrowStage):
 	var t = create_tween()
 	t.tween_property(self, "animationScale", 0.3, 0.1)
 	t.tween_callback(meshInstance.set_mesh.bind(newStage.mesh))
 	t.tween_property(self, "animationScale", 1.0, 0.1)
 
-func fully_grown():
+func on_fully_grown():
+	harvestable = true
 	meshInstance.get_material_overlay().set_shader_parameter("enabled",true)
-	harvestable.emit()
 
-
-
-
+func play_aparition_animation() -> void:
+	animationScale = 0
+	var t = create_tween()
+	t.tween_property(self, "animationScale", 1., 0.1)
+	
 #@export_category("Plant Info")
 #@export_group("General")
 #@export var plantName : String

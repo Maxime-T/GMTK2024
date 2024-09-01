@@ -94,7 +94,7 @@ func _ready():
 
 func _unhandled_input(event):
 	if event.is_action_pressed("right click") and has_focus():
-		PlantGridNode.selectedPlant = null
+		GlobalSignals.plant_selected.emit(null)
 		release_focus()
 		confirmed = false
 	##Suprimer seulement si elle est bien placé
@@ -104,7 +104,7 @@ func _unhandled_input(event):
 			PlantGridNode.create_plant(intersection_point.x, intersection_point.z, PlantScene)
 			Global.gold -= GoldCost
 			Global.pollution += PollutionProd
-			PlantGridNode.selectedPlant = null
+			GlobalSignals.plant_selected.emit(null)
 			queue_free()
 			Global.CardPlayed.emit()
 
@@ -121,7 +121,7 @@ func _on_mouse_exited():
 
 
 func _on_focus_entered():
-	PlantGridNode.selectedPlant = PlantNode
+	GlobalSignals.plant_selected.emit(PlantNode)
 	confirmed = true
 	PlantDescriptionLabel.text = CardDescription
 	DescriptionControlNode.position = Vector2(0,294)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bqto2ddsofr8v"]
+[gd_scene load_steps=41 format=3 uid="uid://bqto2ddsofr8v"]
 
 [ext_resource type="Script" path="res://Levels/Garden.gd" id="1_ua47f"]
 [ext_resource type="Script" path="res://CameraMovement.gd" id="1_uow6t"]
@@ -39,13 +39,6 @@ sdfgi_min_cell_size = 5.0
 glow_enabled = true
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.01
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vf72q"]
-transparency = 1
-albedo_color = Color(1, 1, 1, 0.1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_mw4o1"]
-size = Vector2(0.8, 0.8)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1408b"]
 resource_name = "grass"
@@ -348,11 +341,6 @@ plantGrid = NodePath("../../PlantGrid")
 
 [node name="PlantGrid" type="Node3D" parent="."]
 script = ExtResource("3_ls3q7")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="PlantGrid"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00471532, 0)
-material_override = SubResource("StandardMaterial3D_vf72q")
-mesh = SubResource("PlaneMesh_mw4o1")
 
 [node name="HUD" type="CanvasLayer" parent="." node_paths=PackedStringArray("GoldLabel", "SunLabel", "PollutionLabel", "HaricotSprite")]
 script = ExtResource("4_5ayop")
