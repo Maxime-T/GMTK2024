@@ -266,11 +266,3 @@ class Tile:
 	#if current_size == size:
 		#X_fences.queue_free()
 		#Z_fences.queue_free()
-
-
-
-
-
-
-
-

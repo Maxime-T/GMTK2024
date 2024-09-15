@@ -22,6 +22,7 @@ boot_splash/minimum_display_time=1500
 
 Global="*res://Auto loaded/Global.gd"
 Music="*res://Menu/music.tscn"
+GlobalSignals="*res://Auto loaded/GlobalSignals.gd"
 
 [display]
 
@@ -107,18 +108,10 @@ ZoomOut={
 
 [rendering]
 
-lights_and_shadows/directional_shadow/size=8192
-lights_and_shadows/directional_shadow/soft_shadow_filter_quality=5
-lights_and_shadows/directional_shadow/16_bits=false
-lights_and_shadows/positional_shadow/soft_shadow_filter_quality=4
 global_illumination/voxel_gi/quality=1
 environment/ssao/quality=3
 environment/ssil/quality=3
 environment/screen_space_reflection/roughness_quality=3
 environment/subsurface_scattering/subsurface_scattering_quality=3
 global_illumination/sdfgi/frames_to_converge=3
-anti_aliasing/quality/msaa_3d=3
-lights_and_shadows/positional_shadow/atlas_16_bits=false
-lights_and_shadows/positional_shadow/atlas_quadrant_0_subdiv=4
-lights_and_shadows/positional_shadow/atlas_quadrant_1_subdiv=4
-lights_and_shadows/positional_shadow/atlas_quadrant_2_subdiv=4
+anti_aliasing/quality/msaa_3d=2
