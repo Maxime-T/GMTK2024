@@ -19,13 +19,21 @@ class_name Plant
 @export var sunProd : float = 0
 
 var gridPos : Vector2 = Vector2()
+
+#MODIFIERS
 var water : int = 0
 var growSpeed : float = 1. :
 	set(v):
 		growManager.growSpeed = v
 		growSpeed = growManager.growSpeed
+
+var scoreRate : float = 1.
+var incomeRate : float = 1.
+
+#######
 var animationScale : float = 1.
 var harvestable : bool = false
+var pauseScaleUpdate : bool = false
 
 func _ready():
 	play_aparition_animation()
@@ -37,23 +45,51 @@ func _ready():
 	
 
 func _physics_process(delta):
-	scale = Vector3.ONE * animationScale * (growManager.growPourcent+0.2 / (1+0.2))
+	update_scale()
+
+func update_scale():
+	if isPlant && !pauseScaleUpdate:
+		scale = Vector3.ONE * animationScale * (growManager.growPourcent+0.2 / (1+0.2))
+	else:
+		scale = Vector3.ONE * animationScale
 
 func on_stage_changed(newStage : GrowStage):
 	var t = create_tween()
+	pauseScaleUpdate = true
 	t.tween_property(self, "animationScale", 0.3, 0.1)
 	t.tween_callback(meshInstance.set_mesh.bind(newStage.mesh))
+	t.tween_callback(set_pause_scale_update.bind(false))
 	t.tween_property(self, "animationScale", 1.0, 0.1)
 
+func set_pause_scale_update(value : bool) -> void:
+	pauseScaleUpdate = value
+
 func on_fully_grown():
-	harvestable = true
-	meshInstance.get_material_overlay().set_shader_parameter("enabled",true)
+	if isPlant:
+		harvestable = true
+		meshInstance.get_material_overlay().set_shader_parameter("enabled",true)
 
 func play_aparition_animation() -> void:
 	animationScale = 0
 	var t = create_tween()
 	t.tween_property(self, "animationScale", 1., 0.1)
+
+func play_disparition_animation() -> void:
+	var t = create_tween()
+	t.tween_property(self, "animationScale", 0.2, 0.1)
+
+func harvest():
+	if harvestable:
+		Global.sun += sunProd * scoreRate
+		Global.gold += income * incomeRate
+		reset_growth()
+
+func reset_growth():
+	growManager.reset()
+	meshInstance.get_material_overlay().set_shader_parameter("enabled", false)
+	harvestable = false
 	
+
 #@export_category("Plant Info")
 #@export_group("General")
 #@export var plantName : String
@@ -205,8 +241,3 @@ func delete_modifier_zones():
 func get_highlight_zones() -> Array[Vector2]:
 	push_warning("tried to call default function")
 	return []
-
-
-
-
-

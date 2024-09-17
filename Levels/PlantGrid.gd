@@ -38,6 +38,14 @@ func _ready():
 
 func _physics_process(delta):
 	mouse_highlight()
+	click_input()
+
+func click_input() -> void:
+	if Input.is_action_just_pressed("click"):
+		var pos : Vector3 = get_mouse_tile_position()
+		var plant : Plant = get_plant(pos.x,pos.z)
+		if plant != null:
+			plant.harvest()
 
 func init_data() -> void:
 	for i in range(size):
@@ -94,8 +102,12 @@ func mouse_highlight() -> void:
 			get_ground(x,y).set_highlight(Color(0,0,0,0))
 	
 	var pos : Vector3 = get_mouse_tile_position()
-	var ground : GroundTile = get_ground(pos.x, pos.z)
-	ground.set_highlight(Color(0.2,0.2,0.2,0))
+	if is_inbound(pos.x, pos.z):
+		var tile : Tile = get_tile(pos.x, pos.z)
+		tile.ground.set_highlight(Color(0.2,0.2,0.2,0))
+
+func is_inbound(x : float, y : float) -> bool:
+	return (x>=0 && x<size) && (y>=0 && y<size)
 
 func _on_plant_selected(plant : Plant):
 	selectedPlant = plant

@@ -19,8 +19,6 @@ var growSpeed : float = 1. :
 	set(v):
 		growSpeed = max(v, 0)
 
-
-
 func _ready():
 	update_grow_stage()
 	totalGrowTime = calculate_grow_time()
@@ -28,9 +26,6 @@ func _ready():
 
 func _physics_process(delta):
 	grow(delta)
-
-
-
 
 func update_grow_stage() -> void:
 	for child in get_children():
@@ -61,3 +56,8 @@ func calculate_grow_time():
 		if child is GrowStage:
 			totalTime += child.time
 	return totalTime
+
+func reset():
+	time = 0
+	index = 0
+	emit_signal("stage_changed", growStages[0])
