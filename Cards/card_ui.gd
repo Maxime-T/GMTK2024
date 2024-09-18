@@ -68,12 +68,12 @@ func _ready():
 	if PollutionProd == 0:
 		PollutionBox.queue_free()
 	
-	SunProd = PlantNode.sunProd
+	SunProd = PlantNode.baseSunProd
 	SunProdLabel.text = str(SunProd)
 	if SunProd == 0:
 		SunProdBox.queue_free()
 	
-	Income = PlantNode.income
+	Income = PlantNode.baseIncome
 	IncomeLabel.text = str(Income)
 	if Income == 0:
 		IncomeBox.queue_free()

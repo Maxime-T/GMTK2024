@@ -29,6 +29,7 @@ func get_plant(x : int,y : int) -> Plant:
 
 
 func _ready():
+	
 	GlobalSignals.connect("plant_selected", _on_plant_selected)
 	
 	
@@ -117,6 +118,8 @@ class Tile:
 	var water : int
 	var ground : GroundTile
 	var locked : bool
+	
+	var modifiers : Array 
 	
 	func _init(_plant : Plant, _water : int, _ground : GroundTile):
 		plant = _plant

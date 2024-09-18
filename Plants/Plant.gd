@@ -15,20 +15,17 @@ class_name Plant
 @export var pollutionGeneration : float = 0
 
 @export_group("Production")
-@export var income : float = 0
-@export var sunProd : float = 0
+@export var baseIncome : float = 0
+@export var baseSunProd : float = 0
 
 var gridPos : Vector2 = Vector2()
 
 #MODIFIERS
-var water : int = 0
-var growSpeed : float = 1. :
-	set(v):
-		growManager.growSpeed = v
-		growSpeed = growManager.growSpeed
+var water : ModifiableValue = ModifiableValue.new(0)
+var growSpeed : ModifiableValue = ModifiableValue.new(1, func(v) : growManager.growSpeed = v)
 
-var scoreRate : float = 1.
-var incomeRate : float = 1.
+var income : ModifiableValue = ModifiableValue.new(baseIncome)
+var score : ModifiableValue = ModifiableValue.new(baseSunProd)
 
 #######
 var animationScale : float = 1.
@@ -36,6 +33,14 @@ var harvestable : bool = false
 var pauseScaleUpdate : bool = false
 
 func _ready():
+	########## OBSERVABLE
+	water = ModifiableValue.new(0)
+	growSpeed = ModifiableValue.new(1, func(v) : growManager.growSpeed = v)
+	
+	income = ModifiableValue.new(baseIncome)
+	score = ModifiableValue.new(baseSunProd)
+	#########
+
 	play_aparition_animation()
 	meshInstance.mesh = growManager.growStages[0].mesh
 	
@@ -80,8 +85,9 @@ func play_disparition_animation() -> void:
 
 func harvest():
 	if harvestable:
-		Global.sun += sunProd * scoreRate
-		Global.gold += income * incomeRate
+		#print(income.calculate_value())
+		#Global.sun += score.calculate_value()
+		Global.gold += income.calculate_value()
 		reset_growth()
 
 func reset_growth():
