@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ep5lbnrrrbuf"
-valid=false
+path="res://.godot/imported/crop_carrot.fbx-a16a3b0a8ce496075cc4d3f1996cc48d.scn"
 
 [deps]
 
 source_file="res://Plants/Meshes/Kenny usefull/crop_carrot.fbx"
+dest_files=["res://.godot/imported/crop_carrot.fbx-a16a3b0a8ce496075cc4d3f1996cc48d.scn"]
 
 [params]
 

@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://p2bxqktg2n0x"
-valid=false
+path="res://.godot/imported/VRAIMENT_NIQUE_KENNY.fbx-b9b3be0fceb63bbe6e7d0fe81d87a57d.scn"
 
 [deps]
 
 source_file="res://Plants/Meshes/Corns/VRAIMENT_NIQUE_KENNY.fbx"
+dest_files=["res://.godot/imported/VRAIMENT_NIQUE_KENNY.fbx-b9b3be0fceb63bbe6e7d0fe81d87a57d.scn"]
 
 [params]
 
