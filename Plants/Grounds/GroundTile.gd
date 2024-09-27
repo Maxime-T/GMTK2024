@@ -1,6 +1,10 @@
 extends MeshInstance3D
 class_name GroundTile
 
+var water
+
+
+
 
 
 @onready var baseColor : Color = mesh.surface_get_material(0).albedo_color

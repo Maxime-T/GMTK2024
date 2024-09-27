@@ -15,9 +15,6 @@ shader_parameter/enabled = null
 
 [node name="Tomato" instance=ExtResource("1_ass87")]
 plantName = "Tomato"
-GoldCost = 10
-baseIncome = 5.0
-baseSunProd = 5.0
 
 [node name="Mesh" parent="." index="0"]
 material_overlay = SubResource("ShaderMaterial_k65rq")

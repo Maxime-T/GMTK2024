@@ -58,28 +58,28 @@ func _ready():
 	CardName = PlantNode.plantName
 	CardNameLabel.text = CardName
 	
-	GoldCost = PlantNode.GoldCost
+	GoldCost = PlantNode.stats.goldCost.calculate_value()
 	GoldCostLabel.text = str(GoldCost)
 	if GoldCost == 0:
 		GoldCostBox.queue_free()
 	
-	PollutionProd = PlantNode.pollutionGeneration
+	PollutionProd = PlantNode.stats.pollutionGeneration.calculate_value()
 	PollutionLabel.text = str(PollutionProd)
 	if PollutionProd == 0:
 		PollutionBox.queue_free()
 	
-	SunProd = PlantNode.baseSunProd
+	SunProd = PlantNode.stats.score.calculate_value()
 	SunProdLabel.text = str(SunProd)
 	if SunProd == 0:
 		SunProdBox.queue_free()
 	
-	Income = PlantNode.baseIncome
+	Income = PlantNode.stats.score.calculate_value()
 	IncomeLabel.text = str(Income)
 	if Income == 0:
 		IncomeBox.queue_free()
 	
 	#REAL PLANT SPECIFIC
-	waterNeeded = PlantNode.waterNeeded
+	waterNeeded = PlantNode.stats.waterNeeded.calculate_value()
 	WaterNeededLabel.text = str(waterNeeded)
 	if waterNeeded == 0:
 		WaterCostBox.queue_free()

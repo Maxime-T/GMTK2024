@@ -1,12 +1,12 @@
-extends Node
+extends Resource
 class_name ModifiableValue
 
 signal modified(newValue)
 
-var baseValue : float
+@export var baseValue : float
 var setFunction : Callable
 
-func _init(_baseValue : float, _setFunction : Callable = func(value):null) -> void:
+func _init(_baseValue : float = 0., _setFunction : Callable = func(value):null) -> void:
 	baseValue = _baseValue
 	setFunction = _setFunction
 

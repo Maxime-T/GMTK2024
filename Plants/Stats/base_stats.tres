@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="Stats" load_steps=10 format=3 uid="uid://x1mgqylk0183"]
+
+[ext_resource type="Script" path="res://Plants/Stats/ModifiableValue.gd" id="1_mry0n"]
+[ext_resource type="Script" path="res://Plants/Stats/Stats.gd" id="2_eesvw"]
+
+[sub_resource type="Resource" id="Resource_o6nml"]
+script = ExtResource("1_mry0n")
+baseValue = 0.0
+
+[sub_resource type="Resource" id="Resource_mf7wv"]
+script = ExtResource("1_mry0n")
+baseValue = 0.0
+
+[sub_resource type="Resource" id="Resource_l04ee"]
+script = ExtResource("1_mry0n")
+baseValue = 0.0
+
+[sub_resource type="Resource" id="Resource_hjnte"]
+script = ExtResource("1_mry0n")
+baseValue = 0.0
+
+[sub_resource type="Resource" id="Resource_s5pdu"]
+script = ExtResource("1_mry0n")
+baseValue = 0.0
+
+[sub_resource type="Resource" id="Resource_2nqsu"]
+script = ExtResource("1_mry0n")
+baseValue = 5.0
+
+[sub_resource type="Resource" id="Resource_qg1nm"]
+script = ExtResource("1_mry0n")
+baseValue = 0.0
+
+[resource]
+script = ExtResource("2_eesvw")
+GoldCost = SubResource("Resource_o6nml")
+waterNeeded = SubResource("Resource_qg1nm")
+pollutionGeneration = SubResource("Resource_hjnte")
+income = SubResource("Resource_l04ee")
+score = SubResource("Resource_s5pdu")
+water = SubResource("Resource_2nqsu")
+growSpeed = SubResource("Resource_mf7wv")

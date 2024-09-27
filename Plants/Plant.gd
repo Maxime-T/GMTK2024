@@ -5,27 +5,13 @@ class_name Plant
 @export var growManager : GrowManager
 @export var meshInstance : MeshInstance3D
 
-@export_category("Plant Data")
-@export var plantName : String
+@export_category("Plant Info")
+@export var plantName : String = ""
 @export var isPlant : bool = true
 
-@export_group("Costs")
-@export var GoldCost : int = 0
-@export var waterNeeded : int = 0
-@export var pollutionGeneration : float = 0
-
-@export_group("Production")
-@export var baseIncome : float = 0
-@export var baseSunProd : float = 0
+@export var stats : Stats
 
 var gridPos : Vector2 = Vector2()
-
-#MODIFIERS
-var water : ModifiableValue = ModifiableValue.new(0)
-var growSpeed : ModifiableValue = ModifiableValue.new(1, func(v) : growManager.growSpeed = v)
-
-var income : ModifiableValue = ModifiableValue.new(baseIncome)
-var score : ModifiableValue = ModifiableValue.new(baseSunProd)
 
 #######
 var animationScale : float = 1.
@@ -34,11 +20,7 @@ var pauseScaleUpdate : bool = false
 
 func _ready():
 	########## OBSERVABLE
-	water = ModifiableValue.new(0)
-	growSpeed = ModifiableValue.new(1, func(v) : growManager.growSpeed = v)
-	
-	income = ModifiableValue.new(baseIncome)
-	score = ModifiableValue.new(baseSunProd)
+	stats.growSpeed.setFunction = func(v) : growManager.growSpeed = v
 	#########
 
 	play_aparition_animation()
@@ -47,7 +29,6 @@ func _ready():
 	#Conect Signals
 	growManager.stage_changed.connect(on_stage_changed)
 	growManager.fully_grown.connect(on_fully_grown)
-	
 
 func _physics_process(delta):
 	update_scale()
@@ -87,7 +68,7 @@ func harvest():
 	if harvestable:
 		#print(income.calculate_value())
 		#Global.sun += score.calculate_value()
-		Global.gold += income.calculate_value()
+		Global.gold += stats.income.calculate_value()
 		reset_growth()
 
 func reset_growth():
