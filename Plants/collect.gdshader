@@ -5,9 +5,9 @@ uniform bool enabled;
 void vertex() {
 	UV.x = VERTEX.x;
 	UV.y = VERTEX.y;
-	
+
 	VERTEX += NORMAL * 0.0006;
-	
+
 }
 
 void fragment() {

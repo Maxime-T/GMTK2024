@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b6pgis0vsfswl"
-valid=false
+path="res://.godot/imported/Va_DORMIR.fbx-07f273c38f6deb5d5fc98ddcc085e136.scn"
 
 [deps]
 
 source_file="res://Plants/Meshes/Corns/Va_DORMIR.fbx"
+dest_files=["res://.godot/imported/Va_DORMIR.fbx-07f273c38f6deb5d5fc98ddcc085e136.scn"]
 
 [params]
 
