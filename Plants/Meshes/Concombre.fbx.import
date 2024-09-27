@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://uum408xdxpif"
-path="res://.godot/imported/Concombre.fbx-0ae9a1e47a5fbf8f41c049415cab29eb.scn"
+valid=false
 
 [deps]
 
 source_file="res://Plants/Meshes/Concombre.fbx"
-dest_files=["res://.godot/imported/Concombre.fbx-0ae9a1e47a5fbf8f41c049415cab29eb.scn"]
 
 [params]
 

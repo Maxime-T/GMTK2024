@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dulssejxb50rk"
-path="res://.godot/imported/haricot.fbx-fcba5faad7f0c0bb36b51cb80beda1a8.scn"
+valid=false
 
 [deps]
 
 source_file="res://Plants/Meshes/haricot.fbx"
-dest_files=["res://.godot/imported/haricot.fbx-fcba5faad7f0c0bb36b51cb80beda1a8.scn"]
 
 [params]
 

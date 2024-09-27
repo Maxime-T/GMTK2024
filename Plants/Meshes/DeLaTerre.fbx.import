@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://wk53gxqdp358"
-path="res://.godot/imported/DeLaTerre.fbx-0b31f047bbc0cf57aeaa17c24365ca42.scn"
+valid=false
 
 [deps]
 
 source_file="res://Plants/Meshes/DeLaTerre.fbx"
-dest_files=["res://.godot/imported/DeLaTerre.fbx-0b31f047bbc0cf57aeaa17c24365ca42.scn"]
 
 [params]
 

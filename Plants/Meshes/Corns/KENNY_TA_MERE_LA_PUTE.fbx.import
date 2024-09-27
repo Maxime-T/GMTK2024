@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b53gykbwnapt6"
-path="res://.godot/imported/KENNY_TA_MERE_LA_PUTE.fbx-6a242cfd98c36ad7588b7e4fae19e37d.scn"
+valid=false
 
 [deps]
 
 source_file="res://Plants/Meshes/Corns/KENNY_TA_MERE_LA_PUTE.fbx"
-dest_files=["res://.godot/imported/KENNY_TA_MERE_LA_PUTE.fbx-6a242cfd98c36ad7588b7e4fae19e37d.scn"]
 
 [params]
 

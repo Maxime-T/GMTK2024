@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dqvs2bi2ctmme"
-path="res://.godot/imported/crop_turnip.fbx-5f6f6088021fc8676fd98b8a297bf470.scn"
+valid=false
 
 [deps]
 
 source_file="res://Plants/Meshes/Kenny usefull/crop_turnip.fbx"
-dest_files=["res://.godot/imported/crop_turnip.fbx-5f6f6088021fc8676fd98b8a297bf470.scn"]
 
 [params]
 

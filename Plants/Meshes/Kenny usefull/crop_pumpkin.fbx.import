@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://fdtt5xalwmey"
-path="res://.godot/imported/crop_pumpkin.fbx-23377dfff7b36d562907fa2f2c9cad19.scn"
+valid=false
 
 [deps]
 
 source_file="res://Plants/Meshes/Kenny usefull/crop_pumpkin.fbx"
-dest_files=["res://.godot/imported/crop_pumpkin.fbx-23377dfff7b36d562907fa2f2c9cad19.scn"]
 
 [params]
 

@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://clkjcytiel7r0"
-path="res://.godot/imported/tomates.fbx-f9b0364b3189e991b66c96e14c59315f.scn"
+valid=false
 
 [deps]
 
 source_file="res://Plants/Meshes/tomates.fbx"
-dest_files=["res://.godot/imported/tomates.fbx-f9b0364b3189e991b66c96e14c59315f.scn"]
 
 [params]
 

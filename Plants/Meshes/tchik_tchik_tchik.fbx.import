@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ccw3kcs44lfde"
-path="res://.godot/imported/tchik_tchik_tchik.fbx-758aa16f5039424cff548a2d49e84430.scn"
+valid=false
 
 [deps]
 
 source_file="res://Plants/Meshes/tchik_tchik_tchik.fbx"
-dest_files=["res://.godot/imported/tchik_tchik_tchik.fbx-758aa16f5039424cff548a2d49e84430.scn"]
 
 [params]
 

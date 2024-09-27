@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://db328bku7v082"
-path="res://.godot/imported/Aubergine.fbx-9117159b2a3f7552377f64ee11b8f9ca.scn"
+valid=false
 
 [deps]
 
 source_file="res://Plants/Meshes/Aubergine.fbx"
-dest_files=["res://.godot/imported/Aubergine.fbx-9117159b2a3f7552377f64ee11b8f9ca.scn"]
 
 [params]
 
