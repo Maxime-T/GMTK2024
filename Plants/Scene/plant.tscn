@@ -108,3 +108,7 @@ script = ExtResource("2_gwp11")
 script = ExtResource("3_r7i2m")
 time = 20.0
 mesh = SubResource("ArrayMesh_63two")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
