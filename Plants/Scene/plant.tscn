@@ -1,49 +1,21 @@
-[gd_scene load_steps=19 format=4 uid="uid://v40mr0h2dcb7"]
+[gd_scene load_steps=11 format=4 uid="uid://v40mr0h2dcb7"]
 
 [ext_resource type="Script" path="res://Plants/Plant.gd" id="1_70vi6"]
 [ext_resource type="Shader" path="res://Plants/collect.gdshader" id="2_f66d0"]
 [ext_resource type="Script" path="res://Plants/Grow/GrowManager.gd" id="2_gwp11"]
-[ext_resource type="Script" path="res://Plants/Stats/ModifiableValue.gd" id="2_lt5bq"]
 [ext_resource type="Script" path="res://Plants/Stats/Stats.gd" id="3_k3i71"]
 [ext_resource type="Script" path="res://Plants/Grow/GrowStage.gd" id="3_r7i2m"]
 
-[sub_resource type="Resource" id="Resource_83thw"]
-script = ExtResource("2_lt5bq")
-baseValue = 0.0
-
-[sub_resource type="Resource" id="Resource_54xl2"]
-script = ExtResource("2_lt5bq")
-baseValue = 1.0
-
-[sub_resource type="Resource" id="Resource_n3ilb"]
-script = ExtResource("2_lt5bq")
-baseValue = 0.0
-
-[sub_resource type="Resource" id="Resource_ie7lq"]
-script = ExtResource("2_lt5bq")
-baseValue = 0.0
-
-[sub_resource type="Resource" id="Resource_vyx0g"]
-script = ExtResource("2_lt5bq")
-baseValue = 0.0
-
-[sub_resource type="Resource" id="Resource_uwcxi"]
-script = ExtResource("2_lt5bq")
-baseValue = 0.0
-
-[sub_resource type="Resource" id="Resource_u4yo2"]
-script = ExtResource("2_lt5bq")
-baseValue = 0.0
-
 [sub_resource type="Resource" id="Resource_tygnu"]
+resource_local_to_scene = true
 script = ExtResource("3_k3i71")
-goldCost = SubResource("Resource_83thw")
-waterNeeded = SubResource("Resource_u4yo2")
-pollutionGeneration = SubResource("Resource_ie7lq")
-income = SubResource("Resource_n3ilb")
-score = SubResource("Resource_vyx0g")
-water = SubResource("Resource_uwcxi")
-growSpeed = SubResource("Resource_54xl2")
+goldCost:baseValue = 0.0
+waterNeeded:baseValue = 0.0
+pollutionGeneration:baseValue = 0.0
+income:baseValue = 0.0
+score:baseValue = 0.0
+water:baseValue = 0.0
+growSpeed:baseValue = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ngnas"]
 resource_local_to_scene = true
@@ -108,7 +80,3 @@ script = ExtResource("2_gwp11")
 script = ExtResource("3_r7i2m")
 time = 20.0
 mesh = SubResource("ArrayMesh_63two")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
