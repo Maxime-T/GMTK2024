@@ -22,7 +22,7 @@ func _unhandled_input(event):
 	##Suprimer seulement si elle est bien placé
 	if event.is_action_pressed("click") and confirmed:
 		var intersection_point = PlantGridNode.get_mouse_tile_position()
-		if PlantGridNode.is_inside(intersection_point.x, intersection_point.z) and Global.gold >= GoldCost:
+		if PlantGridNode.is_inbound(intersection_point.x, intersection_point.z) and Global.gold >= GoldCost:
 			if PlantGridNode.data[intersection_point.x][intersection_point.z] != null:
 				PlantGridNode.data[intersection_point.x][intersection_point.z].queue_free()
 				PlantGridNode.data[intersection_point.x][intersection_point.z] = null

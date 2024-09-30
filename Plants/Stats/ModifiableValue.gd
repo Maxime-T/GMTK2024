@@ -28,7 +28,6 @@ func calculate_value() -> float:
 	for flatMod in modifiers:
 		if flatMod.type == Modifier.TYPE.FLAT:
 			flat += flatMod.value
-	
 	return base*mult + flat
 
 func emit_value() -> void:
@@ -36,11 +35,11 @@ func emit_value() -> void:
 	setFunction.call(value)
 	modified.emit(value)
 
-func removeModifier(mod : Modifier):
+func remove_modifier(mod : Modifier):
 	modifiers.erase(mod)
 	emit_value()
 
-func addModifier(origin : Node, type : Modifier.TYPE, value : float):
+func add_modifier(origin : Node, type : Modifier.TYPE, value : float):
 	var mod = Modifier.new(origin, type, value)
 	modifiers.append(mod)
 	emit_value()
@@ -57,19 +56,3 @@ func removeAllModifersFromOrigin(origin : Node):
 func removeAllModifiers():
 	modifiers.clear()
 	emit_value()
-
-class Modifier:
-	var origin : Node
-	var type : TYPE
-	var value : float
-
-	func _init(_origin : Node, _type : TYPE, _value : float) -> void:
-		origin = _origin
-		type = _type
-		value = _value
-	
-	enum TYPE {
-		BASE,
-		MULT,
-		FLAT
-	}

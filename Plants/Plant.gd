@@ -12,6 +12,7 @@ class_name Plant
 @export var stats : Stats
 
 var gridPos : Vector2 = Vector2()
+var plantGrid : PlantGrid
 
 #######
 var animationScale : float = 1.
@@ -22,7 +23,8 @@ func _ready():
 	########## OBSERVABLE
 	stats.growSpeed.setFunction = func(v) : growManager.growSpeed = v
 	#########
-
+	add_modifiers()
+	
 	play_aparition_animation()
 	meshInstance.mesh = growManager.growStages[0].mesh
 	
@@ -75,7 +77,24 @@ func reset_growth():
 	growManager.reset()
 	meshInstance.get_material_overlay().set_shader_parameter("enabled", false)
 	harvestable = false
+
+func get_adjacent_tile(v : Vector2) -> PlantGrid.Tile:
+	return plantGrid.get_tile(gridPos.x+v.x, gridPos.y+v.y)
+
+@onready var values = stats.get_property_list().filter(func(e): return e.class_name == &"ModifiableValue")
+func update_modifiers(mods : Array[PlantGrid.Tile.TileModifier]):
+	for modifiable in values:
+		print(modifiable)
+		(stats.get(modifiable.name) as ModifiableValue).removeAllModifiers()
 	
+	for m in mods:
+		var modifiableValue : ModifiableValue = stats.get(m.property) as ModifiableValue
+		modifiableValue.add_modifier(m.mod.origin, m.mod.type, m.mod.value)
+
+
+
+
+
 
 #@export_category("Plant Info")
 #@export_group("General")
@@ -219,11 +238,9 @@ func reset_growth():
 #DEFAULTS ######################################################
 
 
-func create_modifier_zones():
+func add_modifiers():
 	push_warning("tried to call default function")
 
-func delete_modifier_zones():
-	push_warning("tried to call default function")
 
 func get_highlight_zones() -> Array[Vector2]:
 	push_warning("tried to call default function")

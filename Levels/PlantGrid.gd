@@ -10,32 +10,32 @@ var selectedPlant : Plant
 #################################
 var data : Array = []
 
-func get_tile(x : int,y : int) -> Tile:
-	x = clamp(x,0,size-1)
-	y = clamp(y,0,size-1)
-	return data[x][y]
+func get_tile(x : int, y : int) -> Tile:
+	if is_inbound(x,y):
+		return data[x][y]
+	return null
 
-func get_ground(x : int,y : int) -> GroundTile:
-	x = clamp(x,0,size-1)
-	y = clamp(y,0,size-1)
-	return data[x][y].ground
+func get_ground(x : int, y : int) -> GroundTile:
+	if is_inbound(x,y):
+		return data[x][y].ground
+	return null
 
 func get_plant(x : int,y : int) -> Plant:
-	x = clamp(x,0,size-1)
-	y = clamp(y,0,size-1)
-	return data[x][y].plant
+	if is_inbound(x,y):
+		return data[x][y].plant
+	return null
 
 #################################
 
 
 func _ready():
-	
 	GlobalSignals.connect("plant_selected", _on_plant_selected)
-	
 	
 	init_data()
 	init_ground()
+	
 	create_plant(0, 0, load("res://Plants/Scene/tomato.tscn"))
+	create_plant(1, 0, load("res://Plants/Scene/tomato.tscn"))
 
 func _physics_process(delta):
 	mouse_highlight()
@@ -44,15 +44,17 @@ func _physics_process(delta):
 func click_input() -> void:
 	if Input.is_action_just_pressed("click"):
 		var pos : Vector3 = get_mouse_tile_position()
-		var plant : Plant = get_plant(pos.x,pos.z)
-		if plant != null:
+		var plant : Plant = get_plant(pos.x ,pos.z)
+		if plant != null && is_inbound(pos.x ,pos.z):
 			plant.harvest()
 
 func init_data() -> void:
 	for i in range(size):
 		data.append([])
 		for j in range(size):
-			data[i].append(Tile.new(null, 0, null))
+			var t = Tile.new(null, null)
+			t.tilePos = Vector2(i,j)
+			data[i].append(t)
 	
 	for x in range(6):
 		for y in range(6):
@@ -70,10 +72,12 @@ func is_tile_free(x:int, y:int) -> bool:
 	return false
 
 func create_plant(x:int, y:int, plantScene:PackedScene) -> void:
-	var plant = plantScene.instantiate()
+	var plant : Plant = plantScene.instantiate()
+	plant.plantGrid = self
+	plant.gridPos = Vector2(x,y)
 	plant.position = get_real_position(x,y)
-	data[x][y].plant = plant
 	add_child(plant)
+	get_tile(x,y).plant = plant
 
 func create_ground( x:int, y:int, type : PackedScene) -> void:
 	var ground : GroundTile = load("res://Plants/Grounds/ground_tile.tscn").instantiate()
@@ -98,10 +102,6 @@ func get_mouse_tile_position() -> Vector3:
 	return intersection_point / tileSize
 
 func mouse_highlight() -> void:
-	for x in size:
-		for y in size:
-			get_ground(x,y).set_highlight(Color(0,0,0,0))
-	
 	var pos : Vector3 = get_mouse_tile_position()
 	if is_inbound(pos.x, pos.z):
 		var tile : Tile = get_tile(pos.x, pos.z)
@@ -114,18 +114,44 @@ func _on_plant_selected(plant : Plant):
 	selectedPlant = plant
 
 class Tile:
-	var plant : Plant
-	var water : int
+	var plant : Plant:
+		set(value):
+			plant = value
+			plant_update_modifiers()
+	
 	var ground : GroundTile
 	var locked : bool
+	var modifiers : Array[TileModifier]
 	
-	var modifiers : Array 
+	var tilePos : Vector2
 	
-	func _init(_plant : Plant, _water : int, _ground : GroundTile):
+	func _init(_plant : Plant, _ground : GroundTile):
 		plant = _plant
-		water = _water
 		ground = _ground
 		locked = true
+	
+	func add_modifier(property : String, mod : Modifier):
+		modifiers.append(TileModifier.new(property, mod))
+		print(tilePos)
+		plant_update_modifiers()
+		if !mod.origin.tree_exited.is_connected(remove_modifier):
+			mod.origin.tree_exited.connect(remove_modifier.bind(mod))
+	
+	func remove_modifier(tileModifier : TileModifier):
+		modifiers.erase(tileModifier)
+		plant_update_modifiers()
+	
+	func plant_update_modifiers():
+		if plant != null:
+			plant.update_modifiers(modifiers)
+	
+	class TileModifier:
+		var property : String
+		var mod : Modifier
+		
+		func _init(_property : String, _mod : Modifier) -> void:
+			property = _property
+			mod = _mod
 
 #@export var highlight : MeshInstance3D
 #@export var size : int = 20

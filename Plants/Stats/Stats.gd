@@ -17,7 +17,6 @@ var water : ModifiableValue
 var growSpeed : ModifiableValue
 
 func _init() -> void:
-	print(get_property_list())
 	resource_local_to_scene = true
 	goldCost = ModifiableValue.new()
 	waterNeeded = ModifiableValue.new()
