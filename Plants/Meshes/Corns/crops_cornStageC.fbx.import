@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cnpj5uvm0pkjy"
-valid=false
+path="res://.godot/imported/crops_cornStageC.fbx-9e9c16fe1a1e1e48289c776d2fbc9e9a.scn"
 
 [deps]
 
 source_file="res://Plants/Meshes/Corns/crops_cornStageC.fbx"
+dest_files=["res://.godot/imported/crops_cornStageC.fbx-9e9c16fe1a1e1e48289c776d2fbc9e9a.scn"]
 
 [params]
 

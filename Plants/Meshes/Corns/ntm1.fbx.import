@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ba60s11nwajqm"
-valid=false
+path="res://.godot/imported/ntm1.fbx-dd353f206893673b44011e3e19a0927d.scn"
 
 [deps]
 
 source_file="res://Plants/Meshes/Corns/ntm1.fbx"
+dest_files=["res://.godot/imported/ntm1.fbx-dd353f206893673b44011e3e19a0927d.scn"]
 
 [params]
 

@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bbjf3pfyc2i8v"
-valid=false
+path="res://.godot/imported/mushroom_redGroup.fbx-6853c221b8353f29c042b2edd0850cdd.scn"
 
 [deps]
 
 source_file="res://Plants/Meshes/Kenny usefull/mushroom_redGroup.fbx"
+dest_files=["res://.godot/imported/mushroom_redGroup.fbx-6853c221b8353f29c042b2edd0850cdd.scn"]
 
 [params]
 
