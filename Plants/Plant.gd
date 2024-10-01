@@ -15,11 +15,12 @@ var gridPos : Vector2 = Vector2()
 var plantGrid : PlantGrid
 
 #######
-var animationScale : float = 1.
+var animationScale : float = 0.
 var harvestable : bool = false
 var pauseScaleUpdate : bool = false
 
 func _ready():
+	scale = Vector3(0,0,0)
 	########## OBSERVABLE
 	stats.growSpeed.setFunction = func(v) : growManager.growSpeed = v
 	#########
@@ -84,7 +85,6 @@ func get_adjacent_tile(v : Vector2) -> PlantGrid.Tile:
 @onready var values = stats.get_property_list().filter(func(e): return e.class_name == &"ModifiableValue")
 func update_modifiers(mods : Array[PlantGrid.Tile.TileModifier]):
 	for modifiable in values:
-		print(modifiable)
 		(stats.get(modifiable.name) as ModifiableValue).removeAllModifiers()
 	
 	for m in mods:
@@ -236,11 +236,8 @@ func update_modifiers(mods : Array[PlantGrid.Tile.TileModifier]):
 
 
 #DEFAULTS ######################################################
-
-
 func add_modifiers():
 	push_warning("tried to call default function")
-
 
 func get_highlight_zones() -> Array[Vector2]:
 	push_warning("tried to call default function")

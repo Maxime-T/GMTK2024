@@ -79,6 +79,10 @@ func create_plant(x:int, y:int, plantScene:PackedScene) -> void:
 	add_child(plant)
 	get_tile(x,y).plant = plant
 
+func remove_plant(x:int, y:int):
+	get_plant(x,y).queue_free()
+	get_tile(x,y).plant = null
+
 func create_ground( x:int, y:int, type : PackedScene) -> void:
 	var ground : GroundTile = load("res://Plants/Grounds/ground_tile.tscn").instantiate()
 	
@@ -131,11 +135,11 @@ class Tile:
 		locked = true
 	
 	func add_modifier(property : String, mod : Modifier):
-		modifiers.append(TileModifier.new(property, mod))
-		print(tilePos)
+		var tileModifier := TileModifier.new(property, mod)
+		modifiers.append(tileModifier)
 		plant_update_modifiers()
 		if !mod.origin.tree_exited.is_connected(remove_modifier):
-			mod.origin.tree_exited.connect(remove_modifier.bind(mod))
+			mod.origin.tree_exited.connect(remove_modifier.bind(tileModifier))
 	
 	func remove_modifier(tileModifier : TileModifier):
 		modifiers.erase(tileModifier)
