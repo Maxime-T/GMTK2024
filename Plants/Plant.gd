@@ -87,10 +87,13 @@ func update_modifiers(mods : Array[PlantGrid.Tile.TileModifier]):
 	for modifiable in values:
 		(stats.get(modifiable.name) as ModifiableValue).removeAllModifiers()
 	
-	for m in mods:
-		var modifiableValue : ModifiableValue = stats.get(m.property) as ModifiableValue
-		modifiableValue.add_modifier(m.mod.origin, m.mod.type, m.mod.value)
-
+	for tile_modifier in mods:
+		var modifiableValue : ModifiableValue = stats.get(tile_modifier.property) as ModifiableValue
+		
+		for target_type in tile_modifier.target_types:
+			if target_type in get_groups(): #Pour get le class_name
+				modifiableValue.add_modifier(tile_modifier.mod.origin, tile_modifier.mod.type, tile_modifier.mod.value)
+				break
 
 
 

@@ -9,10 +9,10 @@
 [sub_resource type="Resource" id="Resource_f1tt6"]
 resource_local_to_scene = true
 script = ExtResource("2_8tai7")
-goldCost:baseValue = 0.0
+goldCost:baseValue = 100.0
 waterNeeded:baseValue = 0.0
 pollutionGeneration:baseValue = 0.0
-income:baseValue = 0.0
+income:baseValue = 100.0
 score:baseValue = 0.0
 water:baseValue = 0.0
 growSpeed:baseValue = 1.0
@@ -87,7 +87,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_y1lmd")
 
-[node name="Carrot" instance=ExtResource("1_onanf")]
+[node name="Carrot" groups=["Carrot"] instance=ExtResource("1_onanf")]
 script = ExtResource("2_bh51o")
 plantName = "Carrot"
 stats = SubResource("Resource_f1tt6")
@@ -96,7 +96,7 @@ stats = SubResource("Resource_f1tt6")
 material_overlay = SubResource("ShaderMaterial_m4u4a")
 
 [node name="GrowStage" parent="GrowManager" index="0"]
-time = 60.0
+time = 5.0
 mesh = SubResource("ArrayMesh_22b7r")
 
 [node name="GrowStage3" type="Node" parent="GrowManager" index="1"]

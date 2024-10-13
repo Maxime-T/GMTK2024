@@ -139,8 +139,8 @@ class Tile:
 		ground = _ground
 		locked = true
 	
-	func add_modifier(property : String, mod : Modifier):
-		var tileModifier := TileModifier.new(property, mod)
+	func add_modifier(property : String, target_types : Array[String], mod : Modifier):
+		var tileModifier := TileModifier.new(property, target_types, mod)
 		modifiers.append(tileModifier)
 		plant_update_modifiers()
 		if !mod.origin.tree_exited.is_connected(remove_modifier):
@@ -157,9 +157,11 @@ class Tile:
 	class TileModifier:
 		var property : String
 		var mod : Modifier
+		var target_types : Array[String]
 		
-		func _init(_property : String, _mod : Modifier) -> void:
+		func _init(_property : String, _target_types : Array[String], _mod : Modifier) -> void:
 			property = _property
+			target_types = _target_types
 			mod = _mod
 
 func expand_map():

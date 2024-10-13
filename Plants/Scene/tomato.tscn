@@ -12,7 +12,7 @@
 [sub_resource type="Resource" id="Resource_by02e"]
 resource_local_to_scene = true
 script = ExtResource("2_j20jf")
-goldCost:baseValue = 5.0
+goldCost:baseValue = 100.0
 waterNeeded:baseValue = 0.0
 pollutionGeneration:baseValue = 0.0
 income:baseValue = 100.0
@@ -26,7 +26,7 @@ render_priority = 0
 shader = ExtResource("2_ijn6a")
 shader_parameter/enabled = null
 
-[node name="Tomato" instance=ExtResource("1_ass87")]
+[node name="Tomato" groups=["tomato"] instance=ExtResource("1_ass87")]
 script = ExtResource("2_uixma")
 plantName = "Tomato"
 stats = SubResource("Resource_by02e")
