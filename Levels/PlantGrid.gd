@@ -65,7 +65,7 @@ func init_data() -> void:
 		for y in range(6):
 			get_tile(x,y).locked = false
 
-func init_ground()-> void:
+func init_ground() -> void:
 	for x in range(size):
 		for y in range(size):
 			create_ground(x,y, null)
