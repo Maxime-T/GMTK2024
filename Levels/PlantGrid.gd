@@ -1,12 +1,17 @@
 extends Node3D
 class_name PlantGrid
 
-@export var size : int = 16
+@export var size : int = 20
 @export var tileSize : float = 0.8
+
+@export var X_fences : Node3D
+@export var Z_fences : Node3D
 
 var mouseTilePosition : Vector3
 var selectedPlant : Plant
 
+var current_size : int = 4
+var current_fence : int = 2
 #################################
 var data : Array = []
 
@@ -157,9 +162,22 @@ class Tile:
 			property = _property
 			mod = _mod
 
+func expand_map():
+	X_fences.position.z += 2*tileSize
+	Z_fences.position.x += 2*tileSize
+	
+	current_size += 2
+	current_fence += 1
+	
+	X_fences.get_node("fence" + str(current_fence)).visible = true
+	Z_fences.get_node("fence" + str(current_fence)).visible = true
+	
+	if current_size == size:
+		X_fences.queue_free()
+		Z_fences.queue_free()
+
 #@export var highlight : MeshInstance3D
 #@export var size : int = 20
-#var current_size : int = 4
 #@export var tileSize : float = 0.8
 #
 #var data : Array = []
@@ -176,9 +194,8 @@ class Tile:
 #
 ##### Gestion des secteurs ####$
 #var map_size : int = 5
-#var current_fence : int = 4
-#@export var X_fences : Node3D
-#@export var Z_fences : Node3D
+
+
 #
 ## Called when the node enters the scene tree for the first time.
 #func _ready():
@@ -294,20 +311,3 @@ class Tile:
 #
 #func is_inside(x,y):
 	#return (x >= 0 && x < current_size && y >= 0 && y < current_size)
-#
-#func expand_map():
-	#X_fences.position.z += 2*tileSize
-	#Z_fences.position.x += 2*tileSize
-	#current_size += 2
-	#X_fences.get_node("fence" + str(current_fence)).visible = true
-	#Z_fences.get_node("fence" + str(current_fence)).visible = true
-	#current_fence += 1
-	#
-	#if current_fence == 8:
-		#X_fences.get_node("fence" + str(current_fence)).visible = true
-		#Z_fences.get_node("fence" + str(current_fence)).visible = true
-		#current_fence += 1
-	#
-	#if current_size == size:
-		#X_fences.queue_free()
-		#Z_fences.queue_free()
