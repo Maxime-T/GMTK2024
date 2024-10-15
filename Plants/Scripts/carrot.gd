@@ -1,11 +1,11 @@
 extends Plant
 class_name Carrot
 
+var carrot_list : Array[Carrot] = []
+
 func add_modifiers():
-	for v in get_highlight_zones():
-		var tile : PlantGrid.Tile = get_adjacent_tile(v)
-		if tile != null:
-			tile.add_modifier("income", ["Carrot"], Modifier.new(self, Modifier.TYPE.MULT, 1))
+	create_carrot_list()
+	update_self_modifier()
 
 func get_highlight_zones() -> Array[Vector2]:
 	var zoneArray : Array[Vector2] = []
@@ -18,6 +18,29 @@ func get_highlight_zones() -> Array[Vector2]:
 
 func get_description():
 	return "Loses -25% score income per other carrots in □ ."
+
+func create_carrot_list():
+	for zone in get_highlight_zones():
+		var tile : PlantGrid.Tile = get_adjacent_tile(zone)
+		if tile != null and tile.plant.is_in_group("Carrot"):
+			carrot_list.append(tile.plant)
+	
+func update_self_modifier():
+	remove_all_modifier_from_source(self)
+	var tile : PlantGrid.Tile = get_adjacent_tile(Vector2(0,0))
+	tile.add_modifier("income", ["Carrot"], Modifier.new(self, Modifier.TYPE.MULT, -0.25 * len(carrot_list)))
+	tile.add_modifier("score", ["Carrot"], Modifier.new(self, Modifier.TYPE.MULT, -0.25 * len(carrot_list)))
+
+func _on_plant_changed(new_plant, old_plant):
+	if old_plant.is_in_group("Carrot"):
+		carrot_list.erase(old_plant)
+		
+	if new_plant.is_in_group("Carrot"):
+		carrot_list.append(new_plant)
+	
+	update_self_modifier()
+	
+
 
 #func create_modifier_zones():
 	#pass

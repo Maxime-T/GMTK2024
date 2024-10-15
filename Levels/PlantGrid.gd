@@ -15,6 +15,52 @@ var current_fence : int = 2
 #################################
 var data : Array = []
 
+
+class Tile:
+	var plant : Plant:
+		set(value):
+			plant = value
+			plant_update_modifiers()
+	
+	var ground : GroundTile
+	var locked : bool
+	var modifiers : Array[TileModifier]
+	
+	var tilePos : Vector2
+	
+	signal plant_change(new_plant, old_plant)
+	
+	func _init(_plant : Plant, _ground : GroundTile):
+		plant = _plant
+		ground = _ground
+		locked = true
+	
+	func add_modifier(property : String, target_types : Array[String], mod : Modifier):
+		var tileModifier := TileModifier.new(property, target_types, mod)
+		modifiers.append(tileModifier)
+		plant_update_modifiers()
+		if !mod.origin.tree_exited.is_connected(remove_modifier):
+			mod.origin.tree_exited.connect(remove_modifier.bind(tileModifier))
+	
+	func remove_modifier(tileModifier : TileModifier):
+		modifiers.erase(tileModifier)
+		plant_update_modifiers()
+	
+	func plant_update_modifiers():
+		if plant != null:
+			plant.update_modifiers(modifiers)
+	
+	class TileModifier:
+		var property : String
+		var mod : Modifier
+		var target_types : Array[String]
+		
+		func _init(_property : String, _target_types : Array[String], _mod : Modifier) -> void:
+			property = _property
+			target_types = _target_types
+			mod = _mod
+
+
 func get_tile(x : int, y : int) -> Tile:
 	if is_inbound(x,y):
 		return data[x][y]
@@ -82,11 +128,17 @@ func create_plant(x:int, y:int, plantScene:PackedScene) -> void:
 	plant.gridPos = Vector2(x,y)
 	plant.position = get_real_position(x,y)
 	add_child(plant)
-	get_tile(x,y).plant = plant
+	
+	var tile := get_tile(x,y)
+	tile.emit_signal("plant_change", plant, tile.plant)
+	tile.plant = plant
+	
 
 func remove_plant(x:int, y:int):
 	get_plant(x,y).queue_free()
-	get_tile(x,y).plant = null
+	var tile := get_tile(x,y)
+	tile.emit_signal("plant_change", null, tile.plant)
+	tile.plant = null
 
 func create_ground( x:int, y:int, type : PackedScene) -> void:
 	var ground : GroundTile = load("res://Plants/Grounds/ground_tile.tscn").instantiate()
@@ -122,47 +174,6 @@ func is_inbound(x : float, y : float) -> bool:
 func _on_plant_selected(plant : Plant):
 	selectedPlant = plant
 
-class Tile:
-	var plant : Plant:
-		set(value):
-			plant = value
-			plant_update_modifiers()
-	
-	var ground : GroundTile
-	var locked : bool
-	var modifiers : Array[TileModifier]
-	
-	var tilePos : Vector2
-	
-	func _init(_plant : Plant, _ground : GroundTile):
-		plant = _plant
-		ground = _ground
-		locked = true
-	
-	func add_modifier(property : String, target_types : Array[String], mod : Modifier):
-		var tileModifier := TileModifier.new(property, target_types, mod)
-		modifiers.append(tileModifier)
-		plant_update_modifiers()
-		if !mod.origin.tree_exited.is_connected(remove_modifier):
-			mod.origin.tree_exited.connect(remove_modifier.bind(tileModifier))
-	
-	func remove_modifier(tileModifier : TileModifier):
-		modifiers.erase(tileModifier)
-		plant_update_modifiers()
-	
-	func plant_update_modifiers():
-		if plant != null:
-			plant.update_modifiers(modifiers)
-	
-	class TileModifier:
-		var property : String
-		var mod : Modifier
-		var target_types : Array[String]
-		
-		func _init(_property : String, _target_types : Array[String], _mod : Modifier) -> void:
-			property = _property
-			target_types = _target_types
-			mod = _mod
 
 func expand_map():
 	X_fences.position.z += 2*tileSize

@@ -1,8 +1,20 @@
-[gd_scene load_steps=12 format=4 uid="uid://wcmsejyfyh7o"]
+[gd_scene load_steps=14 format=4 uid="uid://wcmsejyfyh7o"]
 
-[ext_resource type="PackedScene" uid="uid://ixx5a78bu55b" path="res://Plants/Scene/well.tscn" id="1_pasao"]
+[ext_resource type="PackedScene" uid="uid://c3eo4hshmusqg" path="res://Plants/Scene/well.tscn" id="1_pasao"]
 [ext_resource type="Script" path="res://Plants/Scripts/sprinkler.gd" id="2_nvfyu"]
+[ext_resource type="Script" path="res://Plants/Stats/Stats.gd" id="3_2amde"]
 [ext_resource type="Shader" path="res://Plants/collect.gdshader" id="3_pk1ri"]
+
+[sub_resource type="Resource" id="Resource_rnyj2"]
+resource_local_to_scene = true
+script = ExtResource("3_2amde")
+goldCost:baseValue = 0.0
+waterNeeded:baseValue = 0.0
+pollutionGeneration:baseValue = 0.0
+income:baseValue = 0.0
+score:baseValue = 0.0
+water:baseValue = 0.0
+growSpeed:baseValue = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r4oi4"]
 resource_local_to_scene = true
@@ -195,6 +207,7 @@ shadow_mesh = SubResource("ArrayMesh_vdl72")
 [node name="Sprinkler" instance=ExtResource("1_pasao")]
 script = ExtResource("2_nvfyu")
 plantName = "Sprinkler"
+stats = SubResource("Resource_rnyj2")
 
 [node name="Mesh" parent="." index="0"]
 material_overlay = SubResource("ShaderMaterial_r4oi4")

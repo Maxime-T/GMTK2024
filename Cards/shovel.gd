@@ -33,7 +33,7 @@ func _unhandled_input(event):
 
 func _on_focus_entered():
 	confirmed = true
-	PlantDescriptionLabel.text = "Destroy an object"
+	PlantDescriptionLabel.text = "Destroy an object on one tile."
 	DescriptionControlNode.position = Vector2(0,294)
 
 

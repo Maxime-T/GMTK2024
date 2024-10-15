@@ -1,4 +1,4 @@
-[gd_resource type="ArrayMesh" load_steps=3 format=4 uid="uid://d2mlcjt8rbmi7"]
+[gd_resource type="ArrayMesh" load_steps=3 format=4 uid="uid://diq2hil7wl4j2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v3ixd"]
 resource_name = "lambert2"

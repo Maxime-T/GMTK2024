@@ -32,6 +32,7 @@ func _ready():
 	#Conect Signals
 	growManager.stage_changed.connect(on_stage_changed)
 	growManager.fully_grown.connect(on_fully_grown)
+	link_tiles_signal()
 
 func _physics_process(delta):
 	update_scale()
@@ -91,13 +92,12 @@ func update_modifiers(mods : Array[PlantGrid.Tile.TileModifier]):
 		var modifiableValue : ModifiableValue = stats.get(tile_modifier.property) as ModifiableValue
 		
 		for target_type in tile_modifier.target_types:
-			if target_type in get_groups(): #Pour get le class_name
+			if target_type in get_groups():
 				modifiableValue.add_modifier(tile_modifier.mod.origin, tile_modifier.mod.type, tile_modifier.mod.value)
 				break
 
-
-
-
+func remove_all_modifier_from_source(plant : Plant):
+	pass
 
 #@export_category("Plant Info")
 #@export_group("General")
@@ -245,3 +245,14 @@ func add_modifiers():
 func get_highlight_zones() -> Array[Vector2]:
 	push_warning("tried to call default function")
 	return []
+
+func link_tiles_signal():
+	for zone in get_highlight_zones():
+		var tile : PlantGrid.Tile = get_adjacent_tile(zone)
+		if tile != null:
+			tile.plant_change.connect(_on_plant_changed)
+		
+func _on_plant_changed(new_plant, old_plant):
+	pass
+
+		

@@ -1,8 +1,20 @@
-[gd_scene load_steps=9 format=4 uid="uid://c53cm4bxbisju"]
+[gd_scene load_steps=11 format=4 uid="uid://c53cm4bxbisju"]
 
 [ext_resource type="PackedScene" uid="uid://by1qsb4aiexvw" path="res://Plants/Scene/tomato.tscn" id="1_jw5jb"]
 [ext_resource type="Script" path="res://Plants/Scripts/aubergine.gd" id="2_3hkd1"]
 [ext_resource type="Shader" path="res://Plants/collect.gdshader" id="3_1slck"]
+[ext_resource type="Script" path="res://Plants/Stats/Stats.gd" id="3_asq5y"]
+
+[sub_resource type="Resource" id="Resource_urfpa"]
+resource_local_to_scene = true
+script = ExtResource("3_asq5y")
+goldCost:baseValue = 100.0
+waterNeeded:baseValue = 0.0
+pollutionGeneration:baseValue = 0.0
+income:baseValue = 100.0
+score:baseValue = 0.0
+water:baseValue = 0.0
+growSpeed:baseValue = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l0t6k"]
 resource_local_to_scene = true
@@ -83,6 +95,7 @@ shadow_mesh = SubResource("ArrayMesh_2psd8")
 [node name="Aubergine" instance=ExtResource("1_jw5jb")]
 script = ExtResource("2_3hkd1")
 plantName = "Aubergine"
+stats = SubResource("Resource_urfpa")
 
 [node name="Mesh" parent="." index="0"]
 material_overlay = SubResource("ShaderMaterial_l0t6k")
