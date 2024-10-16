@@ -50,6 +50,12 @@ class Tile:
 		if plant != null:
 			plant.update_modifiers(modifiers)
 	
+	func remove_all_modifier_from_source(plant : Plant):
+		for mod in modifiers:
+			if mod.mod.origin == plant:
+				modifiers.erase(mod)
+		plant_update_modifiers()
+	
 	class TileModifier:
 		var property : String
 		var mod : Modifier
