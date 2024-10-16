@@ -71,7 +71,7 @@ func play_disparition_animation() -> void:
 func harvest():
 	if harvestable:
 		#print(income.calculate_value())
-		#Global.sun += score.calculate_value()
+		Global.sun += stats.score.calculate_value()
 		Global.gold += stats.income.calculate_value()
 		reset_growth()
 
@@ -82,6 +82,11 @@ func reset_growth():
 
 func get_adjacent_tile(v : Vector2) -> PlantGrid.Tile:
 	return plantGrid.get_tile(gridPos.x+v.x, gridPos.y+v.y)
+
+func get_adjacent_plant(tile : PlantGrid.Tile) -> Plant:
+	if tile != null and tile.plant != null:
+		return tile.plant
+	return null
 
 @onready var values = stats.get_property_list().filter(func(e): return e.class_name == &"ModifiableValue")
 func update_modifiers(mods : Array[PlantGrid.Tile.TileModifier]):
