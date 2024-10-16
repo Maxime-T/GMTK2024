@@ -97,7 +97,8 @@ func update_modifiers(mods : Array[PlantGrid.Tile.TileModifier]):
 				break
 
 func remove_all_modifier_from_source(plant : Plant):
-	pass
+	for modifiable in values:
+		(stats.get(modifiable.name) as ModifiableValue).removeAllModifersFromOrigin(plant)
 
 #@export_category("Plant Info")
 #@export_group("General")
