@@ -51,10 +51,16 @@ class Tile:
 			plant.update_modifiers(modifiers)
 	
 	func remove_all_modifier_from_source(plant : Plant):
-		for mod in modifiers:
-			if mod.mod.origin == plant:
-				modifiers.erase(mod)
+		var counter : int = 0
+		for i in range(modifiers.size()):
+			if modifiers[counter].mod.origin == plant:
+				modifiers.erase(modifiers[counter])
+				counter -= 1
+			counter += 1
 		plant_update_modifiers()
+	
+	func debug_print_modifiers():
+		print(modifiers)
 	
 	class TileModifier:
 		var property : String
@@ -65,6 +71,9 @@ class Tile:
 			property = _property
 			target_types = _target_types
 			mod = _mod
+		
+		func _to_string() -> String:
+			return str(property) + " " + str(target_types) + " " + str(mod)
 
 func get_tile(x : int, y : int) -> Tile:
 	if is_inbound(x,y):
@@ -132,7 +141,7 @@ func create_plant(x:int, y:int, plantScene:PackedScene) -> void:
 	plant.plantGrid = self
 	plant.gridPos = Vector2(x,y)
 	plant.position = get_real_position(x,y)
-	add_child(plant)
+	add_child(plant, true)
 	
 	var tile := get_tile(x,y)
 	tile.emit_signal("plant_change", plant, tile.plant)

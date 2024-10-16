@@ -26,9 +26,8 @@ func create_carrot_list():
 			carrot_list.append(plant)
 	
 func update_self_modifier():
-	print(carrot_list)
-	remove_all_modifier_from_source(self)
 	var tile : PlantGrid.Tile = get_adjacent_tile(Vector2(0,0))
+	tile.remove_all_modifier_from_source(self)
 	tile.add_modifier("income", ["Carrot"], Modifier.new(self, Modifier.TYPE.MULT, -0.25 * len(carrot_list)))
 	tile.add_modifier("score", ["Carrot"], Modifier.new(self, Modifier.TYPE.MULT, -0.25 * len(carrot_list)))
 
@@ -42,7 +41,9 @@ func _on_plant_changed(new_plant, old_plant):
 	update_self_modifier()
 	
 
-
+func harvest():
+	get_adjacent_tile(Vector2(0,0)).debug_print_modifiers()
+	super()
 #func create_modifier_zones():
 	#pass
 #

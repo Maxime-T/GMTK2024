@@ -15,3 +15,6 @@ enum TYPE {
 	MULT,
 	FLAT
 }
+
+func _to_string() -> String:
+	return str(origin) + " " + str(type) + " " + str(value)
