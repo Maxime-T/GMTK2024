@@ -21,10 +21,9 @@ func get_description():
 
 func create_carrot_list():
 	for zone in get_highlight_zones():
-		var tile : PlantGrid.Tile = get_adjacent_tile(zone)
-		var plant : Plant = get_adjacent_plant(tile)
+		var plant : Plant = get_adjacent_plant(zone)
 		if plant != null and plant.is_in_group("Carrot"):
-			carrot_list.append(tile.plant)
+			carrot_list.append(plant)
 	
 func update_self_modifier():
 	print(carrot_list)

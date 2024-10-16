@@ -83,7 +83,8 @@ func reset_growth():
 func get_adjacent_tile(v : Vector2) -> PlantGrid.Tile:
 	return plantGrid.get_tile(gridPos.x+v.x, gridPos.y+v.y)
 
-func get_adjacent_plant(tile : PlantGrid.Tile) -> Plant:
+func get_adjacent_plant(vector : Vector2) -> Plant:
+	var tile = get_adjacent_tile(vector)
 	if tile != null and tile.plant != null:
 		return tile.plant
 	return null
