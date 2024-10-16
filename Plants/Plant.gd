@@ -89,6 +89,8 @@ func get_adjacent_plant(vector : Vector2) -> Plant:
 		return tile.plant
 	return null
 
+
+##les modifier de plante ne doivent JAMAIS etre modifier directement, utiliser plutôt les fonction de sa TILE
 @onready var values = stats.get_property_list().filter(func(e): return e.class_name == &"ModifiableValue")
 func update_modifiers(mods : Array[PlantGrid.Tile.TileModifier]):
 	for modifiable in values:
@@ -257,6 +259,5 @@ func link_tiles_signal():
 			tile.plant_change.connect(_on_plant_changed)
 		
 func _on_plant_changed(new_plant, old_plant):
+	push_warning("tried to call default function")
 	pass
-
-		

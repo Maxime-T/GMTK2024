@@ -66,7 +66,6 @@ class Tile:
 			target_types = _target_types
 			mod = _mod
 
-
 func get_tile(x : int, y : int) -> Tile:
 	if is_inbound(x,y):
 		return data[x][y]
