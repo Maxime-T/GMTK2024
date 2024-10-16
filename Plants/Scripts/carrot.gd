@@ -21,21 +21,22 @@ func get_description():
 
 func create_carrot_list():
 	for zone in get_highlight_zones():
-		var tile : PlantGrid.Tile = get_adjacent_tile(zone)
-		if tile != null and tile.plant.is_in_group("Carrot"):
-			carrot_list.append(tile.plant)
+		var plant : Plant = get_adjacent_plant(zone)
+		if plant != null and plant.is_in_group("Carrot"):
+			carrot_list.append(plant)
 	
 func update_self_modifier():
+	print(carrot_list)
 	remove_all_modifier_from_source(self)
 	var tile : PlantGrid.Tile = get_adjacent_tile(Vector2(0,0))
 	tile.add_modifier("income", ["Carrot"], Modifier.new(self, Modifier.TYPE.MULT, -0.25 * len(carrot_list)))
 	tile.add_modifier("score", ["Carrot"], Modifier.new(self, Modifier.TYPE.MULT, -0.25 * len(carrot_list)))
 
 func _on_plant_changed(new_plant, old_plant):
-	if old_plant.is_in_group("Carrot"):
+	if old_plant != null and old_plant.is_in_group("Carrot"):
 		carrot_list.erase(old_plant)
 		
-	if new_plant.is_in_group("Carrot"):
+	if new_plant != null and new_plant.is_in_group("Carrot"):
 		carrot_list.append(new_plant)
 	
 	update_self_modifier()
