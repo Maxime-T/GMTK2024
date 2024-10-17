@@ -7,7 +7,7 @@ signal modified(newValue)
 @export var baseValue : float
 var setFunction : Callable
 
-func _init(_baseValue : float = 0., _setFunction : Callable = func(value):null) -> void:
+func _init(_baseValue : float = 0., _setFunction : Callable = func(_value):null) -> void:
 	baseValue = _baseValue
 	setFunction = _setFunction
 
@@ -28,7 +28,7 @@ func calculate_value() -> float:
 	for flatMod in modifiers:
 		if flatMod.type == Modifier.TYPE.FLAT:
 			flat += flatMod.value
-	return base*mult + flat
+	return max(max(base*mult,0) + flat,0)
 
 func emit_value() -> void:
 	var value : float = calculate_value()

@@ -14,7 +14,3 @@ func update():
 	tween.set_parallel(true)
 	tween.tween_property(self, "position:y",basePosition.y + (ratio) * 12.307, 1.)
 	#tween.tween_property(self, "rotation:y",baseRotation.y + (ratio) * -2*PI * 8, 1.)
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-	

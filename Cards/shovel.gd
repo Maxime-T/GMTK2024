@@ -21,10 +21,10 @@ func _unhandled_input(event):
 		confirmed = false
 	##Suprimer seulement si elle est bien placé
 	if event.is_action_pressed("click") and confirmed:
-		var inter = PlantGridNode.get_mouse_tile_position()
-		if PlantGridNode.is_inbound(inter.x, inter.z) and Global.gold >= GoldCost:
-			if PlantGridNode.get_plant(inter.x,inter.z) != null:
-				PlantGridNode.remove_plant(inter.x, inter.z)
+		var inter := PlantGridNode.get_mouse_tile_position()
+		if PlantGridNode.is_inbound(inter.x, inter.y) and Global.gold >= GoldCost:
+			if PlantGridNode.get_plant(inter.x,inter.y) != null:
+				PlantGridNode.remove_plant(inter.x, inter.y)
 				Global.gold -= GoldCost
 				GlobalSignals.plant_selected.emit(null)
 				queue_free()

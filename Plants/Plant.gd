@@ -251,13 +251,12 @@ func add_modifiers():
 	push_warning("tried to call default function")
 
 func get_highlight_zones() -> Array[Vector2]:
-	push_warning("tried to call default function")
 	return []
 
 func update_self_modifier():
 	push_warning("tried to call default function")
 
-func _on_plant_changed(new_plant, old_plant):
+func _on_plant_changed(_new_plant, _old_plant):
 	push_warning("tried to call default function")
 	pass
 

@@ -75,17 +75,23 @@ class Tile:
 		func _to_string() -> String:
 			return str(property) + " " + str(target_types) + " " + str(mod)
 
-func get_tile(x : int, y : int) -> Tile:
+func get_tile(x : float, y : float) -> Tile:
+	x = round(x)
+	y = round(y)
 	if is_inbound(x,y):
 		return data[x][y]
 	return null
 
-func get_ground(x : int, y : int) -> GroundTile:
+func get_ground(x : float, y : float) -> GroundTile:
+	x = round(x)
+	y = round(y)
 	if is_inbound(x,y):
 		return data[x][y].ground
 	return null
 
-func get_plant(x : int,y : int) -> Plant:
+func get_plant(x : float,y : float) -> Plant:
+	x = round(x)
+	y = round(y)
 	if is_inbound(x,y):
 		return data[x][y].plant
 	return null
@@ -108,9 +114,9 @@ func _physics_process(_delta):
 
 func click_input() -> void:
 	if Input.is_action_just_pressed("click"):
-		var pos : Vector3 = get_mouse_tile_position()
-		var plant : Plant = get_plant(pos.x ,pos.z)
-		if plant != null && is_inbound(pos.x ,pos.z):
+		var pos : Vector2 = get_mouse_tile_position()
+		var plant : Plant = get_plant(pos.x ,pos.y)
+		if plant != null && is_inbound(pos.x ,pos.y):
 			plant.harvest()
 
 func init_data() -> void:
@@ -130,13 +136,18 @@ func init_ground() -> void:
 		for y in range(size):
 			create_ground(x,y, null)
 
-func is_tile_free(x:int, y:int) -> bool:
-	if !get_tile(x,y).locked:
+func is_tile_free(x:float, y:float) -> bool:
+	x = round(x)
+	y = round(y)
+	var tile := get_tile(x,y)
+	if tile != null and !tile.locked:
 		if get_plant(x,y) == null:
 			return true
 	return false
 
-func create_plant(x:int, y:int, plantScene:PackedScene) -> void:
+func create_plant(x:float, y:float, plantScene:PackedScene) -> void:
+	x = round(x)
+	y = round(y)
 	var plant : Plant = plantScene.instantiate()
 	plant.plantGrid = self
 	plant.gridPos = Vector2(x,y)
@@ -147,40 +158,52 @@ func create_plant(x:int, y:int, plantScene:PackedScene) -> void:
 	tile.emit_signal("plant_change", plant, tile.plant)
 	tile.plant = plant
 	
-
-func remove_plant(x:int, y:int):
+func remove_plant(x:float, y:float):
+	x = round(x)
+	y = round(y)
 	var tile := get_tile(x,y)
 	tile.emit_signal("plant_change", null, tile.plant)
 	get_plant(x,y).queue_free()
 	tile.plant = null
 
-func create_ground( x:int, y:int, type : PackedScene) -> void:
+func create_ground( x:int, y:int, _type : PackedScene) -> void:
 	var ground : GroundTile = load("res://Plants/Grounds/ground_tile.tscn").instantiate()
-	
 	data[x][y].ground = ground
 	ground.position = get_real_position(x,y)
 	add_child(ground)
 
-func get_real_position(x:int, y:int) -> Vector3:
+func get_real_position(x:float, y:float) -> Vector3:
+	x = round(x)
+	y = round(y)
 	return Vector3(x*tileSize+tileSize/2, 0, y*tileSize+tileSize/2)
 
 func get_real_position_v(pos : Vector3) -> Vector3:
 	return Vector3(pos.x*tileSize+tileSize/2, 0, pos.y*tileSize+tileSize/2)
 
-func get_mouse_tile_position() -> Vector3:
+func get_mouse_tile_position() -> Vector2:
 	var mouse_pos = get_viewport().get_mouse_position()
 	var camera = get_viewport().get_camera_3d()
 	var ray_origin = camera.project_ray_origin(mouse_pos)
 	var ray_direction = camera.project_ray_normal(mouse_pos)
 	var t = -ray_origin.y / ray_direction.y
-	var intersection_point = ray_origin + t * ray_direction
-	return intersection_point / tileSize
+	var intersection_point : Vector3 = ray_origin + t * ray_direction
+	intersection_point /= tileSize
+	if !is_inbound(intersection_point.x, intersection_point.z):
+		return Vector2(-1,-1)
+	return Vector2(intersection_point.x, intersection_point.z).floor()
 
 func mouse_highlight() -> void:
-	var pos : Vector3 = get_mouse_tile_position()
-	if is_inbound(pos.x, pos.z):
-		var tile : Tile = get_tile(pos.x, pos.z)
+	var pos : Vector2 = get_mouse_tile_position()
+	if is_inbound(pos.x, pos.y):
+		var tile : Tile = get_tile(pos.x, pos.y)
 		tile.ground.set_highlight(Color(0.2,0.2,0.2,0))
+	
+	if selectedPlant != null:
+		for v in selectedPlant.get_highlight_zones():
+			var coord := pos+v
+			var ground := get_ground(coord.x, coord.y)
+			if ground != null:
+				ground.set_highlight(Color(0.1,0.1,0.1,0))
 
 func is_inbound(x : float, y : float) -> bool:
 	return (x>=0 && x<size) && (y>=0 && y<size)

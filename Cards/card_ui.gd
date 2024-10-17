@@ -79,7 +79,7 @@ func _ready():
 		IncomeBox.queue_free()
 	
 	#REAL PLANT SPECIFIC
-	waterNeeded = PlantNode.stats.waterNeeded.calculate_value()
+	waterNeeded = round(PlantNode.stats.waterNeeded.calculate_value())
 	WaterNeededLabel.text = str(waterNeeded)
 	if waterNeeded == 0:
 		WaterCostBox.queue_free()
@@ -99,9 +99,9 @@ func _unhandled_input(event):
 		confirmed = false
 	##Suprimer seulement si elle est bien placé
 	if event.is_action_pressed("click") and confirmed:
-		var intersection_point = PlantGridNode.get_mouse_tile_position()
-		if PlantGridNode.is_tile_free(intersection_point.x, intersection_point.z) and Global.gold >= GoldCost:
-			PlantGridNode.create_plant(intersection_point.x, intersection_point.z, PlantScene)
+		var intersection_point : Vector2 = PlantGridNode.get_mouse_tile_position()
+		if PlantGridNode.is_tile_free(intersection_point.x, intersection_point.y) and Global.gold >= GoldCost:
+			PlantGridNode.create_plant(intersection_point.x, intersection_point.y, PlantScene)
 			Global.gold -= GoldCost
 			Global.pollution += PollutionProd
 			GlobalSignals.plant_selected.emit(null)

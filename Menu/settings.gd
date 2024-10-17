@@ -37,7 +37,7 @@ func _on_fullscreen_toggled(toggled_on):
 		Global.fullscreen = false
 
 
-func _on_option_button_item_selected(index):
+func _on_option_button_item_selected(_index):
 	pass
 
 
