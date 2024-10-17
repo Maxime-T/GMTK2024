@@ -39,8 +39,8 @@ class Tile:
 		var tileModifier := TileModifier.new(property, target_types, mod)
 		modifiers.append(tileModifier)
 		plant_update_modifiers()
-		if !mod.origin.tree_exited.is_connected(remove_modifier):
-			mod.origin.tree_exited.connect(remove_modifier.bind(tileModifier))
+		if !mod.origin.tree_exited.is_connected(remove_all_modifier_from_source):
+			mod.origin.tree_exited.connect(remove_all_modifier_from_source.bind(mod.origin))
 	
 	func remove_modifier(tileModifier : TileModifier):
 		modifiers.erase(tileModifier)
@@ -50,10 +50,10 @@ class Tile:
 		if plant != null:
 			plant.update_modifiers(modifiers)
 	
-	func remove_all_modifier_from_source(plant : Plant):
+	func remove_all_modifier_from_source(source_plant : Plant):
 		var counter : int = 0
 		for i in range(modifiers.size()):
-			if modifiers[counter].mod.origin == plant:
+			if modifiers[counter].mod.origin == source_plant:
 				modifiers.erase(modifiers[counter])
 				counter -= 1
 			counter += 1
@@ -102,7 +102,7 @@ func _ready():
 	create_plant(0, 0, load("res://Plants/Scene/tomato.tscn"))
 	create_plant(1, 0, load("res://Plants/Scene/tomato.tscn"))
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	mouse_highlight()
 	click_input()
 
@@ -149,9 +149,9 @@ func create_plant(x:int, y:int, plantScene:PackedScene) -> void:
 	
 
 func remove_plant(x:int, y:int):
-	get_plant(x,y).queue_free()
 	var tile := get_tile(x,y)
 	tile.emit_signal("plant_change", null, tile.plant)
+	get_plant(x,y).queue_free()
 	tile.plant = null
 
 func create_ground( x:int, y:int, type : PackedScene) -> void:

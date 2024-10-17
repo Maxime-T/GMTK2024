@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=4 uid="uid://c3eo4hshmusqg"]
 
-[ext_resource type="PackedScene" path="res://Plants/Scene/plant.tscn" id="1_tkenc"]
+[ext_resource type="PackedScene" uid="uid://c4j5xbuj2f2xc" path="res://Plants/Scene/plant.tscn" id="1_tkenc"]
 [ext_resource type="Script" path="res://Plants/Stats/Stats.gd" id="2_udcn8"]
 [ext_resource type="Shader" path="res://Plants/collect.gdshader" id="2_xsn8n"]
 

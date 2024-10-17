@@ -34,7 +34,7 @@ func _ready():
 	growManager.fully_grown.connect(on_fully_grown)
 	link_tiles_signal()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	update_scale()
 
 func update_scale():
@@ -70,7 +70,6 @@ func play_disparition_animation() -> void:
 
 func harvest():
 	if harvestable:
-		#print(income.calculate_value())
 		Global.sun += stats.score.calculate_value()
 		Global.gold += stats.income.calculate_value()
 		reset_growth()

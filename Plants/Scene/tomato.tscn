@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://by1qsb4aiexvw"]
 
-[ext_resource type="PackedScene" path="res://Plants/Scene/plant.tscn" id="1_ass87"]
+[ext_resource type="PackedScene" uid="uid://c4j5xbuj2f2xc" path="res://Plants/Scene/plant.tscn" id="1_ass87"]
 [ext_resource type="Shader" path="res://Plants/collect.gdshader" id="2_ijn6a"]
 [ext_resource type="Script" path="res://Plants/Stats/Stats.gd" id="2_j20jf"]
 [ext_resource type="Script" path="res://Plants/Scripts/tomato.gd" id="2_uixma"]
