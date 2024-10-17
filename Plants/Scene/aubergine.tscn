@@ -5,14 +5,14 @@
 [ext_resource type="Shader" path="res://Plants/collect.gdshader" id="3_1slck"]
 [ext_resource type="Script" path="res://Plants/Stats/Stats.gd" id="3_asq5y"]
 
-[sub_resource type="Resource" id="Resource_urfpa"]
+[sub_resource type="Resource" id="Resource_ahflr"]
 resource_local_to_scene = true
 script = ExtResource("3_asq5y")
 goldCost:baseValue = 100.0
 waterNeeded:baseValue = 0.0
 pollutionGeneration:baseValue = 0.0
 income:baseValue = 100.0
-score:baseValue = 0.0
+score:baseValue = 100.0
 water:baseValue = 0.0
 growSpeed:baseValue = 1.0
 
@@ -92,19 +92,13 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_2psd8")
 
-[node name="Aubergine" instance=ExtResource("1_jw5jb")]
+[node name="Aubergine" groups=["Aubergine"] instance=ExtResource("1_jw5jb")]
 script = ExtResource("2_3hkd1")
 plantName = "Aubergine"
-stats = SubResource("Resource_urfpa")
+stats = SubResource("Resource_ahflr")
 
 [node name="Mesh" parent="." index="0"]
 material_overlay = SubResource("ShaderMaterial_l0t6k")
-
-[node name="GrowStage" parent="GrowManager" index="0"]
-time = 30.0
-
-[node name="GrowStage2" parent="GrowManager" index="1"]
-time = 30.0
 
 [node name="GrowStage4" parent="GrowManager" index="3"]
 mesh = SubResource("ArrayMesh_2p81h")

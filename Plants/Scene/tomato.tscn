@@ -26,7 +26,7 @@ render_priority = 0
 shader = ExtResource("2_ijn6a")
 shader_parameter/enabled = null
 
-[node name="Tomato" groups=["tomato"] instance=ExtResource("1_ass87")]
+[node name="Tomato" groups=["Tomato"] instance=ExtResource("1_ass87")]
 script = ExtResource("2_uixma")
 plantName = "Tomato"
 stats = SubResource("Resource_by02e")

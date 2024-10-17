@@ -245,6 +245,9 @@ func update_modifiers(mods : Array[PlantGrid.Tile.TileModifier]):
 
 
 #DEFAULTS ######################################################
+
+var plant_list : Array[Plant] = []
+
 func add_modifiers():
 	push_warning("tried to call default function")
 
@@ -252,12 +255,36 @@ func get_highlight_zones() -> Array[Vector2]:
 	push_warning("tried to call default function")
 	return []
 
+func update_self_modifier():
+	push_warning("tried to call default function")
+
+func _on_plant_changed(new_plant, old_plant):
+	push_warning("tried to call default function")
+	pass
+
 func link_tiles_signal():
 	for zone in get_highlight_zones():
 		var tile : PlantGrid.Tile = get_adjacent_tile(zone)
 		if tile != null:
 			tile.plant_change.connect(_on_plant_changed)
+
+func create_plant_list(accepted_groups : Array[String]):
+	for zone in get_highlight_zones():
+		var plant : Plant = get_adjacent_plant(zone)
+		for group in accepted_groups:
+			if plant != null and plant.is_in_group(group):
+				plant_list.append(plant)
+				break
+
+func update_plant_list(new_plant : Plant, old_plant : Plant, accepted_groups : Array[String]):
+	for group in accepted_groups:
+		if old_plant != null and old_plant.is_in_group(group):
+			plant_list.erase(old_plant)
+			break
 		
-func _on_plant_changed(new_plant, old_plant):
-	push_warning("tried to call default function")
-	pass
+	for group in accepted_groups:
+		if new_plant != null and new_plant.is_in_group(group):
+			plant_list.append(new_plant)
+			break
+	
+	update_self_modifier()

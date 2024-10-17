@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://v40mr0h2dcb7"]
+[gd_scene load_steps=11 format=4 uid="uid://c4j5xbuj2f2xc"]
 
 [ext_resource type="Script" path="res://Plants/Plant.gd" id="1_70vi6"]
 [ext_resource type="Shader" path="res://Plants/collect.gdshader" id="2_f66d0"]

@@ -1,38 +1,28 @@
 extends Plant
-#Time = 5mn -> donne un max de tune, peu de soleil
-#Square -> 8 tiles
 
-#func get_description():
-	#return "Big income! But it takes time...
-#Loses -10% grow rate per □ plants."
-#
-#var zoneArray : Array[Vector2] = \
-#[Vector2(1,0), Vector2(-1,0), Vector2(0,1), Vector2(0,-1),
- #Vector2(1,1), Vector2(-1,1), Vector2(1,-1), Vector2(-1,-1)]
-#
-#
-#func create_modifier_zones():
-	#pass
-#
-#var alreadyCounted : Array[Plant]
-#
-#func _physics_process(delta):
-	#super._physics_process(delta)
-	#var rate = 0.
-	#
-	#for v in zoneArray:
-		#var x = pos.x + v.x
-		#var y = pos.y + v.y
-		#if (grid.is_inside(x, y)):
-			#if grid.data[x][y] is Plant && !alreadyCounted.has(grid.data[x][y]):
-				#alreadyCounted.append(grid.data[x][y])
-				#rate -= 0.1
-		#
-	#growRate += rate
-#
-#func delete_modifier_zones():
-	#pass
-#
-#
-#func get_highlight_zones() -> Array[Vector2]:
-	#return zoneArray
+var zoneArray : Array[Vector2] = [Vector2(1,0), Vector2(-1,0), Vector2(0,1), Vector2(0,-1), Vector2(1,1), Vector2(-1,1), Vector2(1,-1), Vector2(-1,-1)]
+
+func get_description():
+	return "Big income! But it takes time...
+	Loses -10% grow rate per □ plants."
+
+func get_highlight_zones() -> Array[Vector2]:
+	return zoneArray
+
+##
+var tracked_groups : Array[String] = ["Plant"]
+var targeted_groups : Array[String] = ["Aubergine"]
+
+func add_modifiers():
+	create_plant_list(tracked_groups)
+	update_self_modifier()
+
+func _on_plant_changed(new_plant, old_plant):
+	update_plant_list(new_plant, old_plant, tracked_groups)
+##
+
+func update_self_modifier():
+	var tile : PlantGrid.Tile = get_adjacent_tile(Vector2(0,0))
+	tile.remove_all_modifier_from_source(self)
+	print(plant_list)
+	tile.add_modifier("score", targeted_groups, Modifier.new(self, Modifier.TYPE.MULT, -0.1 * len(plant_list)))
