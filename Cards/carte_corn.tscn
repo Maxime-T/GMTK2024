@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ul7vmnqkxpss"]
 
 [ext_resource type="PackedScene" uid="uid://c5t5ibvxcoaaw" path="res://Cards/card_ui.tscn" id="1_vxbjm"]
-[ext_resource type="PackedScene" uid="uid://dnlxg3an21kk2" path="res://Plants/Scene/corn.tscn" id="2_tm6pm"]
+[ext_resource type="PackedScene" uid="uid://dlrixswgstyfw" path="res://Plants/Scene/corn.tscn" id="2_tm6pm"]
 [ext_resource type="Texture2D" uid="uid://blqja37fq41bl" path="res://Cards/Corn.png" id="3_22kog"]
 
 [node name="CarteCorn" instance=ExtResource("1_vxbjm")]

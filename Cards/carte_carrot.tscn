@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://clbtgudm1ia6i"]
 
 [ext_resource type="PackedScene" uid="uid://c5t5ibvxcoaaw" path="res://Cards/card_ui.tscn" id="1_knekx"]
-[ext_resource type="PackedScene" uid="uid://efug10d4girh" path="res://Plants/Scene/carrot.tscn" id="2_0x1a6"]
+[ext_resource type="PackedScene" uid="uid://cw55ao4xb68xc" path="res://Plants/Scene/carrot.tscn" id="2_0x1a6"]
 [ext_resource type="Texture2D" uid="uid://b3lvt1n1epx15" path="res://Cards/Carrot.png" id="3_ewpw7"]
 
 [node name="CarteCarrot" instance=ExtResource("1_knekx")]

@@ -1,4 +1,4 @@
-extends Node3D
+extends GridComponent
 class_name Plant
 
 @export_category("Setup")
@@ -9,9 +9,6 @@ class_name Plant
 @export var plantName : String = ""
 
 @export var stats : Stats
-
-var gridPos : Vector2 = Vector2()
-var plantGrid : PlantGrid
 
 #######
 var animationScale : float = 0.
@@ -75,9 +72,6 @@ func reset_growth():
 	growManager.reset()
 	meshInstance.get_material_overlay().set_shader_parameter("enabled", false)
 	harvestable = false
-
-func get_adjacent_tile(v : Vector2) -> PlantGrid.Tile:
-	return plantGrid.get_tile(gridPos.x+v.x, gridPos.y+v.y)
 
 func get_adjacent_plant(vector : Vector2) -> Plant:
 	var tile = get_adjacent_tile(vector)

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6d64c87tjgd"]
+
+[ext_resource type="Script" path="res://Tools/Scripts/tools.gd" id="1_atpkw"]
+[ext_resource type="Shader" path="res://Plants/collect.gdshader" id="2_7fhe1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2fnrp"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_7fhe1")
+shader_parameter/enabled = null
+
+[node name="Tools" type="Node3D"]
+script = ExtResource("1_atpkw")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+material_overlay = SubResource("ShaderMaterial_2fnrp")
