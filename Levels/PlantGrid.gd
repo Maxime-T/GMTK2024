@@ -110,10 +110,17 @@ func _ready():
 
 func _physics_process(_delta):
 	mouse_highlight()
-	click_input()
+	#click_input()
 
 func click_input() -> void:
 	if Input.is_action_just_pressed("click"):
+		var pos : Vector2 = get_mouse_tile_position()
+		var plant : Plant = get_plant(pos.x ,pos.y)
+		if plant != null && is_inbound(pos.x ,pos.y):
+			plant.harvest()
+
+func _unhandled_input(event):
+	if (event is InputEventMouseMotion and event.pressure == 1) or event.is_action_pressed("click"):
 		var pos : Vector2 = get_mouse_tile_position()
 		var plant : Plant = get_plant(pos.x ,pos.y)
 		if plant != null && is_inbound(pos.x ,pos.y):
