@@ -125,7 +125,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ch7at")
 
-[node name="Cucumber" instance=ExtResource("1_rkssw")]
+[node name="Cucumber" groups=["Cucumber"] instance=ExtResource("1_rkssw")]
 script = ExtResource("2_ua0hd")
 plantName = "Cucumber"
 stats = SubResource("Resource_udqe3")

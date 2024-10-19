@@ -7,7 +7,6 @@ class_name Plant
 
 @export_category("Plant Info")
 @export var plantName : String = ""
-@export var isPlant : bool = true
 
 @export var stats : Stats
 
@@ -32,13 +31,12 @@ func _ready():
 	#Conect Signals
 	growManager.stage_changed.connect(on_stage_changed)
 	growManager.fully_grown.connect(on_fully_grown)
-	link_tiles_signal()
 
 func _physics_process(_delta):
 	update_scale()
 
 func update_scale():
-	if isPlant && !pauseScaleUpdate:
+	if !pauseScaleUpdate:
 		scale = Vector3.ONE * animationScale * (growManager.growPourcent+0.2 / (1+0.2))
 	else:
 		scale = Vector3.ONE * animationScale
@@ -55,9 +53,8 @@ func set_pause_scale_update(value : bool) -> void:
 	pauseScaleUpdate = value
 
 func on_fully_grown():
-	if isPlant:
-		harvestable = true
-		meshInstance.get_material_overlay().set_shader_parameter("enabled",true)
+	harvestable = true
+	meshInstance.get_material_overlay().set_shader_parameter("enabled",true)
 
 func play_aparition_animation() -> void:
 	animationScale = 0
@@ -247,8 +244,14 @@ func update_modifiers(mods : Array[PlantGrid.Tile.TileModifier]):
 
 var plant_list : Array[Plant] = []
 
+@export var tracked_groups : Array[String] = ["Plant"]
+@export var targeted_groups : Array[String] = ["Plant"]
+
+#Pour les plantes qui s'auto buff, sinon c'est override
 func add_modifiers():
-	push_warning("tried to call default function")
+	link_tiles_signal()
+	create_plant_list(tracked_groups)
+	update_self_modifier()
 
 func get_highlight_zones() -> Array[Vector2]:
 	return []
@@ -256,9 +259,8 @@ func get_highlight_zones() -> Array[Vector2]:
 func update_self_modifier():
 	push_warning("tried to call default function")
 
-func _on_plant_changed(_new_plant, _old_plant):
-	push_warning("tried to call default function")
-	pass
+func _on_plant_changed(new_plant, old_plant):
+	update_plant_list(new_plant, old_plant, tracked_groups)
 
 func link_tiles_signal():
 	for zone in get_highlight_zones():

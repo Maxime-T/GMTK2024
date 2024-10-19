@@ -13,8 +13,8 @@ var selectedPlant : Plant
 var current_size : int = 4
 var current_fence : int = 2
 #################################
+		   #Array[Array[Tile]]
 var data : Array = []
-
 
 class Tile:
 	var plant : Plant:
@@ -76,8 +76,8 @@ class Tile:
 			return str(property) + " " + str(target_types) + " " + str(mod)
 
 func get_tile(x : float, y : float) -> Tile:
-	x = round(x)
-	y = round(y)
+	x = int(round(x))
+	y = int(round(y))
 	if is_inbound(x,y):
 		return data[x][y]
 	return null
@@ -127,8 +127,8 @@ func init_data() -> void:
 			t.tilePos = Vector2(i,j)
 			data[i].append(t)
 	
-	for x in range(6):
-		for y in range(6):
+	for x in range(current_size):
+		for y in range(current_size):
 			get_tile(x,y).locked = false
 
 func init_ground() -> void:
@@ -211,10 +211,23 @@ func is_inbound(x : float, y : float) -> bool:
 func _on_plant_selected(plant : Plant):
 	selectedPlant = plant
 
+func unlock_new_tiles(new_size: int) -> void:
+	if new_size <= current_size:
+		return
+
+	for x in range(current_size, new_size):
+		for y in range(current_size):  # Débloquer les Tiles dans les colonnes déjà débloquées
+			get_tile(x, y).locked = false
+	
+	for y in range(current_size, new_size):  # Débloquer les Tiles dans les nouvelles lignes
+		for x in range(new_size):
+			get_tile(x, y).locked = false
 
 func expand_map():
 	X_fences.position.z += 2*tileSize
 	Z_fences.position.x += 2*tileSize
+	
+	unlock_new_tiles(current_size+2)
 	
 	current_size += 2
 	current_fence += 1

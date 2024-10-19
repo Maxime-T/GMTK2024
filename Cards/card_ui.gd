@@ -84,12 +84,9 @@ func _ready():
 	if waterNeeded == 0:
 		WaterCostBox.queue_free()
 	
-	if PlantNode.isPlant:
-		GrowTime = PlantNode.growManager.calculate_grow_time()
-		TimeLabel.text = str(GrowTime)
-		if GrowTime == 0:
-			TimeBox.queue_free()
-	else:
+	GrowTime = PlantNode.growManager.calculate_grow_time()
+	TimeLabel.text = str(GrowTime)
+	if GrowTime == 0:
 		TimeBox.queue_free()
 
 func _unhandled_input(event):

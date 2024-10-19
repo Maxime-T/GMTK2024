@@ -1,8 +1,21 @@
-[gd_scene load_steps=9 format=4 uid="uid://b623whm2efj5r"]
+[gd_scene load_steps=12 format=4 uid="uid://b623whm2efj5r"]
 
-[ext_resource type="PackedScene" uid="uid://v40mr0h2dcb7" path="res://Plants/Scene/plant.tscn" id="1_3drgo"]
+[ext_resource type="PackedScene" uid="uid://c4j5xbuj2f2xc" path="res://Plants/Scene/plant.tscn" id="1_3drgo"]
 [ext_resource type="Script" path="res://Plants/Grow/GrowStage.gd" id="2_2tig1"]
 [ext_resource type="Shader" path="res://Plants/collect.gdshader" id="2_r0762"]
+[ext_resource type="Script" path="res://Plants/Scripts/pumpkin.gd" id="2_u8gcq"]
+[ext_resource type="Script" path="res://Plants/Stats/Stats.gd" id="3_4csgp"]
+
+[sub_resource type="Resource" id="Resource_o3r72"]
+resource_local_to_scene = true
+script = ExtResource("3_4csgp")
+goldCost:baseValue = 100.0
+waterNeeded:baseValue = 0.0
+pollutionGeneration:baseValue = 0.0
+income:baseValue = 100.0
+score:baseValue = 100.0
+water:baseValue = 0.0
+growSpeed:baseValue = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yvu0m"]
 resource_local_to_scene = true
@@ -74,13 +87,16 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_a5ww5")
 
-[node name="Pumpkin" instance=ExtResource("1_3drgo")]
+[node name="Pumpkin" groups=["Pumpkin"] instance=ExtResource("1_3drgo")]
+script = ExtResource("2_u8gcq")
+plantName = "Pumpkin"
+stats = SubResource("Resource_o3r72")
 
 [node name="Mesh" parent="." index="0"]
 material_overlay = SubResource("ShaderMaterial_yvu0m")
 
 [node name="GrowStage" parent="GrowManager" index="0"]
-time = 10.0
+time = 3.0
 mesh = SubResource("ArrayMesh_nqk54")
 
 [node name="GrowStage2" type="Node" parent="GrowManager" index="1"]

@@ -13,5 +13,5 @@ func add_modifiers():
 	for v in zoneArray:
 		var tile : PlantGrid.Tile = get_adjacent_tile(v)
 		if tile != null:
-			tile.add_modifier("income", ["Plant"], Modifier.new(self, Modifier.TYPE.MULT, 0.1))
-			tile.add_modifier("score", ["Plant"], Modifier.new(self, Modifier.TYPE.MULT, 0.1))
+			tile.add_modifier("income", targeted_groups, Modifier.new(self, Modifier.TYPE.MULT, 0.1))
+			tile.add_modifier("score", targeted_groups, Modifier.new(self, Modifier.TYPE.MULT, 0.1))
