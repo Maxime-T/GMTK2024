@@ -1,5 +1,5 @@
-extends Plant
-class_name moissoneuse
+extends Tools
+class_name Combine
 #var zoneArray : Array[Vector2]
 #
 #func get_description():

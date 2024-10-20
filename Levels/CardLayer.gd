@@ -4,7 +4,7 @@ enum {COMMON, RARE, EPIC, LENGENDARY}
 
 @export var CardsContainer : HBoxContainer
 @export var PlantGridNode : PlantGrid
-@export var PlantDescriptionLabel : RichTextLabel
+@export var ComponentDescriptionLabel : RichTextLabel
 @export var DescriptionControlNode : Control
 
 @export var AutoRerollLAb : Label
@@ -34,7 +34,7 @@ var lengendary_cards : Array[PackedScene] = [preload("res://Cards/carte_sprinkle
 var currentRerollCost : float = baseRerollCost
 
 func _ready():
-	PlantDescriptionLabel.text = ""
+	ComponentDescriptionLabel.text = ""
 	DescriptionControlNode.position = Vector2(-400,294)
 	Global.CardPlayed.connect(carte_played)
 	RerollButton.text = "Reroll : " + str(currentRerollCost) + " g"
@@ -84,7 +84,7 @@ func create_cards(RARITY):
 	
 	instance.DescriptionControlNode = DescriptionControlNode
 	instance.PlantGridNode = PlantGridNode
-	instance.PlantDescriptionLabel = PlantDescriptionLabel
+	instance.ComponentDescriptionLabel = ComponentDescriptionLabel
 	CardsContainer.add_child.call_deferred(instance)
 
 func clear_cards():

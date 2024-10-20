@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://bnnmimvaoo5b0"]
 
 [ext_resource type="PackedScene" uid="uid://c5t5ibvxcoaaw" path="res://Cards/card_ui.tscn" id="1_62dy2"]
-[ext_resource type="PackedScene" uid="uid://c3eo4hshmusqg" path="res://Plants/Scene/well.tscn" id="2_tlpxx"]
+[ext_resource type="PackedScene" uid="uid://b34pat3ogfnhw" path="res://Tools/Scenes/well.tscn" id="2_tlpxx"]
 [ext_resource type="Texture2D" uid="uid://cc4fboejpsca4" path="res://Cards/Well.png" id="3_ssxuj"]
 
 [node name="carte_well" instance=ExtResource("1_62dy2")]
-PlantScene = ExtResource("2_tlpxx")
+GCScene = ExtResource("2_tlpxx")
 
 [node name="Background" parent="Control" index="0"]
 offset_left = -26.0

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://by1qsb4aiexvw" path="res://Plants/Scene/tomato.tscn" id="2_qponp"]
 
 [node name="CardTomate" instance=ExtResource("1_prmji")]
-PlantScene = ExtResource("2_qponp")
+GCScene = ExtResource("2_qponp")
 
 [node name="Background" parent="Control" index="0"]
 offset_left = -102.0

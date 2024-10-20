@@ -3,12 +3,8 @@ class_name Plant
 
 @export_category("Setup")
 @export var growManager : GrowManager
-@export var meshInstance : MeshInstance3D
 
 @export_category("Plant Info")
-@export var plantName : String = ""
-
-@export var stats : Stats
 
 #######
 var animationScale : float = 0.
@@ -75,8 +71,8 @@ func reset_growth():
 
 func get_adjacent_plant(vector : Vector2) -> Plant:
 	var tile = get_adjacent_tile(vector)
-	if tile != null and tile.plant != null:
-		return tile.plant
+	if tile != null and tile.grid_component != null and tile.grid_component is Plant:
+		return tile.grid_component
 	return null
 
 
@@ -247,9 +243,6 @@ func add_modifiers():
 	create_plant_list(tracked_groups)
 	update_self_modifier()
 
-func get_highlight_zones() -> Array[Vector2]:
-	return []
-
 func update_self_modifier():
 	push_warning("tried to call default function")
 
@@ -270,7 +263,7 @@ func create_plant_list(accepted_groups : Array[String]):
 				plant_list.append(plant)
 				break
 
-func update_plant_list(new_plant : Plant, old_plant : Plant, accepted_groups : Array[String]):
+func update_plant_list(new_plant : GridComponent, old_plant : GridComponent, accepted_groups : Array[String]):
 	for group in accepted_groups:
 		if old_plant != null and old_plant.is_in_group(group):
 			plant_list.erase(old_plant)

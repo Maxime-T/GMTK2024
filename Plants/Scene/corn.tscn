@@ -205,9 +205,9 @@ shadow_mesh = SubResource("ArrayMesh_knbbh")
 
 [node name="Corn" groups=["Corn"] instance=ExtResource("1_0uxgf")]
 script = ExtResource("2_sisws")
-plantName = "Corn"
 stats = SubResource("Resource_tcrme")
 targeted_groups = Array[String](["Corn"])
+component_name = "Corn"
 
 [node name="Mesh" parent="." index="0"]
 material_overlay = SubResource("ShaderMaterial_rexxx")

@@ -1,4 +1,4 @@
-extends Plant
+extends Tools
 class_name Sprinkler
 
 #var zoneArray : Array[Vector2] 

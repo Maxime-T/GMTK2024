@@ -8,7 +8,7 @@ class_name PlantGrid
 @export var Z_fences : Node3D
 
 var mouseTilePosition : Vector3
-var selectedPlant : Plant
+var selectedObject : GridComponent
 
 var current_size : int = 4
 var current_fence : int = 2
@@ -17,10 +17,11 @@ var current_fence : int = 2
 var data : Array = []
 
 class Tile:
-	var plant : Plant:
+	var grid_component : GridComponent:
 		set(value):
-			plant = value
-			plant_update_modifiers()
+			grid_component = value
+			if grid_component is Plant:
+				plant_update_modifiers()
 	
 	var ground : GroundTile
 	var locked : bool
@@ -30,8 +31,8 @@ class Tile:
 	
 	signal plant_change(new_plant, old_plant)
 	
-	func _init(_plant : Plant, _ground : GroundTile):
-		plant = _plant
+	func _init(_grid_component : Plant, _ground : GroundTile):
+		grid_component = _grid_component
 		ground = _ground
 		locked = true
 	
@@ -47,8 +48,8 @@ class Tile:
 		plant_update_modifiers()
 	
 	func plant_update_modifiers():
-		if plant != null:
-			plant.update_modifiers(modifiers)
+		if grid_component != null and grid_component is Plant:
+			grid_component.update_modifiers(modifiers)
 	
 	func remove_all_modifier_from_source(source_plant : Plant):
 		var counter : int = 0
@@ -90,12 +91,22 @@ func get_ground(x : float, y : float) -> GroundTile:
 	return null
 
 func get_plant(x : float,y : float) -> Plant:
-	x = round(x)
-	y = round(y)
-	if is_inbound(x,y):
-		return data[x][y].plant
+	x = round(x) ; y = round(y)
+	if is_inbound(x,y) and data[x][y].grid_component is Plant:
+		return data[x][y].grid_component
 	return null
 
+func get_grid_component(x,y) -> GridComponent:
+	x = round(x) ; y = round(y)
+	if is_inbound(x,y):
+		return data[x][y].grid_component
+	return null
+
+func get_tools(x,y) -> Tools:
+	x = round(x) ; y = round(y)
+	if is_inbound(x,y) and data[x][y].grid_component is Tools:
+		return data[x][y].grid_component
+	return null
 #################################
 
 
@@ -144,17 +155,16 @@ func init_ground() -> void:
 			create_ground(x,y, null)
 
 func is_tile_free(x:float, y:float) -> bool:
-	x = round(x)
-	y = round(y)
+	x = round(x) ; y = round(y)
 	var tile := get_tile(x,y)
 	if tile != null and !tile.locked:
-		if get_plant(x,y) == null:
+		if get_grid_component(x,y) == null:
 			return true
 	return false
 
-func create_plant(x:float, y:float, plantScene:PackedScene) -> void:
-	x = round(x)
-	y = round(y)
+##Deprecated function -> use create_object() instead
+func create_plant(x : float, y : float, plantScene : PackedScene) -> void:
+	x = round(x) ; y = round(y)
 	var plant : Plant = plantScene.instantiate()
 	plant.plantGrid = self
 	plant.gridPos = Vector2(x,y)
@@ -162,16 +172,43 @@ func create_plant(x:float, y:float, plantScene:PackedScene) -> void:
 	add_child(plant, true)
 	
 	var tile := get_tile(x,y)
-	tile.emit_signal("plant_change", plant, tile.plant)
-	tile.plant = plant
-	
-func remove_plant(x:float, y:float):
-	x = round(x)
-	y = round(y)
+	tile.emit_signal("plant_change", plant, tile.grid_component)
+	tile.grid_component = plant
+
+##Deprecated function -> use remove_object() instead
+func remove_plant(x : float, y : float):
+	x = round(x) ; y = round(y)
 	var tile := get_tile(x,y)
-	tile.emit_signal("plant_change", null, tile.plant)
+	tile.emit_signal("plant_change", null, tile.grid_component)
 	get_plant(x,y).queue_free()
-	tile.plant = null
+	tile.grid_component = null
+
+func create_object(x : float, y : float, object_scene : PackedScene) -> void:
+	x = round(x) ; y = round(y)
+	if get_grid_component(x,y) != null:
+		push_error("tried to create an object onto another object")
+		return
+	
+	var grid_component : GridComponent = object_scene.instantiate()
+	grid_component.plantGrid = self
+	grid_component.gridPos = Vector2(x,y)
+	grid_component.position = get_real_position(x,y)
+	add_child(grid_component, true)
+	
+	var tile := get_tile(x,y)
+	tile.emit_signal("plant_change", grid_component, tile.grid_component)
+	tile.grid_component = grid_component
+	
+func remove_object(x:float, y:float):
+	x = round(x) ; y = round(y)
+	if get_grid_component(x,y) == null:
+		push_error("tried to remove a non existant object")
+		return
+	
+	var tile := get_tile(x,y)
+	tile.emit_signal("plant_change", null, tile.grid_component)
+	get_grid_component(x,y).queue_free()
+	tile.grid_component = null
 
 func create_ground( x:int, y:int, _type : PackedScene) -> void:
 	var ground : GroundTile = load("res://Plants/Grounds/ground_tile.tscn").instantiate()
@@ -180,8 +217,7 @@ func create_ground( x:int, y:int, _type : PackedScene) -> void:
 	add_child(ground)
 
 func get_real_position(x:float, y:float) -> Vector3:
-	x = round(x)
-	y = round(y)
+	x = round(x) ; y = round(y)
 	return Vector3(x*tileSize+tileSize/2, 0, y*tileSize+tileSize/2)
 
 func get_real_position_v(pos : Vector3) -> Vector3:
@@ -205,8 +241,8 @@ func mouse_highlight() -> void:
 		var tile : Tile = get_tile(pos.x, pos.y)
 		tile.ground.set_highlight(Color(0.2,0.2,0.2,0))
 	
-	if selectedPlant != null:
-		for v in selectedPlant.get_highlight_zones():
+	if selectedObject != null:
+		for v in selectedObject.get_highlight_zones():
 			var coord := pos+v
 			var ground := get_ground(coord.x, coord.y)
 			if ground != null:
@@ -215,8 +251,8 @@ func mouse_highlight() -> void:
 func is_inbound(x : float, y : float) -> bool:
 	return (x>=0 && x<size) && (y>=0 && y<size)
 
-func _on_plant_selected(plant : Plant):
-	selectedPlant = plant
+func _on_plant_selected(object : GridComponent):
+	selectedObject = object
 
 func unlock_new_tiles(new_size: int) -> void:
 	if new_size <= current_size:

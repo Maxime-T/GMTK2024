@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cdwo274ap36nr"
-path="res://.godot/imported/moissoneuse_batteuse_de_steak.fbx-8686f0e810e15900b08013c03fa8fbab.scn"
+path="res://.godot/imported/moissoneuse_batteuse_de_steak.fbx-c4ad7629925e1bd688b9f86d2292f25a.scn"
 
 [deps]
 
-source_file="res://Plants/Meshes/moissoneuse_batteuse_de_steak.fbx"
-dest_files=["res://.godot/imported/moissoneuse_batteuse_de_steak.fbx-8686f0e810e15900b08013c03fa8fbab.scn"]
+source_file="res://Tools/Meshes/moissoneuse_batteuse_de_steak.fbx"
+dest_files=["res://.godot/imported/moissoneuse_batteuse_de_steak.fbx-c4ad7629925e1bd688b9f86d2292f25a.scn"]
 
 [params]
 

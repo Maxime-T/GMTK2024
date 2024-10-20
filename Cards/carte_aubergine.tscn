@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ey5pm3xpvkbb" path="res://Cards/Aubergine.png" id="3_nd055"]
 
 [node name="CarteAubergine" instance=ExtResource("1_xujyj")]
-PlantScene = ExtResource("2_o0hej")
+GCScene = ExtResource("2_o0hej")
 
 [node name="Background" parent="Control" index="0"]
 offset_left = -72.0

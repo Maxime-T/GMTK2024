@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ccw3kcs44lfde"
-path="res://.godot/imported/tchik_tchik_tchik.fbx-758aa16f5039424cff548a2d49e84430.scn"
+uid="uid://crijmgwirp7w7"
+path="res://.godot/imported/Ca_mouille.fbx-cb8a397d5f4124ff32bd546cb1dda0c9.scn"
 
 [deps]
 
-source_file="res://Plants/Meshes/tchik_tchik_tchik.fbx"
-dest_files=["res://.godot/imported/tchik_tchik_tchik.fbx-758aa16f5039424cff548a2d49e84430.scn"]
+source_file="res://Tools/Meshes/Ca_mouille.fbx"
+dest_files=["res://.godot/imported/Ca_mouille.fbx-cb8a397d5f4124ff32bd546cb1dda0c9.scn"]
 
 [params]
 

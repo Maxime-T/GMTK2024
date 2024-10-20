@@ -89,8 +89,8 @@ shadow_mesh = SubResource("ArrayMesh_a5ww5")
 
 [node name="Pumpkin" groups=["Pumpkin"] instance=ExtResource("1_3drgo")]
 script = ExtResource("2_u8gcq")
-plantName = "Pumpkin"
 stats = SubResource("Resource_o3r72")
+component_name = "Pumpkin"
 
 [node name="Mesh" parent="." index="0"]
 material_overlay = SubResource("ShaderMaterial_yvu0m")

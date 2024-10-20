@@ -118,10 +118,10 @@ shadow_mesh = SubResource("ArrayMesh_rkhr2")
 
 [node name="Mushroom" groups=["Mushroom"] instance=ExtResource("1_4xb8k")]
 script = ExtResource("2_268fd")
-plantName = "Mushroom"
 stats = SubResource("Resource_0w7ds")
 tracked_groups = Array[String](["Mushroom"])
 targeted_groups = Array[String](["Mushroom"])
+component_name = "Mushroom"
 
 [node name="Mesh" parent="." index="0"]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)

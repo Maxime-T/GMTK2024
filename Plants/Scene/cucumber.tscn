@@ -127,8 +127,8 @@ shadow_mesh = SubResource("ArrayMesh_ch7at")
 
 [node name="Cucumber" groups=["Cucumber"] instance=ExtResource("1_rkssw")]
 script = ExtResource("2_ua0hd")
-plantName = "Cucumber"
 stats = SubResource("Resource_udqe3")
+component_name = "Cucumber"
 
 [node name="Mesh" parent="." index="0"]
 material_overlay = SubResource("ShaderMaterial_xt2ip")

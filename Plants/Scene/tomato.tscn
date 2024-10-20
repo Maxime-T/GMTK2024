@@ -28,7 +28,7 @@ shader_parameter/enabled = null
 
 [node name="Tomato" groups=["Tomato"] instance=ExtResource("1_ass87")]
 script = ExtResource("2_uixma")
-plantName = "Tomato"
+component_name = "Tomato"
 stats = SubResource("Resource_by02e")
 
 [node name="Mesh" parent="." index="0"]

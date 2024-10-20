@@ -452,11 +452,11 @@ position = Vector2(158, 760)
 scale = Vector2(0.22, 0.22)
 texture = ExtResource("11_1fclw")
 
-[node name="CardsLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("CardsContainer", "PlantGridNode", "PlantDescriptionLabel", "DescriptionControlNode", "AutoRerollLAb", "RerollButton", "ExpandButton")]
+[node name="CardsLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("CardsContainer", "PlantGridNode", "ComponentDescriptionLabel", "DescriptionControlNode", "AutoRerollLAb", "RerollButton", "ExpandButton")]
 script = ExtResource("9_mnsiy")
 CardsContainer = NodePath("Control/CardsContainer")
 PlantGridNode = NodePath("../PlantGrid")
-PlantDescriptionLabel = NodePath("Control3/MarginContainer2/PlantDescription")
+ComponentDescriptionLabel = NodePath("Control3/MarginContainer2/PlantDescription")
 DescriptionControlNode = NodePath("Control3")
 AutoRerollLAb = NodePath("Control2/LabelAutotReroll")
 RerollButton = NodePath("Control2/MarginContainer/Reroll")

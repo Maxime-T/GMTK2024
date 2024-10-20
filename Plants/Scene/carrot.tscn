@@ -89,10 +89,10 @@ shadow_mesh = SubResource("ArrayMesh_y1lmd")
 
 [node name="Carrot" groups=["Carrot"] instance=ExtResource("1_onanf")]
 script = ExtResource("2_bh51o")
-plantName = "Carrot"
-stats = SubResource("Resource_f1tt6")
 tracked_groups = Array[String](["Carrot"])
 targeted_groups = Array[String](["Carrot"])
+component_name = "Carrot"
+stats = SubResource("Resource_f1tt6")
 
 [node name="Mesh" parent="." index="0"]
 material_overlay = SubResource("ShaderMaterial_m4u4a")

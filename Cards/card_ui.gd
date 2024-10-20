@@ -2,12 +2,12 @@ extends Control
 class_name Card
 
 var PlantGridNode : PlantGrid
-var PlantDescriptionLabel : RichTextLabel
+var ComponentDescriptionLabel : RichTextLabel
 var DescriptionControlNode : Control
 
 var CardName : String
 var CardDescription : String
-@export var PlantScene : PackedScene
+@export var GCScene : PackedScene
 
 
 var GoldCost : float
@@ -44,49 +44,54 @@ var confirmed : bool:
 		confirmed = val
 
 
-var PlantNode : Plant
+var GCNode : GridComponent
+
 func _ready():
-	if PlantScene == null: #Juste pour éviter un crash si on a int
+	if GCScene == null: #Juste pour éviter un crash si on a int
 		queue_free()
 		return
 	
-	PlantNode = PlantScene.instantiate()
+	GCNode = GCScene.instantiate()
 	
-	if PlantNode.has_method("get_description"):
-		CardDescription = PlantNode.get_description()
+	if GCNode.has_method("get_description"):
+		CardDescription = GCNode.get_description()
 	
-	CardName = PlantNode.plantName
+	CardName = GCNode.component_name
 	CardNameLabel.text = CardName
 	
-	GoldCost = PlantNode.stats.goldCost.calculate_value()
+	GoldCost = GCNode.stats.goldCost.calculate_value()
 	GoldCostLabel.text = str(GoldCost)
 	if GoldCost == 0:
 		GoldCostBox.queue_free()
 	
-	PollutionProd = PlantNode.stats.pollutionGeneration.calculate_value()
+	PollutionProd = GCNode.stats.pollutionGeneration.calculate_value()
 	PollutionLabel.text = str(PollutionProd)
 	if PollutionProd == 0:
 		PollutionBox.queue_free()
 	
-	SunProd = PlantNode.stats.score.calculate_value()
+	SunProd = GCNode.stats.score.calculate_value()
 	SunProdLabel.text = str(SunProd)
 	if SunProd == 0:
 		SunProdBox.queue_free()
 	
-	Income = PlantNode.stats.score.calculate_value()
+	Income = GCNode.stats.score.calculate_value()
 	IncomeLabel.text = str(Income)
 	if Income == 0:
 		IncomeBox.queue_free()
 	
-	#REAL PLANT SPECIFIC
-	waterNeeded = round(PlantNode.stats.waterNeeded.calculate_value())
+	
+	waterNeeded = round(GCNode.stats.waterNeeded.calculate_value())
 	WaterNeededLabel.text = str(waterNeeded)
 	if waterNeeded == 0:
 		WaterCostBox.queue_free()
 	
-	GrowTime = PlantNode.growManager.calculate_grow_time()
-	TimeLabel.text = str(GrowTime)
-	if GrowTime == 0:
+	#REAL PLANT SPECIFIC
+	if GCNode is Plant:
+		GrowTime = GCNode.growManager.calculate_grow_time()
+		TimeLabel.text = str(GrowTime)
+		if GrowTime == 0:
+			TimeBox.queue_free()
+	else:
 		TimeBox.queue_free()
 
 func _unhandled_input(event):
@@ -98,7 +103,7 @@ func _unhandled_input(event):
 	if event.is_action_pressed("click") and confirmed:
 		var intersection_point : Vector2 = PlantGridNode.get_mouse_tile_position()
 		if PlantGridNode.is_tile_free(intersection_point.x, intersection_point.y) and Global.gold >= GoldCost:
-			PlantGridNode.create_plant(intersection_point.x, intersection_point.y, PlantScene)
+			PlantGridNode.create_object(intersection_point.x, intersection_point.y, GCScene)
 			Global.gold -= GoldCost
 			Global.pollution += PollutionProd
 			GlobalSignals.plant_selected.emit(null)
@@ -118,13 +123,13 @@ func _on_mouse_exited():
 
 
 func _on_focus_entered():
-	GlobalSignals.plant_selected.emit(PlantNode)
+	GlobalSignals.plant_selected.emit(GCNode)
 	confirmed = true
-	PlantDescriptionLabel.text = CardDescription
+	ComponentDescriptionLabel.text = CardDescription
 	DescriptionControlNode.position = Vector2(0,294)
 
 
 func _on_focus_exited():
 	confirmed = false
-	PlantDescriptionLabel.text = ""
+	ComponentDescriptionLabel.text = ""
 	DescriptionControlNode.position = Vector2(-400,294)
