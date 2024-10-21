@@ -97,9 +97,9 @@ shadow_mesh = SubResource("ArrayMesh_2psd8")
 
 [node name="Aubergine" groups=["Aubergine"] instance=ExtResource("1_5syhh")]
 script = ExtResource("2_3hkd1")
-targeted_groups = Array[String](["Aubergine"])
 component_name = "Aubergine"
 stats = SubResource("Resource_xloy0")
+targeted_groups = Array[String](["Aubergine"])
 
 [node name="Mesh" parent="." index="0"]
 material_overlay = SubResource("ShaderMaterial_v7045")

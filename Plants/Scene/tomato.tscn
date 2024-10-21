@@ -13,10 +13,10 @@
 resource_local_to_scene = true
 script = ExtResource("2_j20jf")
 goldCost:baseValue = 100.0
-waterNeeded:baseValue = 0.0
+waterNeeded:baseValue = 1.0
 pollutionGeneration:baseValue = 0.0
 income:baseValue = 100.0
-score:baseValue = 0.0
+score:baseValue = 100.0
 water:baseValue = 0.0
 growSpeed:baseValue = 1.0
 

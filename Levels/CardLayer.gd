@@ -39,37 +39,39 @@ func _ready():
 	Global.CardPlayed.connect(carte_played)
 	RerollButton.text = "Reroll : " + str(currentRerollCost) + " g"
 	ExpandButton.text = "Expand : " +str(expand_cost) + " g"
-	for i in range(5):
-		generate_cards()
+	generate_5_cards()
 
 func carte_played():
 	carteEnMain -= 1
 	AutoRerollLAb.text = "Use " + str(carteEnMain-1) + " cards to auto-reroll"
 	if CardsContainer.get_child_count()-1 <= 1:
 		clear_cards()
-		for i in range(5):
-				generate_cards()
+		generate_5_cards()
 		if currentRerollCost > baseRerollCost:
 			currentRerollCost /= 2
 			RerollButton.text = "Reroll : " + str(currentRerollCost) + " g"
 
-func generate_cards():
+func generate_5_cards():
 	carteEnMain = 5
+	for i in range(5):
+		generate_card()
+
+func generate_card():
 	AutoRerollLAb.text = "Use " + str(carteEnMain-1) + " cards to auto-reroll"
 	
 	var gen = randf()
 	
 	if gen <= legendary_prob:
-		create_cards(LENGENDARY)
+		create_card(LENGENDARY)
 	elif gen < legendary_prob + epic_prob:
-		create_cards(EPIC)
+		create_card(EPIC)
 	elif gen < legendary_prob + epic_prob + rare_prob:
-		create_cards(RARE)
+		create_card(RARE)
 	else:
-		create_cards(COMMON)
+		create_card(COMMON)
 	
 			
-func create_cards(RARITY):
+func create_card(RARITY):
 	var instance
 	
 	match RARITY:
@@ -93,14 +95,18 @@ func clear_cards():
 
 
 func _on_reroll_pressed():
+	if Global.DEBUG:
+		clear_cards()
+		generate_5_cards()
+		return
+	
 	if Global.gold >= currentRerollCost:
 		Global.gold -= currentRerollCost
 		clear_cards()
 		currentRerollCost *= 2
 		RerollButton.text = "Reroll : " + str(currentRerollCost) + " g"
 	
-		for i in range(5):
-			generate_cards()
+		generate_5_cards()
 
 var expand_cost_list : Array[float] = [20, 50, 100, 500, 1000, 10000, 50000, 99999, 42]
 var expand_list_index : int = 1

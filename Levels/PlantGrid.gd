@@ -23,8 +23,9 @@ class Tile:
 	var grid_component : GridComponent:
 		set(value):
 			grid_component = value
-			if grid_component is Plant:
-				plant_update_modifiers()
+			if grid_component is Plant or grid_component is Tools:
+				plant_tools_update_modifiers()
+				grid_component.calculate_water_debuff()
 	
 	var ground : GroundTile
 	var locked : bool
@@ -42,26 +43,26 @@ class Tile:
 	func add_modifier(property : String, target_types : Array[String], mod : Modifier):
 		var tileModifier := TileModifier.new(property, target_types, mod)
 		modifiers.append(tileModifier)
-		plant_update_modifiers()
-		if !mod.origin.tree_exited.is_connected(remove_all_modifier_from_source):
-			mod.origin.tree_exited.connect(remove_all_modifier_from_source.bind(mod.origin))
+		plant_tools_update_modifiers()
+		if !mod.origin.tree_exiting.is_connected(remove_all_modifier_from_source):
+			mod.origin.tree_exiting.connect(remove_all_modifier_from_source.bind(mod.origin))
 	
 	func remove_modifier(tileModifier : TileModifier):
 		modifiers.erase(tileModifier)
-		plant_update_modifiers()
+		plant_tools_update_modifiers()
 	
-	func plant_update_modifiers():
-		if grid_component != null and grid_component is Plant:
+	func plant_tools_update_modifiers():
+		if grid_component != null and (grid_component is Plant or grid_component is Tools):
 			grid_component.update_modifiers(modifiers)
 	
-	func remove_all_modifier_from_source(source_plant : Plant):
+	func remove_all_modifier_from_source(source_object : Node):
 		var counter : int = 0
 		for i in range(modifiers.size()):
-			if modifiers[counter].mod.origin == source_plant:
+			if modifiers[counter].mod.origin == source_object:
 				modifiers.erase(modifiers[counter])
 				counter -= 1
 			counter += 1
-		plant_update_modifiers()
+		plant_tools_update_modifiers()
 	
 	func debug_print_modifiers():
 		print(modifiers)

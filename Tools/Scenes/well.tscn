@@ -247,7 +247,11 @@ script = ExtResource("2_6ansk")
 component_name = "Well"
 meshInstance = NodePath("Mesh")
 stats = SubResource("Resource_entsc")
+tracked_groups = Array[String]([])
+targeted_groups = Array[String](["Plant", "Tools"])
 
 [node name="Mesh" parent="." index="0"]
 material_overlay = SubResource("ShaderMaterial_dr5k4")
 mesh = SubResource("ArrayMesh_tbslf")
+
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]

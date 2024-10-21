@@ -10,7 +10,7 @@
 resource_local_to_scene = true
 script = ExtResource("2_w32r7")
 goldCost:baseValue = 100.0
-waterNeeded:baseValue = 0.0
+waterNeeded:baseValue = 2.0
 pollutionGeneration:baseValue = 0.0
 income:baseValue = 100.0
 score:baseValue = 100.0
@@ -125,10 +125,10 @@ shadow_mesh = SubResource("ArrayMesh_deww4")
 
 [node name="Wheat" groups=["Wheat"] instance=ExtResource("1_hlitd")]
 script = ExtResource("2_libki")
+component_name = "Wheat"
 stats = SubResource("Resource_1g48t")
 tracked_groups = Array[String](["Wheat"])
 targeted_groups = Array[String](["Wheat"])
-component_name = "Wheat"
 
 [node name="Mesh" parent="." index="0"]
 material_overlay = SubResource("ShaderMaterial_hb4cw")

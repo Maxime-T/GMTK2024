@@ -16,7 +16,7 @@ func _ready():
 	########## OBSERVABLE
 	stats.growSpeed.setFunction = func(v) : growManager.growSpeed = v
 	#########
-	add_modifiers()
+	super()
 	
 	play_aparition_animation()
 	meshInstance.mesh = growManager.growStages[0].mesh
@@ -70,19 +70,25 @@ func reset_growth():
 	harvestable = false
 
 
-##les modifier de plante ne doivent JAMAIS etre modifier directement, utiliser plutôt les fonction de sa TILE
-@onready var values = stats.get_property_list().filter(func(e): return e.class_name == &"ModifiableValue")
-func update_modifiers(mods : Array[PlantGrid.Tile.TileModifier]):
-	for modifiable in values:
-		(stats.get(modifiable.name) as ModifiableValue).removeAllModifiers()
+var warningWaterScene : PackedScene = preload("res://Plants/warning_water_logo.tscn")
+var noWaterScene : PackedScene = preload("res://Plants/no_water_logo.tscn")
+func calculate_water_debuff():
+	var water_diff = stats.water.calculate_value() - stats.waterNeeded.calculate_value()
+	var tile : PlantGrid.Tile = get_adjacent_tile(Vector2.ZERO)
 	
-	for tile_modifier in mods:
-		var modifiableValue : ModifiableValue = stats.get(tile_modifier.property) as ModifiableValue
-		
-		for target_type in tile_modifier.target_types:
-			if target_type in get_groups():
-				modifiableValue.add_modifier(tile_modifier.mod.origin, tile_modifier.mod.type, tile_modifier.mod.value)
-				break
+	for child in get_children():
+		if child.is_in_group("WaterLogo"):
+			child.queue_free()
+	
+	if water_diff == -1:
+		var instance = warningWaterScene.instantiate()
+		add_child(instance)
+		tile.add_modifier("growSpeed", ["Plant"], Modifier.new(instance, Modifier.TYPE.MULT, -0.5))
+	elif water_diff < -1:
+		var instance = noWaterScene.instantiate()
+		add_child(instance)
+		tile.add_modifier("growSpeed", ["Plant"], Modifier.new(instance, Modifier.TYPE.MULT, -999))
+	
 
 
 #@export_category("Plant Info")
@@ -227,9 +233,6 @@ func update_modifiers(mods : Array[PlantGrid.Tile.TileModifier]):
 #DEFAULTS ######################################################
 
 var plant_list : Array[Plant] = []
-
-@export var tracked_groups : Array[String] = ["Plant"]
-@export var targeted_groups : Array[String] = ["Plant"]
 
 #Pour les plantes qui s'auto buff, sinon c'est override
 func add_modifiers():

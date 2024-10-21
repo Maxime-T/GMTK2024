@@ -44,8 +44,8 @@ func add_modifier(origin : Node, type : Modifier.TYPE, value : float):
 	modifiers.append(mod)
 	emit_value()
 	
-	if !origin.tree_exited.is_connected(removeAllModifersFromOrigin):
-		origin.tree_exited.connect(removeAllModifersFromOrigin.bind(origin))
+	if !origin.tree_exiting.is_connected(removeAllModifersFromOrigin):
+		origin.tree_exiting.connect(removeAllModifersFromOrigin.bind(origin))
 
 func removeAllModifersFromOrigin(origin : Node):
 	for mod in modifiers:

@@ -74,7 +74,7 @@ func _ready():
 	if SunProd == 0:
 		SunProdBox.queue_free()
 	
-	Income = GCNode.stats.score.calculate_value()
+	Income = GCNode.stats.income.calculate_value()
 	IncomeLabel.text = str(Income)
 	if Income == 0:
 		IncomeBox.queue_free()

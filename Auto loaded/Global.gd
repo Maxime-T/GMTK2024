@@ -1,5 +1,7 @@
 extends Node
 
+var DEBUG : bool = true
+
 var SettingsScene : PackedScene = preload("res://Menu/settings.tscn")
 
 var slider_value = 0

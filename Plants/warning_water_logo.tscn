@@ -9,7 +9,7 @@ albedo_color = Color(1, 1, 1, 0.792157)
 albedo_texture = ExtResource("1_4fioi")
 billboard_mode = 1
 
-[node name="Sprite3D" type="Sprite3D"]
+[node name="WarningWater" type="Sprite3D" groups=["WaterLogo"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
 material_override = SubResource("StandardMaterial3D_wf72b")
 cast_shadow = 0
