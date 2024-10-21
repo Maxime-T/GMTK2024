@@ -23,7 +23,7 @@ func _on_mute_toggled(toggled_on):
 
 
 func _on_leave_pressed():
-	queue_free()
+	$"..".queue_free()
 	
 
 func _on_fullscreen_toggled(toggled_on):
@@ -43,4 +43,4 @@ func _on_option_button_item_selected(_index):
 
 func _on_go_to_menu_pressed():
 	get_tree().change_scene_to_file("res://Menu/menu.tscn")
-	queue_free()
+	$"..".queue_free()

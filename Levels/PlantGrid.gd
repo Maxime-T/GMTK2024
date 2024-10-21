@@ -4,6 +4,9 @@ class_name PlantGrid
 @export var size : int = 20
 @export var tileSize : float = 0.8
 
+@export var LogsScene : PackedScene
+@export var StoneScene : PackedScene
+
 @export var X_fences : Node3D
 @export var Z_fences : Node3D
 
@@ -115,9 +118,10 @@ func _ready():
 	
 	init_data()
 	init_ground()
+	spawn_obstacle(0, current_size, true)
 	
-	create_plant(0, 0, load("res://Plants/Scene/tomato.tscn"))
-	create_plant(1, 0, load("res://Plants/Scene/tomato.tscn"))
+	create_object(0, 0, load("res://Plants/Scene/tomato.tscn"))
+	create_object(1, 0, load("res://Plants/Scene/tomato.tscn"))
 
 func _physics_process(_delta):
 	mouse_highlight()
@@ -270,7 +274,8 @@ func expand_map():
 	X_fences.position.z += 2*tileSize
 	Z_fences.position.x += 2*tileSize
 	
-	unlock_new_tiles(current_size+2)
+	unlock_new_tiles(current_size + 2)
+	spawn_obstacle(current_size, current_size + 2)
 	
 	current_size += 2
 	current_fence += 1
@@ -281,6 +286,25 @@ func expand_map():
 	if current_size == size:
 		X_fences.queue_free()
 		Z_fences.queue_free()
+
+func spawn_obstacle(from_size, to_size, no_stone : bool = false):
+	var logs_spawn_chance = 0.1
+	var stone_spawn_chance = 0.08
+	
+	for x in range(from_size, to_size):
+		for y in range(from_size):
+			if logs_spawn_chance > randf():
+				create_object(x,y, LogsScene) 
+			elif stone_spawn_chance > randf() and !no_stone:
+				create_object(x,y, StoneScene)
+	
+	for y in range(from_size, to_size):
+		for x in range(to_size):
+			if logs_spawn_chance > randf():
+				create_object(x,y, LogsScene) 
+			elif stone_spawn_chance > randf() and !no_stone:
+				create_object(x,y, StoneScene)
+	
 
 #@export var highlight : MeshInstance3D
 #@export var size : int = 20

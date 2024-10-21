@@ -9,7 +9,7 @@ render_priority = 0
 shader = ExtResource("2_7fhe1")
 shader_parameter/enabled = null
 
-[node name="Tools" type="Node3D"]
+[node name="Tools" type="Node3D" groups=["Tools"]]
 script = ExtResource("1_atpkw")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]

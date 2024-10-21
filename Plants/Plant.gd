@@ -69,12 +69,6 @@ func reset_growth():
 	meshInstance.get_material_overlay().set_shader_parameter("enabled", false)
 	harvestable = false
 
-func get_adjacent_plant(vector : Vector2) -> Plant:
-	var tile = get_adjacent_tile(vector)
-	if tile != null and tile.grid_component != null and tile.grid_component is Plant:
-		return tile.grid_component
-	return null
-
 
 ##les modifier de plante ne doivent JAMAIS etre modifier directement, utiliser plutôt les fonction de sa TILE
 @onready var values = stats.get_property_list().filter(func(e): return e.class_name == &"ModifiableValue")

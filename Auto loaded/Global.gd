@@ -31,5 +31,6 @@ func _input(event):
 			#Le est c'est pour la deuxième node, cad le main (0 = la node Global)
 			if get_tree().root.get_child(1).has_node("SettingsLayer"):
 				get_tree().root.get_child(1).get_node("SettingsLayer").queue_free()
+				print("true")
 			else:
 				get_tree().root.get_child(1).add_child(SettingsScene.instantiate())

@@ -50,6 +50,7 @@ folder_colors={
 "res://HUD items/": "blue",
 "res://Levels/": "red",
 "res://Menu/": "orange",
+"res://Obstacle/": "gray",
 "res://Plants/": "green",
 "res://Themes & fonts/": "purple",
 "res://Tools/": "teal"

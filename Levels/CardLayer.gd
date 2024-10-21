@@ -23,8 +23,8 @@ var rare_cards : Array[PackedScene] = [preload("res://Cards/carte_carrot.tscn"),
 preload("res://Cards/CarteTomate.tscn"), preload("res://Cards/carte_wheat.tscn")]
 
 var epics_cards : Array[PackedScene] = [preload("res://Cards/carte_aubergine.tscn"),
-preload("res://Cards/carte_well.tscn"),
-preload("res://Cards/shovel.tscn")]
+preload("res://Cards/carte_well.tscn"), preload("res://Cards/Consomable/shovel.tscn"), preload("res://Cards/Consomable/pickaxe.tscn"),
+preload("res://Cards/Consomable/axe.tscn"), preload("res://Cards/Consomable/fertilizer.tscn")]
 
 var lengendary_cards : Array[PackedScene] = [preload("res://Cards/carte_sprinkler.tscn")]
 

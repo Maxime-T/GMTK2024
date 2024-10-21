@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c5t5ibvxcoaaw" path="res://Cards/card_ui.tscn" id="1_xujyj"]
 [ext_resource type="PackedScene" uid="uid://chiregb5v40xv" path="res://Plants/Scene/aubergine.tscn" id="2_o0hej"]
-[ext_resource type="Texture2D" uid="uid://ey5pm3xpvkbb" path="res://Cards/Aubergine.png" id="3_nd055"]
+[ext_resource type="Texture2D" uid="uid://ey5pm3xpvkbb" path="res://Cards/CardBackground/Aubergine.png" id="3_nd055"]
 
 [node name="CarteAubergine" instance=ExtResource("1_xujyj")]
 GCScene = ExtResource("2_o0hej")

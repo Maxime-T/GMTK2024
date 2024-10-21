@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c5t5ibvxcoaaw" path="res://Cards/card_ui.tscn" id="1_vxbjm"]
 [ext_resource type="PackedScene" uid="uid://dlrixswgstyfw" path="res://Plants/Scene/corn.tscn" id="2_tm6pm"]
-[ext_resource type="Texture2D" uid="uid://blqja37fq41bl" path="res://Cards/Corn.png" id="3_22kog"]
+[ext_resource type="Texture2D" uid="uid://blqja37fq41bl" path="res://Cards/CardBackground/Corn.png" id="3_22kog"]
 
 [node name="CarteCorn" instance=ExtResource("1_vxbjm")]
 GCScene = ExtResource("2_tm6pm")

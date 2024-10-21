@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c5t5ibvxcoaaw" path="res://Cards/card_ui.tscn" id="1_14vwg"]
 [ext_resource type="PackedScene" uid="uid://de326eqh2a40e" path="res://Tools/Scenes/sprinkler.tscn" id="2_7jk5d"]
-[ext_resource type="Texture2D" uid="uid://cg3kdtay8ct15" path="res://Cards/Sprinkler.png" id="3_g3hau"]
+[ext_resource type="Texture2D" uid="uid://cg3kdtay8ct15" path="res://Cards/CardBackground/Sprinkler.png" id="3_g3hau"]
 
 [node name="CarteSprinkler" instance=ExtResource("1_14vwg")]
 GCScene = ExtResource("2_7jk5d")

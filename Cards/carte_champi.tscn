@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c5t5ibvxcoaaw" path="res://Cards/card_ui.tscn" id="1_tpo8j"]
 [ext_resource type="PackedScene" uid="uid://j0jf0r8k6myp" path="res://Plants/Scene/mushroom.tscn" id="2_t62w1"]
-[ext_resource type="Texture2D" uid="uid://bhlfqn4jwxyci" path="res://Cards/Champignon.png" id="3_k4qx4"]
+[ext_resource type="Texture2D" uid="uid://bhlfqn4jwxyci" path="res://Cards/CardBackground/Champignon.png" id="3_k4qx4"]
 
 [node name="CarteChampi" instance=ExtResource("1_tpo8j")]
 GCScene = ExtResource("2_t62w1")

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfofmvyvc14vs"]
+
+[ext_resource type="Script" path="res://Obstacle/Scripts/Obstacle.gd" id="1_5g1bd"]
+[ext_resource type="Shader" path="res://Plants/collect.gdshader" id="2_6l22a"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xdh14"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_6l22a")
+shader_parameter/enabled = null
+
+[node name="Obstacle" type="Node3D" groups=["Obstacle"]]
+script = ExtResource("1_5g1bd")
+
+[node name="Mesh" type="MeshInstance3D" parent="." groups=["Obstacle"]]
+material_overlay = SubResource("ShaderMaterial_xdh14")

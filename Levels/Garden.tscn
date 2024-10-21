@@ -1,11 +1,13 @@
-[gd_scene load_steps=41 format=4 uid="uid://bqto2ddsofr8v"]
+[gd_scene load_steps=43 format=4 uid="uid://bqto2ddsofr8v"]
 
 [ext_resource type="Script" path="res://Levels/Garden.gd" id="1_ua47f"]
 [ext_resource type="Script" path="res://CameraMovement.gd" id="1_uow6t"]
 [ext_resource type="Script" path="res://Levels/PlantGrid.gd" id="3_ls3q7"]
+[ext_resource type="PackedScene" uid="uid://bw4otkyrtx2fk" path="res://Obstacle/Scenes/pile_of_logs.tscn" id="4_4a0m2"]
 [ext_resource type="Script" path="res://HUD items/HUD.gd" id="4_5ayop"]
 [ext_resource type="LabelSettings" uid="uid://g3qcsd0b230q" path="res://Themes & fonts/HUD_top_labels.tres" id="5_bhnvt"]
 [ext_resource type="Texture2D" uid="uid://dc53w6h5afvvd" path="res://HUD items/Argent.png" id="5_c10gl"]
+[ext_resource type="PackedScene" uid="uid://cmrfurd24t2di" path="res://Obstacle/Scenes/stone.tscn" id="5_wk2me"]
 [ext_resource type="Texture2D" uid="uid://bc0ecge0pqnya" path="res://HUD items/Soleil.png" id="7_hmvc6"]
 [ext_resource type="Texture2D" uid="uid://okjkkv0mqnd" path="res://HUD items/Masque_A_Gaz.png" id="8_6pitr"]
 [ext_resource type="Texture2D" uid="uid://brmo2bin2pr8o" path="res://HUD items/Jauge.png" id="9_ib5ua"]
@@ -340,6 +342,8 @@ plantGrid = NodePath("../../PlantGrid")
 
 [node name="PlantGrid" type="Node3D" parent="." node_paths=PackedStringArray("X_fences", "Z_fences")]
 script = ExtResource("3_ls3q7")
+LogsScene = ExtResource("4_4a0m2")
+StoneScene = ExtResource("5_wk2me")
 X_fences = NodePath("../Background/Fences/InnerFences/fenceP1")
 Z_fences = NodePath("../Background/Fences/InnerFences/fenceP2")
 
