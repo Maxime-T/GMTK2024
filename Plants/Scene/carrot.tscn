@@ -13,7 +13,7 @@ goldCost:baseValue = 100.0
 waterNeeded:baseValue = 0.0
 pollutionGeneration:baseValue = 0.0
 income:baseValue = 100.0
-score:baseValue = 100.0
+score:baseValue = 10000.0
 water:baseValue = 0.0
 growSpeed:baseValue = 1.0
 

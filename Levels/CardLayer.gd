@@ -10,10 +10,15 @@ enum {COMMON, RARE, EPIC, LENGENDARY}
 @export var AutoRerollLAb : Label
 var carteEnMain : int = 5
 
-var common_prob : float = 0.50
-var rare_prob : float = 0.30
-var epic_prob : float = 0.15
-var legendary_prob : float = 0.05
+#var common_prob : float = 0.50
+#var rare_prob : float = 0.30
+#var epic_prob : float = 0.15
+#var legendary_prob : float = 0.05
+
+var common_weight = 1 			#15
+var rare_weight = 0.5 			#7.5
+var epic_weight = 0.2 			#3
+var legendary_weight = 0.066	#1
 
 var common_cards : Array[PackedScene] = [preload("res://Cards/carte_corn.tscn"),
 preload("res://Cards/carte_cucumber.tscn"),
@@ -56,21 +61,40 @@ func generate_5_cards():
 	for i in range(5):
 		generate_card()
 
+#func generate_card():
+	#AutoRerollLAb.text = "Use " + str(carteEnMain-1) + " cards to auto-reroll"
+	#
+	#var gen = randf()
+	#
+	#if gen <= legendary_prob:
+		#create_card(LENGENDARY)
+	#elif gen < legendary_prob + epic_prob:
+		#create_card(EPIC)
+	#elif gen < legendary_prob + epic_prob + rare_prob:
+		#create_card(RARE)
+	#else:
+		#create_card(COMMON)
+	
 func generate_card():
-	AutoRerollLAb.text = "Use " + str(carteEnMain-1) + " cards to auto-reroll"
+	# Calculer les poids basés sur les tailles des listes
+	var common_total_weight = common_weight * common_cards.size()
+	var rare_total_weight = rare_weight * rare_cards.size()
+	var epic_total_weight = epic_weight * epics_cards.size()
+	var legendary_total_weight = legendary_weight * lengendary_cards.size()
 	
-	var gen = randf()
+	# Calculer la somme totale des poids
+	var total_weight = common_total_weight + rare_total_weight + epic_total_weight + legendary_total_weight
+	var rand_value = randf() * total_weight
 	
-	if gen <= legendary_prob:
-		create_card(LENGENDARY)
-	elif gen < legendary_prob + epic_prob:
-		create_card(EPIC)
-	elif gen < legendary_prob + epic_prob + rare_prob:
-		create_card(RARE)
-	else:
+	if rand_value < common_total_weight:
 		create_card(COMMON)
-	
-			
+	elif rand_value < common_total_weight + rare_total_weight:
+		create_card(RARE)
+	elif rand_value < common_total_weight + rare_total_weight + epic_total_weight:
+		create_card(EPIC)
+	else:
+		create_card(LENGENDARY)
+
 func create_card(RARITY):
 	var instance
 	

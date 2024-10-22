@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=4 uid="uid://c7742fyydj1sx"]
 
 [ext_resource type="PackedScene" uid="uid://c6d64c87tjgd" path="res://Tools/Scenes/tools.tscn" id="1_nfmv1"]
-[ext_resource type="Script" path="res://Tools/Scripts/Moissoneuse.gd" id="2_kvy87"]
+[ext_resource type="Script" path="res://Tools/Scripts/moissoneuse.gd" id="2_kvy87"]
 [ext_resource type="Shader" path="res://Plants/collect.gdshader" id="3_2c1le"]
 [ext_resource type="Script" path="res://Plants/Stats/Stats.gd" id="3_85hto"]
 
