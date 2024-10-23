@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://ckiv554cqcq05"]
 
 [ext_resource type="PackedScene" uid="uid://c5t5ibvxcoaaw" path="res://Cards/card_ui.tscn" id="1_d5hcv"]
-[ext_resource type="Script" path="res://Cards/Consomable/Consomable.gd" id="2_mfrwq"]
-[ext_resource type="Texture2D" uid="uid://sauox371i7ud" path="res://Cards/Consomable/Shovel.jpeg" id="3_5pu6v"]
+[ext_resource type="Script" path="res://Cards/Consomable/Scripts/Consomable.gd" id="2_mfrwq"]
+[ext_resource type="Texture2D" uid="uid://sauox371i7ud" path="res://Cards/Consomable/Art/Shovel.jpeg" id="3_5pu6v"]
 
 [node name="Pickaxe" instance=ExtResource("1_d5hcv")]
 script = ExtResource("2_mfrwq")
@@ -10,6 +10,7 @@ consomable_name = "Pickaxe"
 consomable_description = "Remove a stone."
 consomable_cost = 2000.0
 target_types = Array[String](["Stone"])
+specific_over_general = true
 
 [node name="Background" parent="Control" index="0"]
 modulate = Color(0.627451, 0.403922, 1, 1)

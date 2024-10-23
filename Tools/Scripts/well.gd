@@ -24,4 +24,5 @@ func add_modifiers():
 
 
 func _on_tree_exited() -> void:
+	super()
 	do_water_update()

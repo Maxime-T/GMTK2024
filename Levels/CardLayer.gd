@@ -21,7 +21,7 @@ var epic_weight = 0.2 			#3
 var legendary_weight = 0.066	#1
 
 var common_cards : Array[PackedScene] = [preload("res://Cards/carte_corn.tscn"),
-preload("res://Cards/carte_cucumber.tscn"),
+preload("res://Cards/carte_cucumber.tscn"), preload("res://Cards/Consomable/carte_mycelium.tscn"),
 preload("res://Cards/carte_champi.tscn")]
 
 var rare_cards : Array[PackedScene] = [preload("res://Cards/carte_carrot.tscn"),
@@ -31,7 +31,7 @@ var epics_cards : Array[PackedScene] = [preload("res://Cards/carte_aubergine.tsc
 preload("res://Cards/carte_well.tscn"), preload("res://Cards/Consomable/shovel.tscn"), preload("res://Cards/Consomable/pickaxe.tscn"),
 preload("res://Cards/Consomable/axe.tscn"), preload("res://Cards/Consomable/fertilizer.tscn")]
 
-var lengendary_cards : Array[PackedScene] = [preload("res://Cards/carte_sprinkler.tscn")]
+var lengendary_cards : Array[PackedScene] = [preload("res://Cards/carte_sprinkler.tscn"), preload("res://Cards/Consomable/carte_base_ground.tscn")]
 
 @export var RerollButton : Button
 @export var ExpandButton : Button

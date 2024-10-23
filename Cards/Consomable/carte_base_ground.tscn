@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkmq8gtv8261w"]
+
+[ext_resource type="PackedScene" uid="uid://c5t5ibvxcoaaw" path="res://Cards/card_ui.tscn" id="1_163fp"]
+[ext_resource type="Script" path="res://Cards/Consomable/Scripts/carte_base_ground.gd" id="2_n2vdw"]
+[ext_resource type="PackedScene" uid="uid://dx3jbhf5iam6a" path="res://Plants/Grounds/ground_tile.tscn" id="3_jreqi"]
+[ext_resource type="Texture2D" uid="uid://cpyvkh65l64ky" path="res://Cards/Consomable/Art/434b50c66b3e5fcb0b517f8a226f39b9.png" id="4_isuj8"]
+
+[node name="Carte_baseGround" instance=ExtResource("1_163fp")]
+script = ExtResource("2_n2vdw")
+Ground = ExtResource("3_jreqi")
+consomable_name = "BASEGROUND"
+consomable_description = "FOR DEBBUG: place a base ground"
+consomable_cost = 1.0
+target_types = Array[String]([])
+specific_over_general = false
+
+[node name="Background" parent="Control" index="0"]
+offset_left = -26.0
+offset_top = -5.0
+offset_right = 28.0
+offset_bottom = 12.0
+texture = ExtResource("4_isuj8")

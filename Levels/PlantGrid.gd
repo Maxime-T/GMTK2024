@@ -7,6 +7,9 @@ class_name PlantGrid
 @export var LogsScene : PackedScene
 @export var StoneScene : PackedScene
 
+@export var base_ground : PackedScene
+@export var mycelium_ground : PackedScene
+
 @export var X_fences : Node3D
 @export var Z_fences : Node3D
 
@@ -81,15 +84,13 @@ class Tile:
 			return str(property) + " " + str(target_types) + " " + str(mod)
 
 func get_tile(x : float, y : float) -> Tile:
-	x = int(round(x))
-	y = int(round(y))
+	x = int(round(x)) ; y = int(round(y))
 	if is_inbound(x,y):
 		return data[x][y]
 	return null
 
 func get_ground(x : float, y : float) -> GroundTile:
-	x = round(x)
-	y = round(y)
+	x = round(x) ; y = round(y)
 	if is_inbound(x,y):
 		return data[x][y].ground
 	return null
@@ -119,10 +120,12 @@ func _ready():
 	
 	init_data()
 	init_ground()
-	spawn_obstacle(0, current_size, true)
 	
 	create_object(0, 0, load("res://Plants/Scene/tomato.tscn"))
 	create_object(1, 0, load("res://Plants/Scene/tomato.tscn"))
+	create_object(2, 2, load("res://Tools/Scenes/well.tscn"))
+	
+	spawn_obstacle(0, current_size, true)
 
 func _physics_process(_delta):
 	mouse_highlight()
@@ -157,7 +160,7 @@ func init_data() -> void:
 func init_ground() -> void:
 	for x in range(size):
 		for y in range(size):
-			create_ground(x,y, null)
+			create_ground(x,y, base_ground)
 
 func is_tile_free(x:float, y:float) -> bool:
 	x = round(x) ; y = round(y)
@@ -191,7 +194,7 @@ func remove_plant(x : float, y : float):
 func create_object(x : float, y : float, object_scene : PackedScene) -> void:
 	x = round(x) ; y = round(y)
 	if get_grid_component(x,y) != null:
-		push_error("tried to create an object onto another object")
+		push_warning("tried to create an object onto another object")
 		return
 	
 	var grid_component : GridComponent = object_scene.instantiate()
@@ -215,8 +218,12 @@ func remove_object(x:float, y:float):
 	get_grid_component(x,y).queue_free()
 	tile.grid_component = null
 
-func create_ground( x:int, y:int, _type : PackedScene) -> void:
-	var ground : GroundTile = load("res://Plants/Grounds/ground_tile.tscn").instantiate()
+func create_ground(x : int, y : int, ground_scene : PackedScene, replace : bool = false) -> void:
+	var ground : GroundTile = ground_scene.instantiate()
+	if replace:
+		data[x][y].ground.queue_free()
+	if ((x+y) % 2 == 0):
+		ground.mesh.material.albedo_color -= Color(.025,.025,.025, 0)
 	data[x][y].ground = ground
 	ground.position = get_real_position(x,y)
 	add_child(ground)

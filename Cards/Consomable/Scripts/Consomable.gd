@@ -2,9 +2,10 @@ extends Card
 class_name Consomable
 
 @export var consomable_name : String 
-@export var consomable_description : String
+@export_multiline var consomable_description : String
 @export var consomable_cost : float
 @export var target_types : Array[String]
+@export var specific_over_general : bool = false
 
 func _ready():
 	
@@ -28,20 +29,25 @@ func _unhandled_input(event):
 	##Suprimer seulement si elle est bien placé
 	if event.is_action_pressed("click") and confirmed:
 		var inter := PlantGridNode.get_mouse_tile_position()
-		if PlantGridNode.is_inbound(inter.x, inter.y) and Global.gold >= GoldCost and PlantGridNode.get_grid_component(inter.x,inter.y) != null:
+		if PlantGridNode.is_inbound(inter.x, inter.y) and Global.gold >= GoldCost:
+			if !specific_over_general:
+				consomable_general_effect(inter.x, inter.y)
+				post_effect_stuff()
+				return
 			
-			for target_type in target_types:
-				if target_type in PlantGridNode.get_grid_component(inter.x,inter.y).get_groups():
-					consomable_specific_effect(inter.x, inter.y)
-					
-					Global.gold -= GoldCost
-					GlobalSignals.plant_selected.emit(null)
-					queue_free()
-					Global.CardPlayed.emit()
-					break
+			if PlantGridNode.get_grid_component(inter.x,inter.y) != null:
+				
+				for target_type in target_types:
+					if target_type in PlantGridNode.get_grid_component(inter.x,inter.y).get_groups():
+						consomable_specific_effect_on_grid_component(inter.x, inter.y)
+						post_effect_stuff()
+						break
+
+func consomable_general_effect(x,y):
+	pass
 
 #Par défaut ca permet d'enlever quelque chose
-func consomable_specific_effect(x,y):
+func consomable_specific_effect_on_grid_component(x,y):
 	PlantGridNode.remove_object(x,y)
 
 func _on_focus_entered():

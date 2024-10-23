@@ -59,6 +59,9 @@ func play_disparition_animation() -> void:
 	t.tween_property(self, "animationScale", 0.2, 0.1)
 
 func harvest():
+	###DEBUG
+	#get_adjacent_tile(Vector2.ZERO).debug_print_modifiers()
+	
 	if harvestable:
 		Global.sun += stats.score.calculate_value()
 		Global.gold += stats.income.calculate_value()
@@ -87,7 +90,7 @@ func calculate_water_debuff():
 	elif water_diff < -1:
 		var instance = noWaterScene.instantiate()
 		add_child(instance)
-		tile.add_modifier("growSpeed", ["Plant"], Modifier.new(instance, Modifier.TYPE.MULT, -999))
+		tile.add_modifier("growSpeed", ["Plant"], Modifier.new(instance, Modifier.TYPE.MULT, -9999))
 	
 
 

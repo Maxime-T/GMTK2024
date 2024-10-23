@@ -16,8 +16,16 @@ var values
 func _ready() -> void:
 	if stats != null:
 		values = stats.get_property_list().filter(func(e): return e.class_name == &"ModifiableValue")
+		Global.pollution += stats.pollutionGeneration.calculate_value()
+	
+	if !tree_exiting.is_connected(_on_tree_exited):
+			tree_exiting.connect(_on_tree_exited)
 	
 	add_modifiers()
+
+func _on_tree_exited() -> void:
+	if stats != null:
+		Global.pollution -= stats.pollutionGeneration.calculate_value()
 
 func add_modifiers():
 	pass

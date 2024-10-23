@@ -251,7 +251,6 @@ tracked_groups = Array[String]([])
 targeted_groups = Array[String](["Plant", "Tools"])
 
 [node name="Mesh" parent="." index="0"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 material_overlay = SubResource("ShaderMaterial_dr5k4")
 mesh = SubResource("ArrayMesh_tbslf")
-
-[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]

@@ -104,11 +104,13 @@ func _unhandled_input(event):
 		var intersection_point : Vector2 = PlantGridNode.get_mouse_tile_position()
 		if PlantGridNode.is_tile_free(intersection_point.x, intersection_point.y) and Global.gold >= GoldCost:
 			PlantGridNode.create_object(intersection_point.x, intersection_point.y, GCScene)
-			Global.gold -= GoldCost
-			Global.pollution += PollutionProd
-			GlobalSignals.plant_selected.emit(null)
-			queue_free()
-			Global.CardPlayed.emit()
+			post_effect_stuff()
+
+func post_effect_stuff():
+	Global.gold -= GoldCost
+	GlobalSignals.plant_selected.emit(null)
+	queue_free()
+	Global.CardPlayed.emit()
 
 func _on_mouse_entered():
 	if confirmed:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://bqto2ddsofr8v"]
+[gd_scene load_steps=45 format=4 uid="uid://bqto2ddsofr8v"]
 
 [ext_resource type="Script" path="res://Levels/Garden.gd" id="1_ua47f"]
 [ext_resource type="Script" path="res://CameraMovement.gd" id="1_uow6t"]
@@ -8,7 +8,9 @@
 [ext_resource type="LabelSettings" uid="uid://g3qcsd0b230q" path="res://Themes & fonts/HUD_top_labels.tres" id="5_bhnvt"]
 [ext_resource type="Texture2D" uid="uid://dc53w6h5afvvd" path="res://HUD items/Argent.png" id="5_c10gl"]
 [ext_resource type="PackedScene" uid="uid://cmrfurd24t2di" path="res://Obstacle/Scenes/stone.tscn" id="5_wk2me"]
+[ext_resource type="PackedScene" uid="uid://dx3jbhf5iam6a" path="res://Plants/Grounds/ground_tile.tscn" id="6_mj538"]
 [ext_resource type="Texture2D" uid="uid://bc0ecge0pqnya" path="res://HUD items/Soleil.png" id="7_hmvc6"]
+[ext_resource type="PackedScene" uid="uid://biwoe4yrio7dp" path="res://Plants/Grounds/mycelium_ground.tscn" id="7_yf33y"]
 [ext_resource type="Texture2D" uid="uid://okjkkv0mqnd" path="res://HUD items/Masque_A_Gaz.png" id="8_6pitr"]
 [ext_resource type="Texture2D" uid="uid://brmo2bin2pr8o" path="res://HUD items/Jauge.png" id="9_ib5ua"]
 [ext_resource type="Script" path="res://Levels/CardLayer.gd" id="9_mnsiy"]
@@ -344,6 +346,8 @@ plantGrid = NodePath("../../PlantGrid")
 script = ExtResource("3_ls3q7")
 LogsScene = ExtResource("4_4a0m2")
 StoneScene = ExtResource("5_wk2me")
+base_ground = ExtResource("6_mj538")
+mycelium_ground = ExtResource("7_yf33y")
 X_fences = NodePath("../Background/Fences/InnerFences/fenceP1")
 Z_fences = NodePath("../Background/Fences/InnerFences/fenceP2")
 

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://tgid6os2taf3"]
 
 [ext_resource type="PackedScene" uid="uid://c5t5ibvxcoaaw" path="res://Cards/card_ui.tscn" id="1_3hoyc"]
-[ext_resource type="Script" path="res://Cards/Consomable/fertilizer.gd" id="2_bervj"]
-[ext_resource type="Texture2D" uid="uid://sauox371i7ud" path="res://Cards/Consomable/Shovel.jpeg" id="3_a2yix"]
+[ext_resource type="Script" path="res://Cards/Consomable/Scripts/fertilizer.gd" id="2_bervj"]
+[ext_resource type="Texture2D" uid="uid://sauox371i7ud" path="res://Cards/Consomable/Art/Shovel.jpeg" id="3_a2yix"]
 
 [node name="Fertilizer" instance=ExtResource("1_3hoyc")]
 script = ExtResource("2_bervj")
@@ -10,6 +10,7 @@ consomable_name = "Fertilizer"
 consomable_description = "Affected plants grow two times faster, lasts for 5 minutes."
 consomable_cost = 200.0
 target_types = Array[String](["Plant"])
+specific_over_general = true
 
 [node name="Background" parent="Control" index="0"]
 modulate = Color(0.313726, 0.631373, 1, 1)
