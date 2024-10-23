@@ -10,7 +10,7 @@ func _ready():
 
 func update():
 	ratio = clamp(Global.sun / 4600, 0, 1)
-	var tween : Tween = get_tree().create_tween()
+	var tween : Tween = create_tween()
 	tween.set_parallel(true)
 	tween.tween_property(self, "position:y",basePosition.y + (ratio) * 12.307, 1.)
 	#tween.tween_property(self, "rotation:y",baseRotation.y + (ratio) * -2*PI * 8, 1.)
