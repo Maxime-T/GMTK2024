@@ -4,4 +4,4 @@ extends Consomable
 
 func consomable_general_effect(x,y):
 	PlantGridNode.create_ground(x, y, Ground, true)
-	
+	return true

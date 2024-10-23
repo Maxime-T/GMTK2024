@@ -31,24 +31,25 @@ func _unhandled_input(event):
 		var inter := PlantGridNode.get_mouse_tile_position()
 		if PlantGridNode.is_inbound(inter.x, inter.y) and Global.gold >= GoldCost:
 			if !specific_over_general:
-				consomable_general_effect(inter.x, inter.y)
-				post_effect_stuff()
-				return
+				if consomable_general_effect(inter.x, inter.y):
+					post_effect_stuff()
+					return
 			
 			if PlantGridNode.get_grid_component(inter.x,inter.y) != null:
 				
 				for target_type in target_types:
 					if target_type in PlantGridNode.get_grid_component(inter.x,inter.y).get_groups():
-						consomable_specific_effect_on_grid_component(inter.x, inter.y)
-						post_effect_stuff()
+						if consomable_specific_effect_on_grid_component(inter.x, inter.y):
+							post_effect_stuff()
 						break
 
-func consomable_general_effect(x,y):
-	pass
+func consomable_general_effect(x,y) -> bool:
+	return true
 
 #Par défaut ca permet d'enlever quelque chose
-func consomable_specific_effect_on_grid_component(x,y):
+func consomable_specific_effect_on_grid_component(x,y) -> bool:
 	PlantGridNode.remove_object(x,y)
+	return true
 
 func _on_focus_entered():
 	confirmed = true
