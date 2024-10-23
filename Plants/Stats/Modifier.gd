@@ -13,6 +13,7 @@ func _init(_origin : Node, _type : TYPE, _value : float) -> void:
 enum TYPE {
 	BASE,
 	MULT,
+	REAL_MULT,
 	FLAT
 }
 

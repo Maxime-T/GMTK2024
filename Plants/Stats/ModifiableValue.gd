@@ -24,11 +24,19 @@ func calculate_value() -> float:
 		if multMod.type == Modifier.TYPE.MULT:
 			mult += multMod.value
 	
+	var real_mult : float = 1.
+	for real_mult_mod in modifiers:
+		if real_mult_mod.type == Modifier.TYPE.REAL_MULT:
+			if real_mult_mod.value < 0.:
+				push_error("wsh bro real mult peux pas etre negatif")
+				
+			real_mult *= real_mult_mod.value
+	
 	var flat : float = 0.
 	for flatMod in modifiers:
 		if flatMod.type == Modifier.TYPE.FLAT:
 			flat += flatMod.value
-	return max(max(base*mult,0) + flat,0)
+	return max(max(base*mult,0) + flat,0) * real_mult
 
 func emit_value() -> void:
 	var value : float = calculate_value()
