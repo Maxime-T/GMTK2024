@@ -16,6 +16,7 @@ var values
 func _ready() -> void:
 	if stats != null:
 		values = stats.get_property_list().filter(func(e): return e.class_name == &"ModifiableValue")
+		stats.water.setFunction = on_water_set
 		Global.pollution += stats.pollutionGeneration.calculate_value()
 	
 	if !tree_exited.is_connected(_on_tree_exited):
@@ -24,7 +25,6 @@ func _ready() -> void:
 	add_modifiers()
 
 func _on_tree_exited() -> void:
-	print("exited")
 	if stats != null:
 		Global.pollution -= stats.pollutionGeneration.calculate_value()
 
@@ -55,16 +55,9 @@ func get_adjacent_tools(vector : Vector2) -> Tools:
 		return tile.grid_component
 	return null
 
-func do_water_update():
-	for v in get_highlight_zones():
-		var tile : PlantGrid.Tile = get_adjacent_tile(v)
-		if tile != null and tile.grid_component != null:
-			if Global.check_targeted_groups_is_in_groups(targeted_groups, tile.grid_component.get_groups()):
-				tile.grid_component.calculate_water_debuff()
+func on_water_set(water_amout):
+	print(self, water_amout)
 
-#Peut etre que dans le future des machines auront des effets avec l'eau
-func calculate_water_debuff():
-	pass
 
 ##les modifier de plante ne doivent JAMAIS etre modifier directement, utiliser plutôt les fonction de sa TILE
 func update_modifiers(mods : Array[PlantGrid.Tile.TileModifier]):

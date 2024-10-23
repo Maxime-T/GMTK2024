@@ -18,11 +18,3 @@ func add_modifiers():
 		var tile : PlantGrid.Tile = get_adjacent_tile(v)
 		if tile != null:
 			tile.add_modifier("water", targeted_groups, Modifier.new(self, Modifier.TYPE.FLAT, 1))
-	
-	do_water_update()
-			
-
-
-func _on_tree_exited() -> void:
-	super()
-	do_water_update()

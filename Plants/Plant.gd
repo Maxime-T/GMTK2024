@@ -72,12 +72,14 @@ func reset_growth():
 	meshInstance.get_material_overlay().set_shader_parameter("enabled", false)
 	harvestable = false
 
-
 var warningWaterScene : PackedScene = preload("res://Plants/warning_water_logo.tscn")
 var noWaterScene : PackedScene = preload("res://Plants/no_water_logo.tscn")
-func calculate_water_debuff():
-	var water_diff = stats.water.calculate_value() - stats.waterNeeded.calculate_value()
-	var tile : PlantGrid.Tile = get_adjacent_tile(Vector2.ZERO)
+var old_water_diff = 0
+func on_water_set(water_amount):
+	var water_diff = water_amount - stats.waterNeeded.calculate_value()
+	if water_diff == old_water_diff:
+		return
+	old_water_diff = water_diff
 	
 	for child in get_children():
 		if child.is_in_group("WaterLogo"):
@@ -86,14 +88,14 @@ func calculate_water_debuff():
 	if water_diff == -1:
 		var instance = warningWaterScene.instantiate()
 		add_child(instance)
-		tile.add_modifier("growSpeed", ["Plant"], Modifier.new(instance, Modifier.TYPE.MULT, -0.5))
+		growManager.water_debuff = 0.5
 	elif water_diff < -1:
 		var instance = noWaterScene.instantiate()
 		add_child(instance)
-		tile.add_modifier("growSpeed", ["Plant"], Modifier.new(instance, Modifier.TYPE.MULT, -9999))
-	
-	print(water_diff)
-
+		growManager.water_debuff = 0.5
+	else:
+		growManager.water_debuff = 1
+		
 
 #@export_category("Plant Info")
 #@export_group("General")

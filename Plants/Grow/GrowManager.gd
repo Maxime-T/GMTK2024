@@ -10,6 +10,7 @@ var index : int = 0
 var time : float = 0
 
 var totalGrowTime : float = 0
+var water_debuff : float = 1
 
 var growPourcent : float :
 	set(v):
@@ -33,7 +34,7 @@ func update_grow_stage() -> void:
 			growStages.append(child)
 
 func grow(delta):
-	time += delta * growSpeed
+	time += delta * growSpeed * water_debuff
 	growPourcent = calculate_total_elapsed_time() / totalGrowTime
 	
 	if time > growStages[index].time:

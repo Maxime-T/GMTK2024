@@ -28,7 +28,6 @@ class Tile:
 			grid_component = value
 			if grid_component is Plant or grid_component is Tools:
 				plant_tools_update_modifiers()
-				grid_component.calculate_water_debuff()
 	
 	var ground : GroundTile
 	var locked : bool
