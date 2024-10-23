@@ -2,7 +2,7 @@ extends Consomable
 
 @export var Mycelium : PackedScene
 
-func consomable_general_effect(x,y):
+func consomable_general_effect(x,y) -> bool:
 	PlantGridNode.create_ground(x, y, Mycelium, true)
 	var tile : PlantGrid.Tile = PlantGridNode.get_tile(x,y)
 	var new_ground = PlantGridNode.get_ground(x,y)

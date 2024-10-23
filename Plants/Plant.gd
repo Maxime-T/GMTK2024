@@ -92,6 +92,7 @@ func calculate_water_debuff():
 		add_child(instance)
 		tile.add_modifier("growSpeed", ["Plant"], Modifier.new(instance, Modifier.TYPE.MULT, -9999))
 	
+	print(water_diff)
 
 
 #@export_category("Plant Info")

@@ -36,3 +36,23 @@ func _input(event):
 				print("true")
 			else:
 				get_tree().root.get_child(1).add_child(SettingsScene.instantiate())
+
+func check_targeted_groups_is_in_groups(targeted_groups : Array[String], groups) -> bool:
+	var found_positive : bool = false
+	var found_negative : bool = false
+	var reverse_case : bool = false
+	for target_group in targeted_groups:
+		if target_group.begins_with("!"):
+			reverse_case = true
+			var actual_group = target_group.substr(1, target_group.length() - 1)
+			if actual_group in groups:
+				found_negative = true
+		else:
+			if target_group in groups:
+				found_positive = true
+
+	if found_negative:
+		return false
+	if found_positive or (reverse_case and !found_negative):
+		return true
+	return false

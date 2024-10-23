@@ -18,12 +18,13 @@ func _ready() -> void:
 		values = stats.get_property_list().filter(func(e): return e.class_name == &"ModifiableValue")
 		Global.pollution += stats.pollutionGeneration.calculate_value()
 	
-	if !tree_exiting.is_connected(_on_tree_exited):
-			tree_exiting.connect(_on_tree_exited)
+	if !tree_exited.is_connected(_on_tree_exited):
+			tree_exited.connect(_on_tree_exited)
 	
 	add_modifiers()
 
 func _on_tree_exited() -> void:
+	print("exited")
 	if stats != null:
 		Global.pollution -= stats.pollutionGeneration.calculate_value()
 
@@ -58,10 +59,8 @@ func do_water_update():
 	for v in get_highlight_zones():
 		var tile : PlantGrid.Tile = get_adjacent_tile(v)
 		if tile != null and tile.grid_component != null:
-			for targeted_group in targeted_groups:
-				if targeted_group in tile.grid_component.get_groups():
-					tile.grid_component.calculate_water_debuff()
-					break
+			if Global.check_targeted_groups_is_in_groups(targeted_groups, tile.grid_component.get_groups()):
+				tile.grid_component.calculate_water_debuff()
 
 #Peut etre que dans le future des machines auront des effets avec l'eau
 func calculate_water_debuff():
@@ -75,7 +74,5 @@ func update_modifiers(mods : Array[PlantGrid.Tile.TileModifier]):
 	for tile_modifier in mods:
 		var modifiableValue : ModifiableValue = stats.get(tile_modifier.property) as ModifiableValue
 		
-		for target_type in tile_modifier.target_types:
-			if target_type in get_groups():
-				modifiableValue.add_modifier(tile_modifier.mod.origin, tile_modifier.mod.type, tile_modifier.mod.value)
-				break
+		if Global.check_targeted_groups_is_in_groups(tile_modifier.target_types, get_groups()):
+			modifiableValue.add_modifier(tile_modifier.mod.origin, tile_modifier.mod.type, tile_modifier.mod.value)
