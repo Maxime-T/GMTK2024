@@ -36,12 +36,9 @@ func _unhandled_input(event):
 					return
 			
 			if PlantGridNode.get_grid_component(inter.x,inter.y) != null:
-				
-				for target_type in target_types:
-					if target_type in PlantGridNode.get_grid_component(inter.x,inter.y).get_groups():
-						if consomable_specific_effect_on_grid_component(inter.x, inter.y):
-							post_effect_stuff()
-						break
+				if Global.check_targeted_groups_is_in_groups(target_types, PlantGridNode.get_grid_component(inter.x,inter.y).get_groups()):
+					if consomable_specific_effect_on_grid_component(inter.x, inter.y):
+						post_effect_stuff()
 
 func consomable_general_effect(x,y) -> bool:
 	return true

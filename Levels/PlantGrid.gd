@@ -125,7 +125,6 @@ func _ready():
 	create_object(1, 0, load("res://Plants/Scene/tomato.tscn"))
 	create_object(2, 2, load("res://Tools/Scenes/well.tscn"))
 	
-	spawn_obstacle(0, current_size, true)
 
 func _physics_process(_delta):
 	mouse_highlight()
@@ -283,7 +282,10 @@ func expand_map():
 	Z_fences.position.x += 2*tileSize
 	
 	unlock_new_tiles(current_size + 2)
-	spawn_obstacle(current_size, current_size + 2)
+	if current_size > 8:
+		spawn_obstacle(current_size, current_size + 2)
+	else:
+		spawn_obstacle(current_size, current_size + 2, true)
 	
 	current_size += 2
 	current_fence += 1
