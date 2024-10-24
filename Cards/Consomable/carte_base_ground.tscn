@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c5t5ibvxcoaaw" path="res://Cards/card_ui.tscn" id="1_163fp"]
 [ext_resource type="Script" path="res://Cards/Consomable/Scripts/carte_base_ground.gd" id="2_n2vdw"]
-[ext_resource type="PackedScene" uid="uid://dx3jbhf5iam6a" path="res://Grounds/ground_tile.tscn" id="3_jreqi"]
+[ext_resource type="PackedScene" uid="uid://bay8uxk1rmvd2" path="res://Grounds/Scenes/ground.tscn" id="3_jreqi"]
 [ext_resource type="Texture2D" uid="uid://cpyvkh65l64ky" path="res://Cards/Consomable/Art/434b50c66b3e5fcb0b517f8a226f39b9.png" id="4_isuj8"]
 
 [node name="Carte_baseGround" instance=ExtResource("1_163fp")]
