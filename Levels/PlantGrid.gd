@@ -29,7 +29,7 @@ class Tile:
 			if grid_component is Plant or grid_component is Tools:
 				plant_tools_update_modifiers()
 	
-	var ground : GroundTile
+	var ground : Ground
 	var locked : bool
 	var modifiers : Array[TileModifier]
 	
@@ -37,7 +37,7 @@ class Tile:
 	
 	signal plant_change(new_plant, old_plant)
 	
-	func _init(_grid_component : Plant, _ground : GroundTile):
+	func _init(_grid_component : Plant, _ground : Ground):
 		grid_component = _grid_component
 		ground = _ground
 		locked = true
@@ -88,7 +88,7 @@ func get_tile(x : float, y : float) -> Tile:
 		return data[x][y]
 	return null
 
-func get_ground(x : float, y : float) -> GroundTile:
+func get_ground(x : float, y : float) -> Ground:
 	x = round(x) ; y = round(y)
 	if is_inbound(x,y):
 		return data[x][y].ground
@@ -223,12 +223,14 @@ func remove_object(x:float, y:float):
 	tile.grid_component = null
 
 func create_ground(x : int, y : int, ground_scene : PackedScene, replace : bool = false) -> void:
-	var ground : GroundTile = ground_scene.instantiate()
-	if replace:
-		data[x][y].ground.queue_free()
+	var ground : Ground = ground_scene.instantiate()
+	if replace and get_ground(x,y) != null:
+		get_ground(x,y).queue_free()
 	if ((x+y) % 2 == 0):
-		ground.mesh.material.albedo_color -= Color(.025,.025,.025, 0)
+		ground.meshInstance.mesh.material.albedo_color -= Color(.025,.025,.025, 0)
 	data[x][y].ground = ground
+	ground.plantGrid = self
+	ground.gridPos = Vector2(x,y)
 	ground.position = get_real_position(x,y)
 	add_child(ground)
 

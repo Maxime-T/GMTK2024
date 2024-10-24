@@ -64,7 +64,7 @@ func spawn_popup():
 	popup3d.set_grid_component(self)
 	add_child(popup3d)
 
-##les modifier de plante ne doivent JAMAIS etre modifier directement, utiliser plutôt les fonction de sa TILE
+##les modifier d'un GridComponant ne doivent JAMAIS etre modifier directement, utiliser plutôt les fonction de sa TILE
 func update_modifiers(mods : Array[PlantGrid.Tile.TileModifier]):
 	for modifiable in values:
 		(stats.get(modifiable.name) as ModifiableValue).removeAllModifiers()

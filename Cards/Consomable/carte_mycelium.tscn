@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://c5t5ibvxcoaaw" path="res://Cards/card_ui.tscn" id="1_krcog"]
 [ext_resource type="Script" path="res://Cards/Consomable/Scripts/carte_mycelium.gd" id="2_e1vel"]
-[ext_resource type="PackedScene" uid="uid://biwoe4yrio7dp" path="res://Plants/Grounds/mycelium_ground.tscn" id="3_sk1fw"]
+[ext_resource type="PackedScene" uid="uid://bx6raek2824md" path="res://Grounds/Scenes/mycelium.tscn" id="3_35f4r"]
 [ext_resource type="Texture2D" uid="uid://caai1toqbq73m" path="res://Cards/Consomable/Art/Mycelium_JE2_BE2.png" id="4_vj4jh"]
 
 [node name="Carte_Mycelium" instance=ExtResource("1_krcog")]
 script = ExtResource("2_e1vel")
-Mycelium = ExtResource("3_sk1fw")
+Mycelium = ExtResource("3_35f4r")
 consomable_name = "Mycelium"
 consomable_description = "Change the type on the tile to \"Mycelium\" : mushrooms planted on this tile have 25% growth rate. Only mushrooms can grow on this tile."
 consomable_cost = 25.0

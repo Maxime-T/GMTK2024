@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bx6raek2824md"]
+
+[ext_resource type="PackedScene" uid="uid://bay8uxk1rmvd2" path="res://Grounds/Scenes/ground.tscn" id="1_dc0q3"]
+[ext_resource type="Script" path="res://Grounds/Scripts/Mycelium.gd" id="2_dr5re"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vhjix"]
+resource_local_to_scene = true
+resource_name = "grass"
+albedo_color = Color(0.689359, 0.65857, 0.741752, 1)
+metallic = 1.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_k6awv"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_vhjix")
+size = Vector2(0.8, 0.8)
+
+[node name="Mycelium" instance=ExtResource("1_dc0q3")]
+script = ExtResource("2_dr5re")
+component_name = ""
+
+[node name="MeshInstance3D" parent="." index="0"]
+mesh = SubResource("PlaneMesh_k6awv")

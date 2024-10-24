@@ -47,6 +47,7 @@ version_control/autoload_on_startup=true
 folder_colors={
 "res://Cards/": "yellow",
 "res://Grid component/": "pink",
+"res://Grounds/": "orange",
 "res://HUD items/": "blue",
 "res://Levels/": "red",
 "res://Menu/": "orange",
