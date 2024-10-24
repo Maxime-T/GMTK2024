@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxpe7wpwo8s8q"
-path="res://.godot/imported/Sur_la_vigne.png-becde8d36471a948242de3475720f63e.ctex"
+uid="uid://bc0ecge0pqnya"
+path="res://.godot/imported/Soleil.png-858020c62c902a6dabd511b84daf204a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HUD items/Sur_la_vigne.png"
-dest_files=["res://.godot/imported/Sur_la_vigne.png-becde8d36471a948242de3475720f63e.ctex"]
+source_file="res://HUD items/Art/Soleil.png"
+dest_files=["res://.godot/imported/Soleil.png-858020c62c902a6dabd511b84daf204a.ctex"]
 
 [params]
 

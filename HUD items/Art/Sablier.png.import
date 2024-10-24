@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://okjkkv0mqnd"
-path="res://.godot/imported/Masque_A_Gaz.png-98357093adbdced8f4653521e4c6dac3.ctex"
+uid="uid://cp7t47ofa17lt"
+path="res://.godot/imported/Sablier.png-44f0a53e30b4a416d61005626211b79a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HUD items/Masque_A_Gaz.png"
-dest_files=["res://.godot/imported/Masque_A_Gaz.png-98357093adbdced8f4653521e4c6dac3.ctex"]
+source_file="res://HUD items/Art/Sablier.png"
+dest_files=["res://.godot/imported/Sablier.png-44f0a53e30b4a416d61005626211b79a.ctex"]
 
 [params]
 

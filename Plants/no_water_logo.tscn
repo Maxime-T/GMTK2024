@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://2xk8apypul4h"]
 
-[ext_resource type="Texture2D" uid="uid://dpf7klw3k070n" path="res://HUD items/Eau_pas_eau.png" id="1_hihmp"]
+[ext_resource type="Texture2D" uid="uid://dpf7klw3k070n" path="res://HUD items/Art/Eau_pas_eau.png" id="1_hihmp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wf72b"]
 transparency = 1

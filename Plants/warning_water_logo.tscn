@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bjskn5g8ql5hd"]
 
-[ext_resource type="Texture2D" uid="uid://iyp0knuxjmki" path="res://HUD items/Eau_waring.png" id="1_4fioi"]
+[ext_resource type="Texture2D" uid="uid://iyp0knuxjmki" path="res://HUD items/Art/Eau_waring.png" id="1_4fioi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wf72b"]
 resource_local_to_scene = true

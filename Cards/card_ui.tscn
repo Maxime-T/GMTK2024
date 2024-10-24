@@ -1,12 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://c5t5ibvxcoaaw"]
 
 [ext_resource type="Script" path="res://Cards/card_ui.gd" id="1_g1nst"]
-[ext_resource type="Texture2D" uid="uid://dc53w6h5afvvd" path="res://HUD items/Argent.png" id="3_8cf76"]
-[ext_resource type="Texture2D" uid="uid://chxljqlujtj8t" path="res://HUD items/Eau.png" id="4_y0lqs"]
-[ext_resource type="Texture2D" uid="uid://okjkkv0mqnd" path="res://HUD items/Masque_A_Gaz.png" id="5_0hfgj"]
-[ext_resource type="Texture2D" uid="uid://cp7t47ofa17lt" path="res://HUD items/Sablier.png" id="6_d3rp4"]
-[ext_resource type="Texture2D" uid="uid://bc0ecge0pqnya" path="res://HUD items/Soleil.png" id="7_hmw8w"]
-[ext_resource type="Texture2D" uid="uid://cwij1jew0k2bk" path="res://HUD items/Argent+.png" id="8_wlunw"]
+[ext_resource type="Texture2D" uid="uid://dc53w6h5afvvd" path="res://HUD items/Art/Argent.png" id="3_8cf76"]
+[ext_resource type="Texture2D" uid="uid://chxljqlujtj8t" path="res://HUD items/Art/Eau.png" id="4_y0lqs"]
+[ext_resource type="Texture2D" uid="uid://okjkkv0mqnd" path="res://HUD items/Art/Masque_A_Gaz.png" id="5_0hfgj"]
+[ext_resource type="Texture2D" uid="uid://cp7t47ofa17lt" path="res://HUD items/Art/Sablier.png" id="6_d3rp4"]
+[ext_resource type="Texture2D" uid="uid://bc0ecge0pqnya" path="res://HUD items/Art/Soleil.png" id="7_hmw8w"]
+[ext_resource type="Texture2D" uid="uid://cwij1jew0k2bk" path="res://HUD items/Art/Argent+.png" id="8_wlunw"]
 [ext_resource type="Texture2D" uid="uid://b5kmr27mipurn" path="res://Cards/Carte.png" id="9_vvvpl"]
 [ext_resource type="LabelSettings" uid="uid://olk1vcfq20y8" path="res://Themes & fonts/Label_carte.tres" id="10_hsnxa"]
 

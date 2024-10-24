@@ -1,0 +1,169 @@
+[gd_scene load_steps=7 format=3 uid="uid://b1ab3pot5insf"]
+
+[ext_resource type="Script" path="res://HUD items/popup.gd" id="1_xhnm0"]
+[ext_resource type="Texture2D" uid="uid://cwij1jew0k2bk" path="res://HUD items/Art/Argent+.png" id="2_aprxq"]
+[ext_resource type="LabelSettings" uid="uid://boy7j365gpk04" path="res://HUD items/PopupLabels.tres" id="3_3raym"]
+[ext_resource type="Texture2D" uid="uid://cds7iw2jnw8cr" path="res://HUD items/Art/6639546.png" id="4_2lish"]
+[ext_resource type="Texture2D" uid="uid://cp7t47ofa17lt" path="res://HUD items/Art/Sablier.png" id="5_welgg"]
+[ext_resource type="Texture2D" uid="uid://okjkkv0mqnd" path="res://HUD items/Art/Masque_A_Gaz.png" id="6_ttpd8"]
+
+[node name="Popup" type="Control" node_paths=PackedStringArray("IncomeLab", "ScoreLab", "TimeLab", "PollutionLab")]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 3
+offset_right = 80.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xhnm0")
+IncomeLab = NodePath("MarginContainer/VBoxContainer/HBoxIncome/NumberLabel")
+ScoreLab = NodePath("MarginContainer/VBoxContainer/HBoxScore/NumberLabel")
+TimeLab = NodePath("MarginContainer/VBoxContainer/HBoxTime/NumberLabel")
+PollutionLab = NodePath("MarginContainer/VBoxContainer/HBoxPollution/NumberLabel")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.537255, 0.537255, 0.537255, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxIncome" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxIncome"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="IconRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxIncome/Control"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 0
+offset_left = -1.0
+offset_top = -2.0
+offset_right = 18.0
+offset_bottom = 18.0
+texture = ExtResource("2_aprxq")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxIncome"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Income"
+label_settings = ExtResource("3_3raym")
+
+[node name="NumberLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxIncome"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "sd"
+label_settings = ExtResource("3_3raym")
+horizontal_alignment = 2
+
+[node name="HBoxScore" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxScore"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="IconRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxScore/Control"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 17.0
+offset_bottom = 16.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("4_2lish")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxScore"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Score"
+label_settings = ExtResource("3_3raym")
+
+[node name="NumberLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxScore"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "sd"
+label_settings = ExtResource("3_3raym")
+horizontal_alignment = 2
+
+[node name="HBoxTime" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxTime"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="IconRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxTime/Control"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 0
+offset_top = -2.0
+offset_right = 20.0
+offset_bottom = 17.0
+texture = ExtResource("5_welgg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxTime"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "TtG"
+label_settings = ExtResource("3_3raym")
+
+[node name="NumberLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxTime"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "sd"
+label_settings = ExtResource("3_3raym")
+horizontal_alignment = 2
+
+[node name="HBoxPollution" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxPollution"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="IconRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxPollution/Control"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 0
+offset_top = -1.0
+offset_right = 19.0
+offset_bottom = 17.0
+texture = ExtResource("6_ttpd8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxPollution"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Pollution
+"
+label_settings = ExtResource("3_3raym")
+
+[node name="NumberLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxPollution"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "sd"
+label_settings = ExtResource("3_3raym")
+horizontal_alignment = 2

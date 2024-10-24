@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgvka5ljnxt43"
-path="res://.godot/imported/1394472.png-f0225979744dc5ecb1619992f38c0fd8.ctex"
+uid="uid://brmo2bin2pr8o"
+path="res://.godot/imported/Jauge.png-4df1f2e054b02651f1de93e545494c20.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HUD items/1394472.png"
-dest_files=["res://.godot/imported/1394472.png-f0225979744dc5ecb1619992f38c0fd8.ctex"]
+source_file="res://HUD items/Art/Jauge.png"
+dest_files=["res://.godot/imported/Jauge.png-4df1f2e054b02651f1de93e545494c20.ctex"]
 
 [params]
 

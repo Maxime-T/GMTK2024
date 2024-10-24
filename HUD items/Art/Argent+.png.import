@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp7t47ofa17lt"
-path="res://.godot/imported/Sablier.png-847bf27b0db14372952b6652146db15a.ctex"
+uid="uid://cwij1jew0k2bk"
+path="res://.godot/imported/Argent+.png-ba6304f6c4718c071c9a3da7e89c2174.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HUD items/Sablier.png"
-dest_files=["res://.godot/imported/Sablier.png-847bf27b0db14372952b6652146db15a.ctex"]
+source_file="res://HUD items/Art/Argent+.png"
+dest_files=["res://.godot/imported/Argent+.png-ba6304f6c4718c071c9a3da7e89c2174.ctex"]
 
 [params]
 

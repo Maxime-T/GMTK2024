@@ -140,8 +140,14 @@ func _unhandled_input(event):
 	if (event is InputEventMouseMotion and event.pressure == 1) or event.is_action_pressed("click"):
 		var pos : Vector2 = get_mouse_tile_position()
 		var plant : Plant = get_plant(pos.x ,pos.y)
-		if plant != null && is_inbound(pos.x ,pos.y):
+		if plant != null:
 			plant.harvest()
+	
+	if event.is_action_pressed("right click"):
+		var pos : Vector2 = get_mouse_tile_position()
+		var grid_comp : GridComponent = get_grid_component(pos.x ,pos.y)
+		if grid_comp != null:
+			grid_comp.spawn_popup()
 
 func init_data() -> void:
 	for i in range(size):

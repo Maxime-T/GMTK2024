@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cds7iw2jnw8cr"
-path="res://.godot/imported/6639546.png-ec812adfba53ab09cef3fc9984848f13.ctex"
+uid="uid://okjkkv0mqnd"
+path="res://.godot/imported/Masque_A_Gaz.png-ab3ba1d30f6dbedcd23dc9bdee0c24bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HUD items/6639546.png"
-dest_files=["res://.godot/imported/6639546.png-ec812adfba53ab09cef3fc9984848f13.ctex"]
+source_file="res://HUD items/Art/Masque_A_Gaz.png"
+dest_files=["res://.godot/imported/Masque_A_Gaz.png-ab3ba1d30f6dbedcd23dc9bdee0c24bb.ctex"]
 
 [params]
 

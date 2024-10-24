@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgngt51cvojif"
-path="res://.godot/imported/TitreFabaceae.png-cd3375d129014e54cd94649a20a0ecd7.ctex"
+uid="uid://cxpe7wpwo8s8q"
+path="res://.godot/imported/Sur_la_vigne.png-9b8a8b4599cfeadab8b620d384d358ad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HUD items/TitreFabaceae.png"
-dest_files=["res://.godot/imported/TitreFabaceae.png-cd3375d129014e54cd94649a20a0ecd7.ctex"]
+source_file="res://HUD items/Art/Sur_la_vigne.png"
+dest_files=["res://.godot/imported/Sur_la_vigne.png-9b8a8b4599cfeadab8b620d384d358ad.ctex"]
 
 [params]
 

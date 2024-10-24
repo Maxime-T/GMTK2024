@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c2eivilk6mahw"]
 
-[ext_resource type="Texture2D" uid="uid://cgngt51cvojif" path="res://HUD items/TitreFabaceae.png" id="1_rup1n"]
-[ext_resource type="Texture2D" uid="uid://bo68nsqspk7pw" path="res://HUD items/Logo_Tat_blanc.png" id="2_05tm3"]
+[ext_resource type="Texture2D" uid="uid://cgngt51cvojif" path="res://HUD items/Art/TitreFabaceae.png" id="1_rup1n"]
+[ext_resource type="Texture2D" uid="uid://bo68nsqspk7pw" path="res://HUD items/Art/Logo_Tat_blanc.png" id="2_05tm3"]
 [ext_resource type="FontVariation" uid="uid://de7jp8p1536yx" path="res://Themes & fonts/NightWatchB_MenuButton.tres" id="2_jdgpj"]
 [ext_resource type="LabelSettings" uid="uid://drgol7je8ol6l" path="res://Themes & fonts/Label32.tres" id="3_u3d3n"]
 [ext_resource type="LabelSettings" uid="uid://dh5lhont4m6sa" path="res://Themes & fonts/Label22.tres" id="4_3u8xv"]

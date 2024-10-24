@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4droap4a4pk"
-path="res://.godot/imported/6c6678c2f657e3bd2f87eba5a03636e4.jpg-6bb1d1db35c9f5281cb7026c2b4e89f7.ctex"
+uid="uid://d3ko4vwc034gp"
+path="res://.godot/imported/Vigne.png-13abaa200e8175c97c36c83db8c6ef03.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HUD items/6c6678c2f657e3bd2f87eba5a03636e4.jpg"
-dest_files=["res://.godot/imported/6c6678c2f657e3bd2f87eba5a03636e4.jpg-6bb1d1db35c9f5281cb7026c2b4e89f7.ctex"]
+source_file="res://HUD items/Art/Vigne.png"
+dest_files=["res://.godot/imported/Vigne.png-13abaa200e8175c97c36c83db8c6ef03.ctex"]
 
 [params]
 

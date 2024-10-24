@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chxljqlujtj8t"
-path="res://.godot/imported/Eau.png-59e7d5238c037b0ee7772bfc11c6bd47.ctex"
+uid="uid://cgngt51cvojif"
+path="res://.godot/imported/TitreFabaceae.png-561568bb65afc6006b0875ec247fd761.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HUD items/Eau.png"
-dest_files=["res://.godot/imported/Eau.png-59e7d5238c037b0ee7772bfc11c6bd47.ctex"]
+source_file="res://HUD items/Art/TitreFabaceae.png"
+dest_files=["res://.godot/imported/TitreFabaceae.png-561568bb65afc6006b0875ec247fd761.ctex"]
 
 [params]
 

@@ -58,6 +58,11 @@ func get_adjacent_tools(vector : Vector2) -> Tools:
 func on_water_set(water_amout):
 	print(self, water_amout)
 
+var popup3D_scene = load("res://HUD items/popup3D.tscn")
+func spawn_popup():
+	var popup3d : Popup3D = popup3D_scene.instantiate()
+	popup3d.set_grid_component(self)
+	add_child(popup3d)
 
 ##les modifier de plante ne doivent JAMAIS etre modifier directement, utiliser plutôt les fonction de sa TILE
 func update_modifiers(mods : Array[PlantGrid.Tile.TileModifier]):

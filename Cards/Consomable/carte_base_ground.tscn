@@ -16,7 +16,7 @@ specific_over_general = false
 
 [node name="Background" parent="Control" index="0"]
 offset_left = -26.0
-offset_top = -5.0
-offset_right = 28.0
+offset_top = -2.0
+offset_right = 23.0
 offset_bottom = 12.0
 texture = ExtResource("4_isuj8")

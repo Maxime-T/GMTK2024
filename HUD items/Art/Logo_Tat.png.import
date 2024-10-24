@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwij1jew0k2bk"
-path="res://.godot/imported/Argent+.png-459701547899845001d0387ca1b1d006.ctex"
+uid="uid://dapnnyn4vw3xg"
+path="res://.godot/imported/Logo_Tat.png-ca0792f348a96ccc16299f25de07b655.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HUD items/Argent+.png"
-dest_files=["res://.godot/imported/Argent+.png-459701547899845001d0387ca1b1d006.ctex"]
+source_file="res://HUD items/Art/Logo_Tat.png"
+dest_files=["res://.godot/imported/Logo_Tat.png-ca0792f348a96ccc16299f25de07b655.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bo68nsqspk7pw"
-path="res://.godot/imported/Logo_Tat_blanc.png-45f3a566c25704b3bd718fc171b58c9a.ctex"
+uid="uid://iyp0knuxjmki"
+path="res://.godot/imported/Eau_waring.png-3c1090d96d5f225c151568f80cdbd663.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HUD items/Logo_Tat_blanc.png"
-dest_files=["res://.godot/imported/Logo_Tat_blanc.png-45f3a566c25704b3bd718fc171b58c9a.ctex"]
+source_file="res://HUD items/Art/Eau_waring.png"
+dest_files=["res://.godot/imported/Eau_waring.png-3c1090d96d5f225c151568f80cdbd663.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0
